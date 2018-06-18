@@ -10,42 +10,42 @@
 namespace Portal.Modules.OrientalSails.Web.Admin {
     
     
-    public partial class MenuAdding {
+    public partial class RestaurantBookingByDate {
         
         /// <summary>
-        /// txtName control.
+        /// txtDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtName;
+        protected global::System.Web.UI.WebControls.TextBox txtDate;
         
         /// <summary>
-        /// txtCost control.
+        /// txtBookingCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCost;
+        protected global::System.Web.UI.WebControls.TextBox txtBookingCode;
         
         /// <summary>
-        /// txtDetais control.
+        /// btnDisplay control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDetais;
+        protected global::System.Web.UI.WebControls.Button btnDisplay;
         
         /// <summary>
-        /// btnAdd control.
+        /// rptBooking control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAdd;
+        protected global::System.Web.UI.WebControls.Repeater rptBooking;
     }
 }

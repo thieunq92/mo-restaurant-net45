@@ -91,10 +91,9 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                 userBLL = null;
             }
 
-            if (!IsPostBack)
-            {
-                ClearMessage();
-            }
+
+            ClearMessage();
+
         }
 
         protected void lbLogOut_Click(object sender, EventArgs e)
@@ -108,10 +107,8 @@ namespace Portal.Modules.OrientalSails.Web.Admin
         public void FillNavigateUrl()
         {
             hlBookingList.NavigateUrl = "BookingList.aspx?NodeId=1&SectionId=15";
-            hlAddBooking.NavigateUrl = "AddBooking.aspx?NodeId=1&SectionId=15";
             hlOrders.NavigateUrl = "OrderReport.aspx?NodeId=1&SectionId=15";
             hlAllPending.NavigateUrl = "OrderReport.aspx?NodeId=1&SectionId=15&mode=all";
-            hlBookingDate.NavigateUrl = "BookingReport.aspx?NodeId=1&SectionId=15";
             hlBookingPeriod.NavigateUrl = "BookingReportPeriodAll.aspx?NodeId=1&SectionId=15";
             hlIncomeReport.NavigateUrl = "IncomeReport.aspx?NodeId=1&SectionId=15";
             hlIncomeOwn.NavigateUrl = "PaymentReport.aspx?NodeId=1&SectionId=15";

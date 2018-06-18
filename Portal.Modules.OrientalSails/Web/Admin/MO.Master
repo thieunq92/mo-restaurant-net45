@@ -46,7 +46,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Booking <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li id="pAddBooking" runat="server">
-                                        <asp:HyperLink ID="hlAddBooking" runat="server">Booking Adding</asp:HyperLink></li>
+                                        <asp:HyperLink ID="hlAddBooking" runat="server" NavigateUrl="BookingAdding.aspx?NodeId=1&SectionId=15">Booking Adding</asp:HyperLink></li>
                                     <li id="pBookingList" runat="server">
                                         <asp:HyperLink ID="hlBookingList" runat="server">Booking Management</asp:HyperLink></li>
                                     <li id="pAddSeriesBookings" runat="server" style="display: none">
@@ -56,7 +56,7 @@
                                     <li id="pOrders" runat="server" style="display: none">
                                         <asp:HyperLink ID="hlOrders" runat="server">Booking Pending</asp:HyperLink></li>
                                     <li id="pBookingDate" runat="server">
-                                        <asp:HyperLink ID="hlBookingDate" runat="server">Booking By Date</asp:HyperLink></li>
+                                        <asp:HyperLink ID="hlBookingDate" runat="server" NavigateUrl="RestaurantBookingByDate.aspx?NodeId=1&SectionId=15">Booking By Date</asp:HyperLink></li>
                                     <li id="pBookingReport" runat="server" style="display: none">
                                         <asp:HyperLink ID="hlBookingPeriod" runat="server">Booking By Period</asp:HyperLink></li>
                                 </ul>
@@ -163,7 +163,7 @@
                                         <asp:HyperLink ID="hlMenuAdding" runat="server" NavigateUrl="MenuAdding.aspx?NodeId=1&SectionId=15">Menu Adding</asp:HyperLink>
                                     </li>
                                     <li>
-                                        <asp:HyperLink ID="hlMenuManagement" runat="server">Menu Management</asp:HyperLink>
+                                        <asp:HyperLink ID="hlMenuManagement" runat="server" NavigateUrl="MenuManagement.aspx?NodeId=1&SectionId=15">Menu Management</asp:HyperLink>
                                     </li>
                                 </ul>
                             </li>
@@ -382,6 +382,13 @@
                 scrollInput: false,
                 scrollMonth: false,
             })
+            $("[data-control='timepicker']").datetimepicker({
+                datepicker:false,
+                timepicker: true,
+                format: 'H:i',
+                scrollInput: false,
+                scrollMonth: false,
+            })
         })
     </script>
     <script>
@@ -391,6 +398,11 @@
                 $(e).append(label);
                 $(e).find("label").remove();
             });
+        })
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(".radio-inline label").addClass("radio-inline").css("padding-left", "0");
         })
     </script>
     <asp:ContentPlaceHolder ID="Scripts" runat="server">

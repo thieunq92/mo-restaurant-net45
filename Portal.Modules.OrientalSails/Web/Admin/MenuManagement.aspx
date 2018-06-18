@@ -1,16 +1,48 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MenuManagement.aspx.cs" Inherits="Portal.Modules.OrientalSails.Web.Admin.MenuManagement" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MenuManagement.aspx.cs" Inherits="Portal.Modules.OrientalSails.Web.Admin.MenuManagement"
+    MasterPageFile="MO.Master" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-    <div>
-    
+<asp:Content ID="Head" ContentPlaceHolderID="Head" runat="server">
+    <title>Menu Management</title>
+</asp:Content>
+<asp:Content ID="AdminContent" ContentPlaceHolderID="AdminContent" runat="server">
+    <div class="page-header">
+        <h3>Menu management</h3>
     </div>
-    </form>
-</body>
-</html>
+    <div class="row">
+        <div class="col-xs-12">
+            <table class="table table-bordered table-hover table-common">
+                <tr class="active">
+                    <th>Name
+                    </th>
+                    <th>Cost
+                    </th>
+                    <th>Details
+                    </th>
+                </tr>
+                <asp:Repeater runat="server" ID="rptMenuTable">
+                    <ItemTemplate>
+                        <tr>
+                            <td>
+                                <%# Eval("Name") %>
+                            </td>
+                            <td>
+                                <%# Eval("Cost") %>
+                            </td>
+                            <td>
+                                <%# Eval("Details")%>
+                            </td>
+                        </tr>
+                    </ItemTemplate>
+                    <FooterTemplate> 
+                        <tr style="display: <%= rptMenuTable.Items.Count == 0 ? "" : "none"%>">
+                            <td colspan="100%">No records found
+                            </td>
+                        </tr>
+                    </FooterTemplate>
+                </asp:Repeater>
+            </table>
+        </div>
+    </div>
+</asp:Content>
+<asp:Content ID="Scripts" ContentPlaceHolderID="Scripts" runat="server">
+</asp:Content>

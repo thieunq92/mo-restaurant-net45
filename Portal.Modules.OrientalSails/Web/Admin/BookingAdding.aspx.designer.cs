@@ -10,34 +10,25 @@
 namespace Portal.Modules.OrientalSails.Web.Admin {
     
     
-    public partial class MenuAdding {
+    public partial class BookingAdding {
         
         /// <summary>
-        /// txtName control.
+        /// agencySelector control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtName;
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden agencySelector;
         
         /// <summary>
-        /// txtCost control.
+        /// txtDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCost;
-        
-        /// <summary>
-        /// txtDetais control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDetais;
+        protected global::System.Web.UI.WebControls.TextBox txtDate;
         
         /// <summary>
         /// btnAdd control.

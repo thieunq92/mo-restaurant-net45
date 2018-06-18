@@ -63,19 +63,25 @@
     <Compile Include="BusinessLogic\AddSeriesBookingsBLL.cs" />
     <Compile Include="BusinessLogic\AgencyEditBLL.cs" />
     <Compile Include="BusinessLogic\AgencyViewBLL.cs" />
+    <Compile Include="BusinessLogic\BookingAddingBLL.cs" />
     <Compile Include="BusinessLogic\BookingListBLL.cs" />
     <Compile Include="BusinessLogic\BookingPaymentBLL.cs" />
     <Compile Include="BusinessLogic\BookingReportBLL.cs" />
     <Compile Include="BusinessLogic\BookingViewBLL.cs" />
+    <Compile Include="BusinessLogic\BookingViewingBLL.cs" />
     <Compile Include="BusinessLogic\ContractCreateBLL.cs" />
     <Compile Include="BusinessLogic\ContractManagementBLL.cs" />
     <Compile Include="BusinessLogic\ContractViewBLL.cs" />
     <Compile Include="BusinessLogic\CustomerInforRowInputBLL.cs" />
     <Compile Include="BusinessLogic\DocumentViewBLL.cs" />
+    <Compile Include="BusinessLogic\MenuAddingBLL.cs" />
+    <Compile Include="BusinessLogic\MenuManagementBLL.cs" />
     <Compile Include="BusinessLogic\PaymentReportBLL.cs" />
     <Compile Include="BusinessLogic\QuotationCreateBLL.cs" />
     <Compile Include="BusinessLogic\QuotationManagementBLL.cs" />
     <Compile Include="BusinessLogic\QuotationViewBLL.cs" />
+    <Compile Include="BusinessLogic\RestaurantBookingByDateBLL.cs" />
+    <Compile Include="Domain\RestaurantBooking.cs" />
     <Compile Include="BusinessLogic\SailsMasterBLL.cs" />
     <Compile Include="BusinessLogic\SeriesManagerBLL.cs" />
     <Compile Include="BusinessLogic\SeriesViewBLL.cs" />
@@ -130,6 +136,7 @@
     <Compile Include="Domain\HaiPhongExpenseType.cs" />
     <Compile Include="Domain\HaiPhongExpenseTypeHaiPhongExpenseCustomerType.cs" />
     <Compile Include="Domain\HaiPhongReduceExpense.cs" />
+    <Compile Include="Domain\Menu.cs" />
     <Compile Include="Domain\Quotation.cs" />
     <Compile Include="Domain\QuotationPrice.cs" />
     <Compile Include="Domain\Series.cs" />
@@ -180,6 +187,7 @@
     <Compile Include="Enums\Quotation\RoomClassEnum.cs" />
     <Compile Include="Enums\Quotation\RoomTypeEnum.cs" />
     <Compile Include="Enums\Quotation\TripEnum.cs" />
+    <Compile Include="Enums\RestaurantBooking\StatusEnum.cs" />
     <Compile Include="Enums\Roles.cs" />
     <Compile Include="Enums\Shared\CurrencyEnum.cs" />
     <Compile Include="GlobalSuppressions.cs" />
@@ -223,11 +231,13 @@
     <Compile Include="Repository\DocumentCategoryRepository.cs" />
     <Compile Include="Repository\IRespository.cs" />
     <Compile Include="Repository\LockedRepository.cs" />
+    <Compile Include="Repository\MenuRepository.cs" />
     <Compile Include="Repository\NationalityRepository.cs" />
     <Compile Include="Repository\PermissionRepository.cs" />
     <Compile Include="Repository\QuotationPriceRepository.cs" />
     <Compile Include="Repository\QuotationRepository.cs" />
     <Compile Include="Repository\RepositoryBase.cs" />
+    <Compile Include="Repository\RestaurantBookingRepository.cs" />
     <Compile Include="Repository\RoleRepository.cs" />
     <Compile Include="Repository\RoomClassRepository.cs" />
     <Compile Include="Repository\RoomTypeRepository.cs" />
@@ -337,6 +347,13 @@
     </Compile>
     <Compile Include="Web\Admin\BalanceReport.aspx.designer.cs">
       <DependentUpon>BalanceReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\Admin\BookingAdding.aspx.cs">
+      <DependentUpon>BookingAdding.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\Admin\BookingAdding.aspx.designer.cs">
+      <DependentUpon>BookingAdding.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web\Admin\BookingList.aspx.cs">
       <DependentUpon>BookingList.aspx</DependentUpon>
@@ -515,6 +532,13 @@
     </Compile>
     <Compile Include="Web\Admin\QuotationView.aspx.designer.cs">
       <DependentUpon>QuotationView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\Admin\RestaurantBookingByDate.aspx.cs">
+      <DependentUpon>RestaurantBookingByDate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\Admin\RestaurantBookingByDate.aspx.designer.cs">
+      <DependentUpon>RestaurantBookingByDate.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web\Admin\SearchOldBooking.aspx.cs">
       <DependentUpon>SearchOldBooking.aspx</DependentUpon>
@@ -1007,6 +1031,13 @@
     <Compile Include="Web\Ajax\AjaxHandler.aspx.designer.cs">
       <DependentUpon>AjaxHandler.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Web\Admin\BookingViewing.aspx.cs">
+      <DependentUpon>BookingViewing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\Admin\BookingViewing.aspx.designer.cs">
+      <DependentUpon>BookingViewing.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Web\Controls\AgencySelector.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -1093,12 +1124,17 @@
     <EmbeddedResource Include="Domain\Contracts.hbm.xml" />
     <EmbeddedResource Include="Domain\ContractPrice.hbm.xml" />
     <EmbeddedResource Include="Domain\ContractValid.hbm.xml" />
+    <EmbeddedResource Include="Domain\Menu.hbm.xml" />
+    <EmbeddedResource Include="Domain\RestaurantBooking.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <Content Include="packages.config" />
     <Content Include="Web\Admin\AddBooking.aspx" />
     <Content Include="Web\Admin\AddSeriesBookings.aspx" />
     <Content Include="Web\Admin\AddSeriesBookingsController.js" />
     <Content Include="Web\Admin\AddSeriesBookingsService.js" />
     <Content Include="Web\Admin\app.module.js" />
+    <Content Include="Web\Admin\BookingAdding.aspx" />
     <Content Include="Web\Admin\ContractCreate.aspx" />
     <Content Include="Web\Admin\ContractCreateController.js" />
     <Content Include="Web\Admin\ContractManagement.aspx" />
@@ -1110,6 +1146,7 @@
     <Content Include="Web\Admin\QuotationCreate.aspx" />
     <Content Include="Web\Admin\QuotationManagement.aspx" />
     <Content Include="Web\Admin\QuotationView.aspx" />
+    <Content Include="Web\Admin\RestaurantBookingByDate.aspx" />
     <Content Include="Web\Admin\SeriesManager.aspx" />
     <Content Include="Web\Admin\SeriesView.aspx" />
     <Content Include="Web\Admin\ViewActivities.aspx" />
@@ -1119,6 +1156,7 @@
     <Content Include="Web\Admin\WebMethod\DocumentViewWebMethod.asmx" />
     <Content Include="Web\Admin\WebMethod\ViewActivitiesWebMethod.asmx" />
     <Content Include="Web\Ajax\AjaxHandler.aspx" />
+    <Content Include="Web\Admin\BookingViewing.aspx" />
     <Content Include="Web\Controls\CruisePriceTable.ascx" />
     <Content Include="Web\Controls\CruisePriceTableCharter.ascx" />
     <Content Include="Web\Controls\CustomerInfoInput.ascx" />
