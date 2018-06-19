@@ -25,7 +25,7 @@
                 Cost
             </div>
             <div class="col-xs-3">
-                <asp:TextBox runat="server" CssClass="form-control" ID="txtCost" placeholder="Cost" />
+                <asp:TextBox runat="server" CssClass="form-control" ID="txtCost" placeholder="Cost" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" />
             </div>
         </div>
     </div>

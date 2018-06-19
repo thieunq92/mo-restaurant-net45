@@ -14,7 +14,7 @@
                 Code
             </div>
             <div class="col-xs-3">
-                <%= RestaurantBooking.Id %>
+                <%= RestaurantBooking.Code %>
             </div>
             <div class="col-xs-1">
                 Menu
@@ -130,19 +130,19 @@
             </div>
             <div class="col-xs-3" style="width: 19.420%">
                 <div class="input-group">
-                    <asp:TextBox ID="txtNumberOfDiscountedPaxAdult" runat="server" CssClass="form-control" placeholder="Number of discount adult " Text="0" />
+                    <asp:TextBox ID="txtNumberOfDiscountedPaxAdult" runat="server" CssClass="form-control" placeholder="Number of discounted adult " Text="0" />
                     <span class="input-group-addon">Adult</span>
                 </div>
             </div>
             <div class="col-xs-3" style="width: 19.420%">
                 <div class="input-group">
-                    <asp:TextBox ID="txtNumberOfDiscountedPaxChild" runat="server" CssClass="form-control" placeholder="Number of discount child " Text="0" />
+                    <asp:TextBox ID="txtNumberOfDiscountedPaxChild" runat="server" CssClass="form-control" placeholder="Number of discounted child " Text="0" />
                     <span class="input-group-addon">Child</span>
                 </div>
             </div>
             <div class="col-xs-3" style="width: 19.420%">
                 <div class="input-group">
-                    <asp:TextBox ID="txtNumberOfDiscountedPaxBaby" runat="server" CssClass="form-control" placeholder="Number of discount baby " Text="0" />
+                    <asp:TextBox ID="txtNumberOfDiscountedPaxBaby" runat="server" CssClass="form-control" placeholder="Number of discounted baby " Text="0" />
                     <span class="input-group-addon">Baby</span>
                 </div>
             </div>

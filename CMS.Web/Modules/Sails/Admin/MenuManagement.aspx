@@ -18,6 +18,7 @@
                     </th>
                     <th>Details
                     </th>
+                    <th></th>
                 </tr>
                 <asp:Repeater runat="server" ID="rptMenuTable">
                     <ItemTemplate>
@@ -31,9 +32,12 @@
                             <td>
                                 <%# Eval("Details")%>
                             </td>
+                            <td><a href="MenuEditing.aspx?NodeId=1&SectionId=15&bi=<%# Eval("Id") %>">
+                                <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Edit"></i>
+                            </a></td>
                         </tr>
                     </ItemTemplate>
-                    <FooterTemplate> 
+                    <FooterTemplate>
                         <tr style="display: <%= rptMenuTable.Items.Count == 0 ? "" : "none"%>">
                             <td colspan="100%">No records found
                             </td>

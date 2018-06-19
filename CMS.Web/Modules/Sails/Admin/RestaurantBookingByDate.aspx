@@ -66,18 +66,24 @@
                     <ItemTemplate>
                         <tr>
                             <td><%# Container.ItemIndex %></td>
-                            <td><%# Eval("Agency.Name")%></td>
+                            <td><a href="AgencyView.aspx?NodeId=1&SectionId=15&ai=<%# Eval("Agency.Id")%>"><%# Eval("Agency.Name")%></td>
                             <td><%# Eval("Time")%></td>
                             <td><%# Eval("NumberOfPaxAdult")%></td>
                             <td><%# Eval("NumberOfPaxChild")%></td>
                             <td><%# Eval("NumberOfPaxBaby")%></td>
                             <td><%# Eval("Menu.Name")%></td>
                             <td><%# Eval("SpecialRequest")%></td>
-                            <td><%# Eval("Id")%></td>
+                            <td><a href="BookingViewing.aspx?NodeId=1&SectionId=15&bi=<%# Eval("Id")%>"><%# Eval("Code")%></td>
                             <td><%# ((Double)Eval("TotalPrice")).ToString("#,###.##")%></td>
                             <td><%# ((int)Eval("Payment")) == 1 ? "Thanh toán ngay" : "Công nợ"%></td>
                         </tr>
                     </ItemTemplate>
+                    <FooterTemplate>
+                        <tr style="display: <%= rptBooking.Items.Count == 0 ? "" : "none"%>">
+                            <td colspan="100%">No records found
+                            </td>
+                        </tr>
+                    </FooterTemplate>
                 </asp:Repeater>
             </table>
         </div>

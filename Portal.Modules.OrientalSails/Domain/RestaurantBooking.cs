@@ -26,5 +26,11 @@ namespace Portal.Modules.OrientalSails.Domain
         public virtual DateTime? Date { get; set; }
         public virtual Agency Agency { get; set; }
         public virtual Menu Menu { get; set; }
+        public virtual String Code
+        {
+            get{
+                return String.Format("HL{0:D5}", Id);
+            }
+        }
     }
 }

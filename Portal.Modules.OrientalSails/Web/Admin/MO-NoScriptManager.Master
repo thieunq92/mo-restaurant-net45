@@ -78,23 +78,23 @@
                                         <asp:HyperLink ID="hlAgencyEdit" runat="server">Partner Adding</asp:HyperLink></li>
                                     <li id="pAgencyList" runat="server">
                                         <asp:HyperLink ID="hlAgencyList" runat="server">Partner Management</asp:HyperLink></li>
-                                    <li id="pAgencyPolicies" runat="server">
+                                    <li id="pAgencyPolicies" runat="server" style="display:none">
                                         <asp:HyperLink ID="hlAgentList" runat="server">Partner Price Policy</asp:HyperLink></li>
-                                    <li id="pVoucherEdit" runat="server">
+                                    <li id="pVoucherEdit" runat="server" style="display:none">
                                         <asp:HyperLink ID="hlVoucherEdit" runat="server">Voucher Batch Creating</asp:HyperLink></li>
-                                    <li id="pVoucherList" runat="server">
+                                    <li id="pVoucherList" runat="server" style="display:none">
                                         <asp:HyperLink ID="hlVoucherList" runat="server">Voucher Batch Management</asp:HyperLink></li>
-                                    <li id="pVoucherTemplates" runat="server">
+                                    <li id="pVoucherTemplates" runat="server" style="display:none">
                                         <asp:HyperLink ID="hlVoucherTemplates" runat="server">Voucher Template</asp:HyperLink>
                                     </li>
-                                    <li id="pAgencyViewMeetings" runat="server">
+                                    <li id="pAgencyViewMeetings" runat="server" style="display:none">
                                         <asp:HyperLink ID="hlViewMeetings" runat="server">Meeting Viewing</asp:HyperLink></li>
-                                    <li id="pAgencyLocation" runat="server">
+                                    <li id="pAgencyLocation" runat="server" style="display:none">
                                         <asp:HyperLink ID="hlAgencyLocation" runat="server">Location Management</asp:HyperLink></li>
-                                    <li>
+                                    <li style="display:none">
                                         <asp:HyperLink ID="hlQuotationManagement" runat="server">Quotation Management</asp:HyperLink>
                                     </li>
-                                    <li>
+                                    <li style="display:none">
                                         <asp:HyperLink ID="hlContractManagement" runat="server">Contract Management</asp:HyperLink>
                                     </li>
                                 </ul>
