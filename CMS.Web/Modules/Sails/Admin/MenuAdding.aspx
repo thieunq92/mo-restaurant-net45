@@ -48,6 +48,4 @@
     </div>
 </asp:Content>
 <asp:Content ID="Scripts" ContentPlaceHolderID="Scripts" runat="server">
-    <script>
-    </script>
 </asp:Content>

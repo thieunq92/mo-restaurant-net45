@@ -75,6 +75,7 @@
     <Compile Include="BusinessLogic\CustomerInforRowInputBLL.cs" />
     <Compile Include="BusinessLogic\DocumentViewBLL.cs" />
     <Compile Include="BusinessLogic\MenuAddingBLL.cs" />
+    <Compile Include="BusinessLogic\MenuEditingBLL.cs" />
     <Compile Include="BusinessLogic\MenuManagementBLL.cs" />
     <Compile Include="BusinessLogic\PaymentReportBLL.cs" />
     <Compile Include="BusinessLogic\QuotationCreateBLL.cs" />
@@ -1076,11 +1077,11 @@
     <Compile Include="Web\CustomersInfo.ascx.designer.cs">
       <DependentUpon>CustomersInfo.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Web\MenuEditing.aspx.cs">
+    <Compile Include="Web\Admin\MenuEditing.aspx.cs">
       <DependentUpon>MenuEditing.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Web\MenuEditing.aspx.designer.cs">
+    <Compile Include="Web\Admin\MenuEditing.aspx.designer.cs">
       <DependentUpon>MenuEditing.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web\Resources\Strings.Designer.cs">
@@ -1169,7 +1170,7 @@
     <Content Include="Web\Controls\CustomerInfoInput.ascx" />
     <Content Include="Web\Controls\CustomerInfoRowInput.ascx" />
     <Content Include="Web\CustomersInfo.ascx" />
-    <Content Include="Web\MenuEditing.aspx" />
+    <Content Include="Web\Admin\MenuEditing.aspx" />
     <Content Include="Web\TripList.ascx" />
     <EmbeddedResource Include="Domain\Room.hbm.xml">
       <SubType>Designer</SubType>

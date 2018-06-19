@@ -1,13 +1,12 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MenuAdding.aspx.cs" Inherits="Portal.Modules.OrientalSails.Web.Admin.MenuAdding"
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MenuEditing.aspx.cs" Inherits="Portal.Modules.OrientalSails.Web.MenuEditing"
     MasterPageFile="MO.Master" %>
 
 <asp:Content ID="Head" ContentPlaceHolderID="Head" runat="server">
-    <title>Menu Adding</title>
+    <title>Menu Editing</title>
 </asp:Content>
 <asp:Content ID="AdminContent" ContentPlaceHolderID="AdminContent" runat="server">
     <div class="page-header">
-        <h3>Menu adding
-        </h3>
+        <h3>Menu editing</h3>
     </div>
     <div class="form-group">
         <div class="row">
@@ -42,7 +41,7 @@
     <div class="form-group">
         <div class="row">
             <div class="col-xs-12">
-                <asp:Button runat="server" ID="btnAdd" OnClick="btnAdd_Click" CssClass="btn btn-primary" Text="Add" />
+                <asp:Button runat="server" ID="btnEdit" OnClick="btnEdit_Click" CssClass="btn btn-primary" Text="Edit" />
             </div>
         </div>
     </div>
