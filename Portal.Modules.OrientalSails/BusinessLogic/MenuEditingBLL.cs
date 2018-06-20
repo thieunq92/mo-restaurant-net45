@@ -22,5 +22,10 @@ namespace Portal.Modules.OrientalSails.BusinessLogic
         public Menu MenuGetById(int menuId) {
             return MenuRepository.GetById(menuId);
         }
+
+       public void MenuSaveOrUpdate(Menu menu)
+        {
+            MenuRepository.SaveOrUpdate(menu);
+        }
     }
 }

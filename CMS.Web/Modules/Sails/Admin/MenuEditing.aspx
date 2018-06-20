@@ -34,7 +34,7 @@
                 Details
             </div>
             <div class="col-xs-11">
-                <asp:TextBox runat="server" CssClass="form-control" ID="txtDetais" placeholder="Details" TextMode="MultiLine" />
+                <asp:TextBox runat="server" CssClass="form-control" ID="txtDetails" placeholder="Details" TextMode="MultiLine" />
             </div>
         </div>
     </div>

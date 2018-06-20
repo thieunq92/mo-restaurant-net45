@@ -48,7 +48,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             {
                 Name = txtName.Text,
                 Cost = cost,
-                Details = txtDetais.Text,
+                Details = txtDetails.Text,
             });
         }
     }

@@ -534,6 +534,13 @@
     <Compile Include="Web\Admin\QuotationView.aspx.designer.cs">
       <DependentUpon>QuotationView.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Web\Admin\Receivables.aspx.cs">
+      <DependentUpon>Receivables.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\Admin\Receivables.aspx.designer.cs">
+      <DependentUpon>Receivables.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Web\Admin\RestaurantBookingByDate.aspx.cs">
       <DependentUpon>RestaurantBookingByDate.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1154,6 +1161,7 @@
     <Content Include="Web\Admin\QuotationCreate.aspx" />
     <Content Include="Web\Admin\QuotationManagement.aspx" />
     <Content Include="Web\Admin\QuotationView.aspx" />
+    <Content Include="Web\Admin\Receivables.aspx" />
     <Content Include="Web\Admin\RestaurantBookingByDate.aspx" />
     <Content Include="Web\Admin\SeriesManager.aspx" />
     <Content Include="Web\Admin\SeriesView.aspx" />

@@ -42,9 +42,10 @@ namespace Portal.Modules.OrientalSails.Web
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack) {
+            if (!Page.IsPostBack)
+            {
                 txtName.Text = Menu.Name;
-                txtDetais.Text = Menu.Details;
+                txtDetails.Text = Menu.Details;
                 txtCost.Text = Menu.Cost.ToString("0,###.##");
             }
         }
@@ -59,7 +60,31 @@ namespace Portal.Modules.OrientalSails.Web
 
         protected void btnEdit_Click(object sender, EventArgs e)
         {
+            Menu.Name = txtName.Text;
+            var cost = 0.0;
+            try
+            {
+                cost = Double.Parse(txtCost.Text);
+            }
+            catch { }
+            Menu.Cost = cost;
+            Menu.Details = txtDetails.Text;
+            MenuEditingBLL.MenuSaveOrUpdate(Menu);
+            ShowSuccess("Cập nhật menu thành công");
+        }
+        public void ShowWarning(string warning)
+        {
+            Session["WarningMessage"] = "<strong>Warning!</strong> " + warning + "<br/>" + Session["WarningMessage"];
+        }
 
+        public void ShowErrors(string error)
+        {
+            Session["ErrorMessage"] = "<strong>Error!</strong> " + error + "<br/>" + Session["ErrorMessage"];
+        }
+
+        public void ShowSuccess(string success)
+        {
+            Session["SuccessMessage"] = "<strong>Success!</strong> " + success + "<br/>" + Session["SuccessMessage"];
         }
     }
 }

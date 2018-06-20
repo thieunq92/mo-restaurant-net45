@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MO.Master.cs"
+﻿    <%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MO.Master.cs"
     Inherits="Portal.Modules.OrientalSails.Web.Admin.MO" %>
 
 <!DOCTYPE html>
@@ -67,7 +67,7 @@
                                     <li id="pIncomeReport" runat="server" style="display: none">
                                         <asp:HyperLink ID="hlIncomeReport" runat="server">Revenue</asp:HyperLink></li>
                                     <li id="pReceivable" runat="server">
-                                        <asp:HyperLink ID="hlIncomeOwn" runat="server">Receivable</asp:HyperLink></li>
+                                        <asp:HyperLink ID="hlIncomeOwn" runat="server" NavigateUrl="Receivables.aspx?NodeId=1&SectionId=15">Receivable</asp:HyperLink></li>
                                     <li id="pExpenseReport" runat="server" style="display: none">
                                         <asp:HyperLink ID="hlExpenseReport" runat="server">Expense Report</asp:HyperLink></li>
                                     <li id="pHaiPhongExpenseReport" runat="server" style="display: none">

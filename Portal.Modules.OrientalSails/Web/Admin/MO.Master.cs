@@ -118,7 +118,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             hlAllPending.NavigateUrl = "OrderReport.aspx?NodeId=1&SectionId=15&mode=all";
             hlBookingPeriod.NavigateUrl = "BookingReportPeriodAll.aspx?NodeId=1&SectionId=15";
             hlIncomeReport.NavigateUrl = "IncomeReport.aspx?NodeId=1&SectionId=15";
-            hlIncomeOwn.NavigateUrl = "PaymentReport.aspx?NodeId=1&SectionId=15";
             hlExpenseReport.NavigateUrl = "ExpenseReport.aspx?NodeId=1&SectionId=15";
             hlExpenseDebt.NavigateUrl = "PayableList.aspx?NodeId=1&SectionId=15";
             hlBalance.NavigateUrl = "BalanceReport.aspx?NodeId=1&SectionId=15";
