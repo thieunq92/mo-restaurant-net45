@@ -66,12 +66,12 @@
                     <ItemTemplate>
                         <tr>
                             <td><%# Container.ItemIndex %></td>
-                            <td><a href="AgencyView.aspx?NodeId=1&SectionId=15&ai=<%# Eval("Agency.Id")%>"><%# Eval("Agency.Name")%></td>
+                            <td><a href="AgencyView.aspx?NodeId=1&SectionId=15&AgencyId=<%# Eval("Agency.Id")%>"><%# Eval("Agency.Name")%></td>
                             <td><%# Eval("Time")%></td>
                             <td><%# Eval("NumberOfPaxAdult")%></td>
                             <td><%# Eval("NumberOfPaxChild")%></td>
                             <td><%# Eval("NumberOfPaxBaby")%></td>
-                            <td><%# Eval("Menu.Name")%></td>
+                            <td><a href="MenuEditing.aspx?NodeId=1&SectionId=15&mi=<%# Eval("Menu.Id")%>"><%# Eval("Menu.Name")%></td>
                             <td><%# Eval("SpecialRequest")%></td>
                             <td><a href="BookingViewing.aspx?NodeId=1&SectionId=15&bi=<%# Eval("Id")%>"><%# Eval("Code")%></td>
                             <td><%# ((Double)Eval("TotalPrice")).ToString("#,###.##")%></td>

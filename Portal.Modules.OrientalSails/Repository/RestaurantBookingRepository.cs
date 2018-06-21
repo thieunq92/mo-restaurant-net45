@@ -19,7 +19,18 @@ namespace Portal.Modules.OrientalSails.Repository
 
         public IList<RestaurantBooking> RestaurantBookingGetAllByDate(DateTime date)
         {
-            return _session.QueryOver<RestaurantBooking>().Where(x => x.Date == date).Future().ToList();
+            return _session.QueryOver<RestaurantBooking>()
+                .Where(x => x.Date == date)
+                .Future()
+                .ToList();
+        }
+
+        public IList<RestaurantBooking> RestaurantBookingGetAllByDateRange(DateTime from, DateTime to)
+        {
+            return _session.QueryOver<RestaurantBooking>()
+                .Where(x => x.Date >= from && x.Date <= to)
+                .Future()
+                .ToList();
         }
     }
 }

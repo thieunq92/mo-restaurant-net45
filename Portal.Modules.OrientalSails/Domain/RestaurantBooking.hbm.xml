@@ -22,6 +22,8 @@
     <property name="SpecialRequest"/>
     <property name="Payment"/>
     <property name="TotalPrice"/>
+    <property name="TotalPaid"/>
+    <property name="Receivable"/>
     <many-to-one name="Agency" column="AgencyId" class="Agency"/>
     <many-to-one name="Menu" column="MenuId" class="Menu"/>
   </class>

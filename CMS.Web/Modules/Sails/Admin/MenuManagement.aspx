@@ -33,7 +33,7 @@
                                 <%# Eval("Details")%>
                             </td>
                             <td><a href="MenuEditing.aspx?NodeId=1&SectionId=15&mi=<%# Eval("Id") %>">
-                                <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Edit"></i>
+                                <i class="fa fa-edit fa-lg" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Edit"></i>
                             </a></td>
                         </tr>
                     </ItemTemplate>

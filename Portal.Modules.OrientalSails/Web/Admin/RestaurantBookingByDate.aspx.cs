@@ -1,6 +1,7 @@
 ﻿using Portal.Modules.OrientalSails.BusinessLogic;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Globalization;
 using System.Linq;
 using System.Web;
@@ -25,8 +26,14 @@ namespace Portal.Modules.OrientalSails.Web.Admin
         {
             if (!Page.IsPostBack)
             {
-                txtDate.Text = DateTime.Now.ToString("dd/MM/yyyy");
-                rptBooking.DataSource = RestaurantBookingByDateBLL.RestaurantBookingGetAllByDate(DateTime.ParseExact(txtDate.Text,"dd/MM/yyyy",CultureInfo.InvariantCulture));
+                var date = DateTime.Now;
+                try
+                {
+                    date = DateTime.ParseExact(Request.QueryString["d"],"dd/MM/yyyy",CultureInfo.InvariantCulture);
+                }
+                catch { }
+                txtDate.Text = date.ToString("dd/MM/yyyy");
+                rptBooking.DataSource = RestaurantBookingByDateBLL.RestaurantBookingGetAllByDate(date);
                 rptBooking.DataBind();
             }
         }
@@ -40,8 +47,24 @@ namespace Portal.Modules.OrientalSails.Web.Admin
         }
         protected void btnDisplay_Click(object sender, EventArgs e)
         {
-            rptBooking.DataSource = RestaurantBookingByDateBLL.RestaurantBookingGetAllByDate(DateTime.ParseExact(txtDate.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture));
-            rptBooking.DataBind();
+            Response.Redirect(Request.Url.GetLeftPart(UriPartial.Path) + QueryStringBuildByCriterion());
+        }
+        public string QueryStringBuildByCriterion()
+        {
+            NameValueCollection nvcQueryString = new NameValueCollection();
+            nvcQueryString.Add("NodeId", "1");
+            nvcQueryString.Add("SectionId", "15");
+
+            if (!string.IsNullOrEmpty(txtDate.Text))
+            {
+                nvcQueryString.Add("d", txtDate.Text);
+            }
+
+            var criterions = (from key in nvcQueryString.AllKeys
+                              from value in nvcQueryString.GetValues(key)
+                              select string.Format("{0}={1}", HttpUtility.UrlEncode(key), HttpUtility.UrlEncode(value))).ToArray();
+
+            return "?" + string.Join("&", criterions);
         }
     }
 }

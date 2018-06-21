@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="/css/normalize/v5.0.0/normalize.css" />
     <link rel="stylesheet" type="text/css" href="/css/bootstrap/v3.3.7/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/css/jqueryui/v1.12.1/jquery-ui.min.css" />
-    <link rel="stylesheet" type="text/css" href="/css/fontawesome/v4.7.0/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/css/datetimepicker/v2.5.4/jquery.datetimepicker.min.css" />
     <link rel="stylesheet" type="text/css" href="/css/mo/main.css" />
     <link rel="stylesheet" type="text/css" href="/css/colorbox/v1.6.4/colorbox.css" />
@@ -48,7 +48,7 @@
                                     <li id="pAddBooking" runat="server">
                                         <asp:HyperLink ID="hlAddBooking" runat="server" NavigateUrl="BookingAdding.aspx?NodeId=1&SectionId=15">Booking Adding</asp:HyperLink></li>
                                     <li id="pBookingList" runat="server">
-                                        <asp:HyperLink ID="hlBookingList" runat="server">Booking Management</asp:HyperLink></li>
+                                        <asp:HyperLink ID="hlBookingList" runat="server" NavigateUrl="BookingManagement.aspx?NodeId=1&SectionId=15">Booking Management</asp:HyperLink></li>
                                     <li id="pAddSeriesBookings" runat="server" style="display: none">
                                         <asp:HyperLink ID="hlAddSerialBookings" runat="server">Series Booking Adding</asp:HyperLink></li>
                                     <li id="pSerialManager" runat="server" style="display: none">

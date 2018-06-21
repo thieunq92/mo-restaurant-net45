@@ -65,6 +65,7 @@
     <Compile Include="BusinessLogic\AgencyViewBLL.cs" />
     <Compile Include="BusinessLogic\BookingAddingBLL.cs" />
     <Compile Include="BusinessLogic\BookingListBLL.cs" />
+    <Compile Include="BusinessLogic\BookingManagementBLL.cs" />
     <Compile Include="BusinessLogic\BookingPaymentBLL.cs" />
     <Compile Include="BusinessLogic\BookingReportBLL.cs" />
     <Compile Include="BusinessLogic\BookingViewBLL.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="BusinessLogic\QuotationCreateBLL.cs" />
     <Compile Include="BusinessLogic\QuotationManagementBLL.cs" />
     <Compile Include="BusinessLogic\QuotationViewBLL.cs" />
+    <Compile Include="BusinessLogic\ReceivablesBLL.cs" />
     <Compile Include="BusinessLogic\RestaurantBookingByDateBLL.cs" />
     <Compile Include="Domain\RestaurantBooking.cs" />
     <Compile Include="BusinessLogic\SailsMasterBLL.cs" />
@@ -362,6 +364,13 @@
     </Compile>
     <Compile Include="Web\Admin\BookingList.aspx.designer.cs">
       <DependentUpon>BookingList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\Admin\BookingManagement.aspx.cs">
+      <DependentUpon>BookingManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\Admin\BookingManagement.aspx.designer.cs">
+      <DependentUpon>BookingManagement.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web\Admin\BookingPayment.aspx.cs">
       <DependentUpon>BookingPayment.aspx</DependentUpon>
@@ -1150,6 +1159,7 @@
     <Content Include="Web\Admin\AddSeriesBookingsService.js" />
     <Content Include="Web\Admin\app.module.js" />
     <Content Include="Web\Admin\BookingAdding.aspx" />
+    <Content Include="Web\Admin\BookingManagement.aspx" />
     <Content Include="Web\Admin\ContractCreate.aspx" />
     <Content Include="Web\Admin\ContractCreateController.js" />
     <Content Include="Web\Admin\ContractManagement.aspx" />
