@@ -46,8 +46,17 @@
                 <asp:Repeater runat="server" ID="rptBooking">
                     <ItemTemplate>
                         <tr>
-                            <td><%# Eval("Code")%></td>
-                            <td><%# Eval("Agency.Name")%></td>
+                            <td><a href="BookingViewing.aspx?NodeId=1&SectionId=15&bi=<%# Eval("Id")%>"><%# Eval("Code")%></td>
+                            <td><a href="AgencyView.aspx?NodeId=1&SectionId=15&ai=<%# Eval("Agency.Id")%>"><%# Eval("Agency.Name")%></a></td>
+                            <td><%# Eval("Date","{0:dd/MM/yyyy}")%></td>
+                            <td><%# Eval("Time")%></td>
+                            <td><%# Eval("NumberOfPaxAdult")%></td>
+                            <td><%# Eval("NumberOfPaxChild")%></td>
+                            <td><%# Eval("NumberOfPaxBaby")%></td>
+                            <td><a href="MenuEditing.aspx?NodeId=1&SectionId=15&mi=<%# Eval("Menu.Id")%> "><%# Eval("Menu.Name")%></td>
+                            <td><%# Eval("SpecialRequest")%></td>
+                            <td><%# Eval("TotalPrice","{0:#,###.##}")%></td>
+                            <td><%# ((int)Eval("Payment")) == 0 ? "" : ((int)Eval("Payment")) == 1 ? "Thanh toán ngay" : "Công nợ" %></td>
                         </tr>
                     </ItemTemplate>
                 </asp:Repeater>

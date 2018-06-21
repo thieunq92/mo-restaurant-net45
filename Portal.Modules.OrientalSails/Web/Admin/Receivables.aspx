@@ -47,9 +47,9 @@
                     </th>
                     <th rowspan="2">Total Price
                     </th>
-                    <th rowspan="2">Total Paid
+                    <th rowspan="2">Đã thanh toán
                     </th>
-                    <th rowspan="2">Receivable
+                    <th rowspan="2">Còn lại
                     </th>
                     <th rowspan="2"></th>
                 </tr>
@@ -71,9 +71,9 @@
                             <td><%# Eval("NumberOfPaxAdult")%></td>
                             <td><%# Eval("NumberOfPaxChild")%></td>
                             <td><%# Eval("NumberOfPaxBaby")%></td>
-                            <td><%# Eval("TotalPrice")%></td>
-                            <td><%# Eval("TotalPaid")%></td>
-                            <td><%# Eval("Receivable")%></td>
+                            <td><%# Eval("TotalPrice","{0:#,###.##}")%></td>
+                            <td><%# Eval("TotalPaid","{0:#,###.##}")%></td>
+                            <td><%# Eval("Receivable","{0:#,###.##}")%></td>
                             <td><a href="MenuEditing.aspx?NodeId=1&SectionId=15&mi=<%# Eval("Id") %>">
                                 <i class="fa fa-money-bill fa-lg" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Payment"></i>
                             </a></td>
