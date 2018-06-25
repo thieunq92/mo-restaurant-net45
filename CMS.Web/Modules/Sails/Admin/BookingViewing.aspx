@@ -11,12 +11,6 @@
     <div class="form-group">
         <div class="row">
             <div class="col-xs-1">
-                Code
-            </div>
-            <div class="col-xs-3">
-                <%= RestaurantBooking.Code %>
-            </div>
-            <div class="col-xs-1">
                 Menu
             </div>
             <div class="col-xs-3" ng-controller="menuController" ng-init="menuId = '<%= RestaurantBooking.Menu != null? RestaurantBooking.Menu.Id : -1%>'">

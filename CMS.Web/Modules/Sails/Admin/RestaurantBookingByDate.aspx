@@ -51,8 +51,7 @@
                     </th>
                     <th rowspan="2">Total Price
                     </th>
-                    <th rowspan="2">Payment
-                    </th>
+                    <th rowspan="2"></th>
                 </tr>
                 <tr class="active">
                     <th>Adult
@@ -64,7 +63,7 @@
                 </tr>
                 <asp:Repeater ID="rptBooking" runat="server" OnItemDataBound="rptBooking_ItemDataBound">
                     <ItemTemplate>
-                        <tr>
+                        <tr class="<%# ((int)Eval("Payment")) == 1 ? "custom-warning":"success" %>">
                             <td><%# Container.ItemIndex %></td>
                             <td><a href="AgencyView.aspx?NodeId=1&SectionId=15&AgencyId=<%# Eval("Agency.Id")%>"><%# Eval("Agency.TradingName")%></td>
                             <td><%# Eval("Time")%></td>
@@ -75,7 +74,11 @@
                             <td><%# Eval("SpecialRequest")%></td>
                             <td><a href="BookingViewing.aspx?NodeId=1&SectionId=15&bi=<%# Eval("Id")%>"><%# Eval("Code")%></td>
                             <td style="text-align: right!important"><%# ((Double)Eval("TotalPrice")).ToString("#,##0.##") + "₫"%></td>
-                            <td><%# ((int)Eval("Payment")) == 1 ? "Thanh toán ngay" : "Công nợ"%></td>
+                            <td>
+                                <a href="javascript:void(0)" data-toggle="modal" data-target=".modal-bookingpayment" data-url="RestaurantBookingPayment.aspx?NodeId=1&SectionId=15&bi=<%# Eval("Id")%>">
+                                    <i class="fa fa-money-bill fa-lg" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Payment"></i>
+                                </a>
+                            </td>
                         </tr>
                     </ItemTemplate>
                     <FooterTemplate>
@@ -83,18 +86,42 @@
                             <td colspan="100%">No records found
                             </td>
                         </tr>
-                        <tr style="display: <%= rptBooking.Items.Count > 0 ? "" : "none"%>;font-weight:bold">
-                            <td colspan ="3"><strong>Total</strong></td>
-                            <td><asp:Label runat="server" ID ="lblTotalAdult"></asp:Label></td>
-                            <td><asp:Label runat="server" ID ="lblTotalChild"></asp:Label></td>
-                            <td><asp:Label runat="server" ID ="lblTotalBaby"></asp:Label></td>
+                        <tr style="display: <%= rptBooking.Items.Count > 0 ? "" : "none"%>; font-weight: bold">
+                            <td colspan="3"><strong>Total</strong></td>
+                            <td>
+                                <asp:Label runat="server" ID="lblTotalAdult"></asp:Label></td>
+                            <td>
+                                <asp:Label runat="server" ID="lblTotalChild"></asp:Label></td>
+                            <td>
+                                <asp:Label runat="server" ID="lblTotalBaby"></asp:Label></td>
                             <td colspan="3"></td>
-                            <td style="text-align:right!important"><asp:Label runat="server" ID="lblTotalOfTotalPrice"></asp:Label></td>
+                            <td style="text-align: right!important">
+                                <asp:Label runat="server" ID="lblTotalOfTotalPrice"></asp:Label></td>
                             <td></td>
                         </tr>
                     </FooterTemplate>
                 </asp:Repeater>
             </table>
+            <div class="modal fade modal-bookingpayment" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog" role="document" style="width: 1230px; height: 580px">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h3 class="modal-title">Booking payment</h3>
+                        </div>
+                        <div class="modal-body">
+                            <iframe frameborder="0" width="1200" height="570"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+</asp:Content>
+<asp:Content ID="Scripts" ContentPlaceHolderID="Scripts" runat="server">
+    <script>
+        $('a[data-target = ".modal-bookingpayment"]').click(function () {
+            $(".modal iframe").attr('src', $(this).attr('data-url'))
+        })
+    </script>
 </asp:Content>
