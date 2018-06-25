@@ -24,7 +24,13 @@
     <property name="TotalPrice"/>
     <property name="TotalPaid"/>
     <property name="Receivable"/>
+    <property name="MarkIsPaid"/>    
     <many-to-one name="Agency" column="AgencyId" class="Agency"/>
     <many-to-one name="Menu" column="MenuId" class="Menu"/>
+    <bag name="ListPaymentHistory" inverse="true" batch-size="10">
+      <key column="BookingId"/>
+      <one-to-many class="RestaurantBooking"/>
+    </bag>
+
   </class>
 </hibernate-mapping>

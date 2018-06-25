@@ -28,6 +28,8 @@ namespace Portal.Modules.OrientalSails.Domain
         public virtual Menu Menu { get; set; }
         public virtual double TotalPaid { get; set; }
         public virtual double Receivable { get; set; }
+        public virtual bool MarkIsPaid { get; set; }
+        public virtual IList<PaymentHistory> ListPaymentHistory { get; set; }
         public virtual String Code
         {
             get

@@ -127,6 +127,7 @@ namespace Portal.Modules.OrientalSails.Web
             RestaurantBooking.NumberOfDiscountedPaxBaby = Int32.Parse(txtNumberOfDiscountedPaxBaby.Text);
             RestaurantBooking.SpecialRequest = txtSpecialRequest.Text;
             RestaurantBooking.Time = txtTime.Text;
+            RestaurantBooking.Receivable = RestaurantBooking.TotalPrice - RestaurantBooking.TotalPaid;
             if (rbPayNow.Checked)
             {
                 RestaurantBooking.Payment = 1;

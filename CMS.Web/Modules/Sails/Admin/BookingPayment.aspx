@@ -162,7 +162,7 @@
 <asp:Content ID="Scripts" ContentPlaceHolderID="Scripts" runat="server">
     <script>
         function RefreshParentPage() {
-            window.parent.location.href = window.parent.location.href; sedss
+            window.parent.location.href = window.parent.location.href;
         }
     </script>
 </asp:Content>

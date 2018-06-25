@@ -84,6 +84,9 @@
     <Compile Include="BusinessLogic\QuotationViewBLL.cs" />
     <Compile Include="BusinessLogic\ReceivablesBLL.cs" />
     <Compile Include="BusinessLogic\RestaurantBookingByDateBLL.cs" />
+    <Compile Include="BusinessLogic\RestaurantBookingPaymentBLL.cs" />
+    <Compile Include="DataTransferObject\MenuDTO.cs" />
+    <Compile Include="Domain\PaymentHistory.cs" />
     <Compile Include="Domain\RestaurantBooking.cs" />
     <Compile Include="BusinessLogic\SailsMasterBLL.cs" />
     <Compile Include="BusinessLogic\SeriesManagerBLL.cs" />
@@ -236,6 +239,7 @@
     <Compile Include="Repository\LockedRepository.cs" />
     <Compile Include="Repository\MenuRepository.cs" />
     <Compile Include="Repository\NationalityRepository.cs" />
+    <Compile Include="Repository\PaymentHistoryRepository.cs" />
     <Compile Include="Repository\PermissionRepository.cs" />
     <Compile Include="Repository\QuotationPriceRepository.cs" />
     <Compile Include="Repository\QuotationRepository.cs" />
@@ -556,6 +560,13 @@
     </Compile>
     <Compile Include="Web\Admin\RestaurantBookingByDate.aspx.designer.cs">
       <DependentUpon>RestaurantBookingByDate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\Admin\RestaurantBookingPayment.aspx.cs">
+      <DependentUpon>RestaurantBookingPayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\Admin\RestaurantBookingPayment.aspx.designer.cs">
+      <DependentUpon>RestaurantBookingPayment.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web\Admin\SearchOldBooking.aspx.cs">
       <DependentUpon>SearchOldBooking.aspx</DependentUpon>
@@ -1029,6 +1040,10 @@
       <DependentUpon>AddSeriesBookingsWebMethod.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Web\Admin\WebMethod\BookingViewingWebMethod.asmx.cs">
+      <DependentUpon>BookingViewingWebMethod.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Web\Admin\WebMethod\ContractCreateWebMethod.asmx.cs">
       <DependentUpon>ContractCreateWebMethod.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -1152,6 +1167,7 @@
     <EmbeddedResource Include="Domain\RestaurantBooking.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Domain\PaymentHistory.hbm.xml" />
     <Content Include="packages.config" />
     <Content Include="Web\Admin\AddBooking.aspx" />
     <Content Include="Web\Admin\AddSeriesBookings.aspx" />
@@ -1160,6 +1176,7 @@
     <Content Include="Web\Admin\app.module.js" />
     <Content Include="Web\Admin\BookingAdding.aspx" />
     <Content Include="Web\Admin\BookingManagement.aspx" />
+    <Content Include="Web\Admin\BookingViewingController.js" />
     <Content Include="Web\Admin\ContractCreate.aspx" />
     <Content Include="Web\Admin\ContractCreateController.js" />
     <Content Include="Web\Admin\ContractManagement.aspx" />
@@ -1173,11 +1190,13 @@
     <Content Include="Web\Admin\QuotationView.aspx" />
     <Content Include="Web\Admin\Receivables.aspx" />
     <Content Include="Web\Admin\RestaurantBookingByDate.aspx" />
+    <Content Include="Web\Admin\RestaurantBookingPayment.aspx" />
     <Content Include="Web\Admin\SeriesManager.aspx" />
     <Content Include="Web\Admin\SeriesView.aspx" />
     <Content Include="Web\Admin\ViewActivities.aspx" />
     <Content Include="Web\Admin\ViewActivitiesController.js" />
     <Content Include="Web\Admin\WebMethod\AddSeriesBookingsWebMethod.asmx" />
+    <Content Include="Web\Admin\WebMethod\BookingViewingWebMethod.asmx" />
     <Content Include="Web\Admin\WebMethod\ContractCreateWebMethod.asmx" />
     <Content Include="Web\Admin\WebMethod\DocumentViewWebMethod.asmx" />
     <Content Include="Web\Admin\WebMethod\ViewActivitiesWebMethod.asmx" />

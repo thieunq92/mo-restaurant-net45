@@ -10,60 +10,42 @@
 namespace Portal.Modules.OrientalSails.Web.Admin {
     
     
-    public partial class BookingManagement {
+    public partial class RestaurantBookingPayment {
         
         /// <summary>
-        /// txtCode control.
+        /// txtPaid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCode;
+        protected global::System.Web.UI.WebControls.TextBox txtPaid;
         
         /// <summary>
-        /// txtDate control.
+        /// chkPaid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDate;
+        protected global::System.Web.UI.WebControls.CheckBox chkPaid;
         
         /// <summary>
-        /// txtAgency control.
+        /// btnPayment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAgency;
+        protected global::System.Web.UI.WebControls.Button btnPayment;
         
         /// <summary>
-        /// ddlPayment control.
+        /// rptPaymentHistory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlPayment;
-        
-        /// <summary>
-        /// btnDisplay control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDisplay;
-        
-        /// <summary>
-        /// rptBooking control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptBooking;
+        protected global::System.Web.UI.WebControls.Repeater rptPaymentHistory;
     }
 }

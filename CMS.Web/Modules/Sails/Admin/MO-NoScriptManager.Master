@@ -40,7 +40,7 @@
                                     <li id="pAddSeriesBookings" runat="server" style="display: none">
                                         <asp:HyperLink ID="hlAddSerialBookings" runat="server">Series Booking Adding</asp:HyperLink></li>
                                     <li id="pSerialManager" runat="server" style="display: none">
-                                        <asp:HyperLink ID="hplSeriesManager" runat="server" b>Series Booking Management</asp:HyperLink></li>
+                                        <asp:HyperLink ID="hplSeriesManager" runat="server" >Series Booking Management</asp:HyperLink></li>
                                     <li id="pOrders" runat="server" style="display: none">
                                         <asp:HyperLink ID="hlOrders" runat="server">Booking Pending</asp:HyperLink></li>
                                     <li id="pBookingDate" runat="server">

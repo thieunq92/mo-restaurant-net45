@@ -1,4 +1,5 @@
 ﻿using NHibernate;
+using NHibernate.Criterion;
 using Portal.Modules.OrientalSails.Domain;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,30 @@ namespace Portal.Modules.OrientalSails.Repository
                 .Where(x => x.Date >= from && x.Date <= to)
                 .Future()
                 .ToList();
+        }
+
+        public IList<RestaurantBooking> RestaurantBookingGetAllByCriterion(int code, DateTime? date, string agency, int payment)
+        {
+            var query = _session.QueryOver<RestaurantBooking>();
+            if (code != -1)
+            {
+                query = query.Where(x => x.Id == code);
+            }
+            if (date.HasValue)
+            {
+                query = query.Where(x => x.Date == date);
+            }
+            Agency agencyAlias = null;
+            query = query.JoinAlias(x => x.Agency, () => agencyAlias);
+            if (!String.IsNullOrEmpty(agency))
+            {
+                query = query.WhereRestrictionOn(x => agencyAlias.Name).IsLike(agency, MatchMode.Anywhere);
+            }
+            if (payment != -1)
+            {
+                query = query.Where(x => x.Payment == payment);
+            }
+            return query.Future().ToList();
         }
     }
 }

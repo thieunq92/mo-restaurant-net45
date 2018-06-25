@@ -26,7 +26,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
         {
             if (!Page.IsPostBack)
             {
-                var date = DateTime.Now;
+                var date = DateTime.Now.Date;
                 try
                 {
                     date = DateTime.ParseExact(Request.QueryString["d"],"dd/MM/yyyy",CultureInfo.InvariantCulture);
@@ -47,7 +47,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
         }
         protected void btnDisplay_Click(object sender, EventArgs e)
         {
-            Response.Redirect(Request.Url.GetLeftPart(UriPartial.Path) + QueryStringBuildByCriterion());
+            Response.Redirect("RestaurantBookingByDate.aspx"+ QueryStringBuildByCriterion());
         }
         public string QueryStringBuildByCriterion()
         {

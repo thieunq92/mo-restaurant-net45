@@ -64,17 +64,17 @@
                 <asp:Repeater runat="server" ID="rptReceivablesTable">
                     <ItemTemplate>
                         <tr>
-                            <td><%# Eval("Code") %></td>
+                            <td><a href="BookingViewing.aspx?NodeId=1&SectionId=15&bi=<%# Eval("Id")%>"><%# Eval("Code") %></td>
                             <td><%# Eval("Agency.Sale.Name") %></td>
-                            <td><a href="AgencyView.aspx?NodeId=1&SectionId=15&ai=<%# Eval("Agency.Id")%>"><%# Eval("Agency.Name")%></a></td>
+                            <td><a href="AgencyView.aspx?NodeId=1&SectionId=15&AgencyId=<%# Eval("Agency.Id")%>"><%# Eval("Agency.Name")%></a></td>
                             <td><a href="MenuEditing.aspx?NodeId=1&SectionId=15&mi=<%# Eval("Menu.Id")%> "><%# Eval("Menu.Name")%></td>
                             <td><%# Eval("NumberOfPaxAdult")%></td>
                             <td><%# Eval("NumberOfPaxChild")%></td>
                             <td><%# Eval("NumberOfPaxBaby")%></td>
-                            <td><%# Eval("TotalPrice","{0:#,###.##}")%></td>
-                            <td><%# Eval("TotalPaid","{0:#,###.##}")%></td>
-                            <td><%# Eval("Receivable","{0:#,###.##}")%></td>
-                            <td><a href="MenuEditing.aspx?NodeId=1&SectionId=15&mi=<%# Eval("Id") %>">
+                            <td style="text-align:right!important"><%# Eval("TotalPrice","{0:#,##0.##}") + "₫"%></td>
+                            <td style="text-align:right!important"><%# Eval("TotalPaid","{0:#,##0.##}") + "₫"%></td>
+                            <td style="text-align:right!important"><%# Eval("Receivable","{0:#,##0.##}") + "₫"%></td>
+                            <td><a href="javascript:void(0)" data-toggle="modal" data-target=".modal-bookingpayment" data-url="RestaurantBookingPayment.aspx?NodeId=1&SectionId=15&bi=<%# Eval("Id")%>">
                                 <i class="fa fa-money-bill fa-lg" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Payment"></i>
                             </a></td>
                         </tr>
@@ -87,8 +87,26 @@
                     </FooterTemplate>
                 </asp:Repeater>
             </table>
+            <div class="modal fade modal-bookingpayment" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog" role="document" style="width: 1230px; height: 580px">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h3 class="modal-title">Booking payment</h3>
+                        </div>
+                        <div class="modal-body">
+                            <iframe frameborder="0" width="1200" height="570"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </asp:Content>
 <asp:Content ID="Scripts" ContentPlaceHolderID="Scripts" runat="server">
+    <script>
+        $('a[data-target = ".modal-bookingpayment"]').click(function () {
+            $(".modal iframe").attr('src', $(this).attr('data-url'))
+        })
+    </script>
 </asp:Content>

@@ -27,8 +27,10 @@ var moduleContractCreate = angular.module("moduleContractCreate", [])
         }
     };
 });
+var moduleBookingViewing = angular.module("moduleBookingViewing", []);
 angular.module("myApp",
     ["moduleAddSeriesBookings",
     "moduleViewActivities",
     "moduleDocumentView",
-    "moduleContractCreate"]);
+    "moduleContractCreate",
+    "moduleBookingViewing"]);

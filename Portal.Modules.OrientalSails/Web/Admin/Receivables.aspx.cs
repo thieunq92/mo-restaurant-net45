@@ -61,7 +61,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
 
         protected void btnDisplay_Click(object sender, EventArgs e)
         {
-            Response.Redirect(Request.Url.GetLeftPart(UriPartial.Path) + QueryStringBuildByCriterion());
+            Response.Redirect("Receivables.aspx" + QueryStringBuildByCriterion());
         }
 
         public string QueryStringBuildByCriterion()

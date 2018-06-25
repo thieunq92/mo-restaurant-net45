@@ -74,7 +74,7 @@
                             <td><a href="MenuEditing.aspx?NodeId=1&SectionId=15&mi=<%# Eval("Menu.Id")%>"><%# Eval("Menu.Name")%></td>
                             <td><%# Eval("SpecialRequest")%></td>
                             <td><a href="BookingViewing.aspx?NodeId=1&SectionId=15&bi=<%# Eval("Id")%>"><%# Eval("Code")%></td>
-                            <td><%# ((Double)Eval("TotalPrice")).ToString("#,###.##")%></td>
+                            <td style="text-align:right!important"><%# ((Double)Eval("TotalPrice")).ToString("#,##0.##") + "₫"%></td>
                             <td><%# ((int)Eval("Payment")) == 1 ? "Thanh toán ngay" : "Công nợ"%></td>
                         </tr>
                     </ItemTemplate>

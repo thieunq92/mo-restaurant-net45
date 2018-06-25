@@ -10,6 +10,45 @@
     </div>
     <div class="form-group">
         <div class="row">
+            <div class="col-xs-1">
+                Code   
+            </div>
+            <div class="col-xs-3">
+                <asp:TextBox runat="server" ID="txtCode" CssClass="form-control" placeholder="Code (HLXXXXX)" />
+            </div>
+            <div class="col-xs-1">
+                Date
+            </div>
+            <div class="col-xs-3">
+                <asp:TextBox runat="server" ID="txtDate" CssClass="form-control" placeholder="Date (dd/MM/yyyy)" data-control="datetimepicker" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-1">
+                Agency
+            </div>
+            <div class="col-xs-3">
+                <asp:TextBox runat="server" ID="txtAgency" CssClass="form-control" placeholder="Agency" />
+            </div>
+            <div class="col-xs-1">
+                Payment
+            </div>
+            <div class="col-xs-3">
+                <asp:DropDownList runat="server" ID="ddlPayment" CssClass="form-control" AppendDataBoundItems="true">
+                    <asp:ListItem Value="-1" Text="-- Payment --" />
+                    <asp:ListItem Value="1" Text="Thanh toán ngay" />
+                    <asp:ListItem Value="2" Text="Công nợ" />
+                </asp:DropDownList>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-12">
+                <asp:Button runat="server" ID="btnDisplay" Text="Display" OnClick="btnDisplay_Click" CssClass="btn btn-primary" />
+            </div>
         </div>
     </div>
     <div class="row">
@@ -47,7 +86,7 @@
                     <ItemTemplate>
                         <tr>
                             <td><a href="BookingViewing.aspx?NodeId=1&SectionId=15&bi=<%# Eval("Id")%>"><%# Eval("Code")%></td>
-                            <td><a href="AgencyView.aspx?NodeId=1&SectionId=15&ai=<%# Eval("Agency.Id")%>"><%# Eval("Agency.Name")%></a></td>
+                            <td><a href="AgencyView.aspx?NodeId=1&SectionId=15&AgencyId=<%# Eval("Agency.Id")%>"><%# Eval("Agency.TradingName")%></a></td>
                             <td><%# Eval("Date","{0:dd/MM/yyyy}")%></td>
                             <td><%# Eval("Time")%></td>
                             <td><%# Eval("NumberOfPaxAdult")%></td>
@@ -55,7 +94,7 @@
                             <td><%# Eval("NumberOfPaxBaby")%></td>
                             <td><a href="MenuEditing.aspx?NodeId=1&SectionId=15&mi=<%# Eval("Menu.Id")%> "><%# Eval("Menu.Name")%></td>
                             <td><%# Eval("SpecialRequest")%></td>
-                            <td><%# Eval("TotalPrice","{0:#,###.##}")%></td>
+                            <td style="text-align:right!important"><%# Eval("TotalPrice","{0:#,##0.##}") + "₫"%></td>
                             <td><%# ((int)Eval("Payment")) == 0 ? "" : ((int)Eval("Payment")) == 1 ? "Thanh toán ngay" : "Công nợ" %></td>
                         </tr>
                     </ItemTemplate>
