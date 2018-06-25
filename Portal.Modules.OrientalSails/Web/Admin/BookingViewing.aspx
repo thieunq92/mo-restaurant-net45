@@ -106,19 +106,19 @@
             <div class="col-xs-3" style="width: 19.420%">
                 <div class="input-group">
                     <asp:TextBox ID="txtCostPerPersonAdult" runat="server" CssClass="form-control" placeholder="Cost per person adult " Text="0" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" ng-model="$root.costPerPerson.Adult" data-id="txtCostPerPersonAdult" ng-change="$root.calculateTotalPrice()" />
-                    <span class="input-group-addon">VND/1 Adult</span>
+                    <span class="input-group-addon">Adult</span>
                 </div>
             </div>
             <div class="col-xs-3" style="width: 19.420%">
                 <div class="input-group">
                     <asp:TextBox ID="txtCostPerPersonChild" runat="server" CssClass="form-control" placeholder="Cost per person child " Text="0" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" ng-model="$root.costPerPerson.Child" data-id="txtCostPerPersonChild" ng-change="$root.calculateTotalPrice()" />
-                    <span class="input-group-addon">VND/1 Child</span>
+                    <span class="input-group-addon">Child</span>
                 </div>
             </div>
             <div class="col-xs-3" style="width: 19.420%">
                 <div class="input-group">
                     <asp:TextBox ID="txtCostPerPersonBaby" runat="server" CssClass="form-control" placeholder="Cost per person baby " Text="0" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" ng-model="$root.costPerPerson.Baby" data-id="txtCostPerPersonBaby" ng-change="$root.calculateTotalPrice()" />
-                    <span class="input-group-addon">VND/1 Baby</span>
+                    <span class="input-group-addon">Baby</span>
                 </div>
             </div>
         </div>
@@ -164,7 +164,7 @@
                 Special Request    
             </div>
             <div class="col-xs-3">
-                <asp:TextBox runat="server" ID="txtSpecialRequest" CssClass="form-control" TextMode="MultiLine" placeholder="Special Request" />
+                <asp:TextBox runat="server" ID="txtSpecialRequest" CssClass="form-control" TextMode="MultiLine" placeholder="Special Request" Rows="10"/>
             </div>
             <div class="col-xs-4">
                 <div class="radio-inline">
