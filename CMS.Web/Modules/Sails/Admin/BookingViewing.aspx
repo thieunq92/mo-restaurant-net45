@@ -8,9 +8,9 @@
     <div class="page-header">
         <h3>Code : <%= RestaurantBooking.Code %></h3>
     </div>
-    <div class="row">
+    <div class="row" ng-controller="saveController">
         <div class="col-xs-12">
-            <asp:Button CssClass="btn btn-primary" ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
+            <asp:Button CssClass="btn btn-primary" ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" ng-click="save()" />
         </div>
     </div>
     <br />
@@ -192,25 +192,39 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xs-12" ng-controller="commissionController">
             <h3>Trích ngoài</h3>
             <div class="row">
                 <div class="col-xs-12">
-                    <button class="btn btn-primary">Add</button>
+                    <button type="button" class="btn btn-primary" ng-click="addCommission()">Add</button>
                 </div>
             </div>
-            <br/>
-            <div class="row">
-                <div class="col-xs-3">
-                    <input type="text" class="form-control" placeholder="Trả cho" />
-                </div>
-                <div class="col-xs-3">
-                    <input type="text" class="form-control" placeholder="Số tiền" />
+            <br />
+            <div class="form-group" ng-repeat="item in listCommission">
+                <div class="row">
+                    <div class="col-xs-1">
+                        Trả cho
+                    </div>
+                    <div class="col-xs-2">
+                        <input type="text" class="form-control" placeholder="Trả cho" ng-model="item.payFor" />
+                    </div>
+                    <div class="col-xs-1">
+                        Số tiền
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Số tiền" ng-model="item.amount" data-control="inputmask" value="0" />
+                            <span class="input-group-addon">₫</span>
+                        </div>
+                    </div>
+                    <div class="col-xs-1">
+                        <button type="button" class="btn btn-primary" ng-click="removeCommission($index)">
+                            Remove
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
 </asp:Content>
 <asp:Content ID="Scripts" ContentPlaceHolderID="Scripts" runat="server">
     <script type="text/javascript" src="/modules/sails/admin/bookingviewingcontroller.js"></script>
@@ -227,7 +241,6 @@
                     input.trigger('change')
                 }
             }, 500);
-
             return false;
         });
     </script>

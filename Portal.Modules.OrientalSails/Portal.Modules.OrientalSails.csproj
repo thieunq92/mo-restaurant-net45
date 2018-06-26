@@ -86,6 +86,7 @@
     <Compile Include="BusinessLogic\RestaurantBookingByDateBLL.cs" />
     <Compile Include="BusinessLogic\RestaurantBookingPaymentBLL.cs" />
     <Compile Include="DataTransferObject\MenuDTO.cs" />
+    <Compile Include="Domain\Commission.cs" />
     <Compile Include="Domain\PaymentHistory.cs" />
     <Compile Include="Domain\RestaurantBooking.cs" />
     <Compile Include="BusinessLogic\SailsMasterBLL.cs" />
@@ -1168,6 +1169,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Domain\PaymentHistory.hbm.xml" />
+    <EmbeddedResource Include="Domain\Commission.hbm.xml" />
     <Content Include="packages.config" />
     <Content Include="Web\Admin\AddBooking.aspx" />
     <Content Include="Web\Admin\AddSeriesBookings.aspx" />

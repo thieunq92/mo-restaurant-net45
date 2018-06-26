@@ -34,7 +34,7 @@ moduleBookingViewing.controller("numberOfDiscountedPaxController", ["$rootScope"
 }])
 moduleBookingViewing.controller("totalPriceController", ["$rootScope", "$scope", "$http", function ($rootScope, $scope, $http) {
 }])
-moduleBookingViewing.controller("bookerController", ["$rootScope", "$scope", "$http", "$sniffer", function ($rootScope, $scope, $http, $sniffer) {
+moduleBookingViewing.controller("bookerController", ["$rootScope", "$scope", "$http", function ($rootScope, $scope, $http) {
     $scope.bookerGetByAgencyId = function (ev) {
         $http({
             method: "POST",
@@ -47,5 +47,38 @@ moduleBookingViewing.controller("bookerController", ["$rootScope", "$scope", "$h
         }, function (response) {
         })
     }
-
+}])
+moduleBookingViewing.controller("commissionController", ["$rootScope", "$scope", "$http", "$timeout", function ($rootScope, $scope, $http, $timeout) {
+    $rootScope.listCommission = []
+    $scope.addCommission = function () {
+        $rootScope.listCommission.push({ payFor: "", amount: "" })
+        $timeout(function () {
+            $("[data-control='inputmask']").inputmask({
+                'alias': 'numeric',
+                'groupSeparator': ',',
+                'autoGroup': true,
+                'digits': 2,
+                'digitsOptional': true,
+                'placeholder': '0',
+                'rightAlign': false
+            })
+        }, 0);
+    }
+    $scope.removeCommission = function (index) {
+        $rootScope.listCommission.splice(index, 1);
+    }
+}])
+moduleBookingViewing.controller("saveController", ["$rootScope", "$scope", "$http", function ($rootScope, $scope, $http) {
+    $scope.save = function () {
+        $http({
+            method: "POST",
+            url: "WebMethod/BookingViewingWebMethod.asmx/SaveCommission",
+            data: {
+                "listCommission": $rootScope.listCommission,
+            },
+        }).then(function (response) {
+            var listCommission = JSON.parse(response.data.d);
+        }, function (response) {
+        })
+    };
 }])

@@ -1,0 +1,144 @@
+2018-06-26 13:24:29,328 [6] ERROR NHibernate.Cfg.Configuration [(null)] <(null)> - Could not compile the mapping document: Portal.Modules.OrientalSails.Domain.Commission.hbm.xml
+NHibernate.MappingException: Could not compile the mapping document: Portal.Modules.OrientalSails.Domain.Commission.hbm.xml ---> NHibernate.MappingException: Problem trying to set property type by reflection ---> NHibernate.MappingException: class Portal.Modules.OrientalSails.Domain.Commission, Portal.Modules.OrientalSails, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null not found while looking for property: CheckingTransactionId ---> NHibernate.PropertyNotFoundException: Could not find a getter for property 'CheckingTransactionId' in class 'Portal.Modules.OrientalSails.Domain.Commission'
+   at NHibernate.Properties.BasicPropertyAccessor.GetGetter(Type type, String propertyName)
+   at NHibernate.Util.ReflectHelper.GetGetter(Type theClass, String propertyName, String propertyAccessorName)
+   at NHibernate.Util.ReflectHelper.ReflectedPropertyClass(String className, String name, String accessorName)
+   --- End of inner exception stack trace ---
+   at NHibernate.Util.ReflectHelper.ReflectedPropertyClass(String className, String name, String accessorName)
+   at NHibernate.Mapping.SimpleValue.SetTypeUsingReflection(String className, String propertyName, String accesorName)
+   --- End of inner exception stack trace ---
+   at NHibernate.Mapping.SimpleValue.SetTypeUsingReflection(String className, String propertyName, String accesorName)
+   at NHibernate.Cfg.XmlHbmBinding.ClassIdBinder.CreateIdentifierProperty(HbmId idSchema, PersistentClass rootClass, SimpleValue id)
+   at NHibernate.Cfg.XmlHbmBinding.ClassIdBinder.BindId(HbmId idSchema, PersistentClass rootClass, Table table)
+   at NHibernate.Cfg.XmlHbmBinding.RootClassBinder.Bind(HbmClass classSchema, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.AddRootClasses(HbmClass rootClass, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.AddEntitiesMappings(HbmMapping mappingSchema, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.Bind(HbmMapping mappingSchema)
+   at NHibernate.Cfg.Configuration.AddDeserializedMapping(HbmMapping mappingDocument, String documentFileName)
+   --- End of inner exception stack trace ---
+2018-06-26 13:25:52,348 [37] ERROR NHibernate.Cfg.Configuration [(null)] <(null)> - Could not compile the mapping document: Portal.Modules.OrientalSails.Domain.Commission.hbm.xml
+NHibernate.MappingException: Could not compile the mapping document: Portal.Modules.OrientalSails.Domain.Commission.hbm.xml ---> NHibernate.MappingException: Problem trying to set property type by reflection ---> NHibernate.MappingException: class Portal.Modules.OrientalSails.Domain.Commission, Portal.Modules.OrientalSails, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null not found while looking for property: CheckingTransactionId ---> NHibernate.PropertyNotFoundException: Could not find a getter for property 'CheckingTransactionId' in class 'Portal.Modules.OrientalSails.Domain.Commission'
+   at NHibernate.Properties.BasicPropertyAccessor.GetGetter(Type type, String propertyName)
+   at NHibernate.Util.ReflectHelper.GetGetter(Type theClass, String propertyName, String propertyAccessorName)
+   at NHibernate.Util.ReflectHelper.ReflectedPropertyClass(String className, String name, String accessorName)
+   --- End of inner exception stack trace ---
+   at NHibernate.Util.ReflectHelper.ReflectedPropertyClass(String className, String name, String accessorName)
+   at NHibernate.Mapping.SimpleValue.SetTypeUsingReflection(String className, String propertyName, String accesorName)
+   --- End of inner exception stack trace ---
+   at NHibernate.Mapping.SimpleValue.SetTypeUsingReflection(String className, String propertyName, String accesorName)
+   at NHibernate.Cfg.XmlHbmBinding.ClassIdBinder.CreateIdentifierProperty(HbmId idSchema, PersistentClass rootClass, SimpleValue id)
+   at NHibernate.Cfg.XmlHbmBinding.ClassIdBinder.BindId(HbmId idSchema, PersistentClass rootClass, Table table)
+   at NHibernate.Cfg.XmlHbmBinding.RootClassBinder.Bind(HbmClass classSchema, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.AddRootClasses(HbmClass rootClass, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.AddEntitiesMappings(HbmMapping mappingSchema, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.Bind(HbmMapping mappingSchema)
+   at NHibernate.Cfg.Configuration.AddDeserializedMapping(HbmMapping mappingDocument, String documentFileName)
+   --- End of inner exception stack trace ---
+2018-06-26 13:26:14,695 [36] ERROR NHibernate.Cfg.Configuration [(null)] <(null)> - Could not compile the mapping document: Portal.Modules.OrientalSails.Domain.Commission.hbm.xml
+NHibernate.MappingException: Could not compile the mapping document: Portal.Modules.OrientalSails.Domain.Commission.hbm.xml ---> NHibernate.MappingException: Problem trying to set property type by reflection ---> NHibernate.MappingException: class Portal.Modules.OrientalSails.Domain.Commission, Portal.Modules.OrientalSails, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null not found while looking for property: CheckingTransactionId ---> NHibernate.PropertyNotFoundException: Could not find a getter for property 'CheckingTransactionId' in class 'Portal.Modules.OrientalSails.Domain.Commission'
+   at NHibernate.Properties.BasicPropertyAccessor.GetGetter(Type type, String propertyName)
+   at NHibernate.Util.ReflectHelper.GetGetter(Type theClass, String propertyName, String propertyAccessorName)
+   at NHibernate.Util.ReflectHelper.ReflectedPropertyClass(String className, String name, String accessorName)
+   --- End of inner exception stack trace ---
+   at NHibernate.Util.ReflectHelper.ReflectedPropertyClass(String className, String name, String accessorName)
+   at NHibernate.Mapping.SimpleValue.SetTypeUsingReflection(String className, String propertyName, String accesorName)
+   --- End of inner exception stack trace ---
+   at NHibernate.Mapping.SimpleValue.SetTypeUsingReflection(String className, String propertyName, String accesorName)
+   at NHibernate.Cfg.XmlHbmBinding.ClassIdBinder.CreateIdentifierProperty(HbmId idSchema, PersistentClass rootClass, SimpleValue id)
+   at NHibernate.Cfg.XmlHbmBinding.ClassIdBinder.BindId(HbmId idSchema, PersistentClass rootClass, Table table)
+   at NHibernate.Cfg.XmlHbmBinding.RootClassBinder.Bind(HbmClass classSchema, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.AddRootClasses(HbmClass rootClass, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.AddEntitiesMappings(HbmMapping mappingSchema, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.Bind(HbmMapping mappingSchema)
+   at NHibernate.Cfg.Configuration.AddDeserializedMapping(HbmMapping mappingDocument, String documentFileName)
+   --- End of inner exception stack trace ---
+2018-06-26 13:26:15,675 [37] ERROR NHibernate.Cfg.Configuration [(null)] <(null)> - Could not compile the mapping document: Portal.Modules.OrientalSails.Domain.Commission.hbm.xml
+NHibernate.MappingException: Could not compile the mapping document: Portal.Modules.OrientalSails.Domain.Commission.hbm.xml ---> NHibernate.MappingException: Problem trying to set property type by reflection ---> NHibernate.MappingException: class Portal.Modules.OrientalSails.Domain.Commission, Portal.Modules.OrientalSails, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null not found while looking for property: CheckingTransactionId ---> NHibernate.PropertyNotFoundException: Could not find a getter for property 'CheckingTransactionId' in class 'Portal.Modules.OrientalSails.Domain.Commission'
+   at NHibernate.Properties.BasicPropertyAccessor.GetGetter(Type type, String propertyName)
+   at NHibernate.Util.ReflectHelper.GetGetter(Type theClass, String propertyName, String propertyAccessorName)
+   at NHibernate.Util.ReflectHelper.ReflectedPropertyClass(String className, String name, String accessorName)
+   --- End of inner exception stack trace ---
+   at NHibernate.Util.ReflectHelper.ReflectedPropertyClass(String className, String name, String accessorName)
+   at NHibernate.Mapping.SimpleValue.SetTypeUsingReflection(String className, String propertyName, String accesorName)
+   --- End of inner exception stack trace ---
+   at NHibernate.Mapping.SimpleValue.SetTypeUsingReflection(String className, String propertyName, String accesorName)
+   at NHibernate.Cfg.XmlHbmBinding.ClassIdBinder.CreateIdentifierProperty(HbmId idSchema, PersistentClass rootClass, SimpleValue id)
+   at NHibernate.Cfg.XmlHbmBinding.ClassIdBinder.BindId(HbmId idSchema, PersistentClass rootClass, Table table)
+   at NHibernate.Cfg.XmlHbmBinding.RootClassBinder.Bind(HbmClass classSchema, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.AddRootClasses(HbmClass rootClass, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.AddEntitiesMappings(HbmMapping mappingSchema, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.Bind(HbmMapping mappingSchema)
+   at NHibernate.Cfg.Configuration.AddDeserializedMapping(HbmMapping mappingDocument, String documentFileName)
+   --- End of inner exception stack trace ---
+2018-06-26 13:26:16,225 [36] ERROR NHibernate.Cfg.Configuration [(null)] <(null)> - Could not compile the mapping document: Portal.Modules.OrientalSails.Domain.Commission.hbm.xml
+NHibernate.MappingException: Could not compile the mapping document: Portal.Modules.OrientalSails.Domain.Commission.hbm.xml ---> NHibernate.MappingException: Problem trying to set property type by reflection ---> NHibernate.MappingException: class Portal.Modules.OrientalSails.Domain.Commission, Portal.Modules.OrientalSails, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null not found while looking for property: CheckingTransactionId ---> NHibernate.PropertyNotFoundException: Could not find a getter for property 'CheckingTransactionId' in class 'Portal.Modules.OrientalSails.Domain.Commission'
+   at NHibernate.Properties.BasicPropertyAccessor.GetGetter(Type type, String propertyName)
+   at NHibernate.Util.ReflectHelper.GetGetter(Type theClass, String propertyName, String propertyAccessorName)
+   at NHibernate.Util.ReflectHelper.ReflectedPropertyClass(String className, String name, String accessorName)
+   --- End of inner exception stack trace ---
+   at NHibernate.Util.ReflectHelper.ReflectedPropertyClass(String className, String name, String accessorName)
+   at NHibernate.Mapping.SimpleValue.SetTypeUsingReflection(String className, String propertyName, String accesorName)
+   --- End of inner exception stack trace ---
+   at NHibernate.Mapping.SimpleValue.SetTypeUsingReflection(String className, String propertyName, String accesorName)
+   at NHibernate.Cfg.XmlHbmBinding.ClassIdBinder.CreateIdentifierProperty(HbmId idSchema, PersistentClass rootClass, SimpleValue id)
+   at NHibernate.Cfg.XmlHbmBinding.ClassIdBinder.BindId(HbmId idSchema, PersistentClass rootClass, Table table)
+   at NHibernate.Cfg.XmlHbmBinding.RootClassBinder.Bind(HbmClass classSchema, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.AddRootClasses(HbmClass rootClass, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.AddEntitiesMappings(HbmMapping mappingSchema, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.Bind(HbmMapping mappingSchema)
+   at NHibernate.Cfg.Configuration.AddDeserializedMapping(HbmMapping mappingDocument, String documentFileName)
+   --- End of inner exception stack trace ---
+2018-06-26 13:26:16,925 [6] ERROR NHibernate.Cfg.Configuration [(null)] <(null)> - Could not compile the mapping document: Portal.Modules.OrientalSails.Domain.Commission.hbm.xml
+NHibernate.MappingException: Could not compile the mapping document: Portal.Modules.OrientalSails.Domain.Commission.hbm.xml ---> NHibernate.MappingException: Problem trying to set property type by reflection ---> NHibernate.MappingException: class Portal.Modules.OrientalSails.Domain.Commission, Portal.Modules.OrientalSails, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null not found while looking for property: CheckingTransactionId ---> NHibernate.PropertyNotFoundException: Could not find a getter for property 'CheckingTransactionId' in class 'Portal.Modules.OrientalSails.Domain.Commission'
+   at NHibernate.Properties.BasicPropertyAccessor.GetGetter(Type type, String propertyName)
+   at NHibernate.Util.ReflectHelper.GetGetter(Type theClass, String propertyName, String propertyAccessorName)
+   at NHibernate.Util.ReflectHelper.ReflectedPropertyClass(String className, String name, String accessorName)
+   --- End of inner exception stack trace ---
+   at NHibernate.Util.ReflectHelper.ReflectedPropertyClass(String className, String name, String accessorName)
+   at NHibernate.Mapping.SimpleValue.SetTypeUsingReflection(String className, String propertyName, String accesorName)
+   --- End of inner exception stack trace ---
+   at NHibernate.Mapping.SimpleValue.SetTypeUsingReflection(String className, String propertyName, String accesorName)
+   at NHibernate.Cfg.XmlHbmBinding.ClassIdBinder.CreateIdentifierProperty(HbmId idSchema, PersistentClass rootClass, SimpleValue id)
+   at NHibernate.Cfg.XmlHbmBinding.ClassIdBinder.BindId(HbmId idSchema, PersistentClass rootClass, Table table)
+   at NHibernate.Cfg.XmlHbmBinding.RootClassBinder.Bind(HbmClass classSchema, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.AddRootClasses(HbmClass rootClass, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.AddEntitiesMappings(HbmMapping mappingSchema, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.Bind(HbmMapping mappingSchema)
+   at NHibernate.Cfg.Configuration.AddDeserializedMapping(HbmMapping mappingDocument, String documentFileName)
+   --- End of inner exception stack trace ---
+2018-06-26 13:26:17,545 [37] ERROR NHibernate.Cfg.Configuration [(null)] <(null)> - Could not compile the mapping document: Portal.Modules.OrientalSails.Domain.Commission.hbm.xml
+NHibernate.MappingException: Could not compile the mapping document: Portal.Modules.OrientalSails.Domain.Commission.hbm.xml ---> NHibernate.MappingException: Problem trying to set property type by reflection ---> NHibernate.MappingException: class Portal.Modules.OrientalSails.Domain.Commission, Portal.Modules.OrientalSails, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null not found while looking for property: CheckingTransactionId ---> NHibernate.PropertyNotFoundException: Could not find a getter for property 'CheckingTransactionId' in class 'Portal.Modules.OrientalSails.Domain.Commission'
+   at NHibernate.Properties.BasicPropertyAccessor.GetGetter(Type type, String propertyName)
+   at NHibernate.Util.ReflectHelper.GetGetter(Type theClass, String propertyName, String propertyAccessorName)
+   at NHibernate.Util.ReflectHelper.ReflectedPropertyClass(String className, String name, String accessorName)
+   --- End of inner exception stack trace ---
+   at NHibernate.Util.ReflectHelper.ReflectedPropertyClass(String className, String name, String accessorName)
+   at NHibernate.Mapping.SimpleValue.SetTypeUsingReflection(String className, String propertyName, String accesorName)
+   --- End of inner exception stack trace ---
+   at NHibernate.Mapping.SimpleValue.SetTypeUsingReflection(String className, String propertyName, String accesorName)
+   at NHibernate.Cfg.XmlHbmBinding.ClassIdBinder.CreateIdentifierProperty(HbmId idSchema, PersistentClass rootClass, SimpleValue id)
+   at NHibernate.Cfg.XmlHbmBinding.ClassIdBinder.BindId(HbmId idSchema, PersistentClass rootClass, Table table)
+   at NHibernate.Cfg.XmlHbmBinding.RootClassBinder.Bind(HbmClass classSchema, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.AddRootClasses(HbmClass rootClass, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.AddEntitiesMappings(HbmMapping mappingSchema, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.Bind(HbmMapping mappingSchema)
+   at NHibernate.Cfg.Configuration.AddDeserializedMapping(HbmMapping mappingDocument, String documentFileName)
+   --- End of inner exception stack trace ---
+2018-06-26 13:26:18,715 [36] ERROR NHibernate.Cfg.Configuration [(null)] <(null)> - Could not compile the mapping document: Portal.Modules.OrientalSails.Domain.Commission.hbm.xml
+NHibernate.MappingException: Could not compile the mapping document: Portal.Modules.OrientalSails.Domain.Commission.hbm.xml ---> NHibernate.MappingException: Problem trying to set property type by reflection ---> NHibernate.MappingException: class Portal.Modules.OrientalSails.Domain.Commission, Portal.Modules.OrientalSails, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null not found while looking for property: CheckingTransactionId ---> NHibernate.PropertyNotFoundException: Could not find a getter for property 'CheckingTransactionId' in class 'Portal.Modules.OrientalSails.Domain.Commission'
+   at NHibernate.Properties.BasicPropertyAccessor.GetGetter(Type type, String propertyName)
+   at NHibernate.Util.ReflectHelper.GetGetter(Type theClass, String propertyName, String propertyAccessorName)
+   at NHibernate.Util.ReflectHelper.ReflectedPropertyClass(String className, String name, String accessorName)
+   --- End of inner exception stack trace ---
+   at NHibernate.Util.ReflectHelper.ReflectedPropertyClass(String className, String name, String accessorName)
+   at NHibernate.Mapping.SimpleValue.SetTypeUsingReflection(String className, String propertyName, String accesorName)
+   --- End of inner exception stack trace ---
+   at NHibernate.Mapping.SimpleValue.SetTypeUsingReflection(String className, String propertyName, String accesorName)
+   at NHibernate.Cfg.XmlHbmBinding.ClassIdBinder.CreateIdentifierProperty(HbmId idSchema, PersistentClass rootClass, SimpleValue id)
+   at NHibernate.Cfg.XmlHbmBinding.ClassIdBinder.BindId(HbmId idSchema, PersistentClass rootClass, Table table)
+   at NHibernate.Cfg.XmlHbmBinding.RootClassBinder.Bind(HbmClass classSchema, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.AddRootClasses(HbmClass rootClass, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.AddEntitiesMappings(HbmMapping mappingSchema, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.Bind(HbmMapping mappingSchema)
+   at NHibernate.Cfg.Configuration.AddDeserializedMapping(HbmMapping mappingDocument, String documentFileName)
+   --- End of inner exception stack trace ---

@@ -136,6 +136,7 @@ namespace Portal.Modules.OrientalSails.Web
             {
                 RestaurantBooking.Payment = 2;
             }
+            RestaurantBooking.VAT = chkVAT.Checked;
             RestaurantBooking.TotalPrice =
                 (RestaurantBooking.NumberOfPaxAdult - RestaurantBooking.NumberOfDiscountedPaxAdult) * RestaurantBooking.CostPerPersonAdult
                 + (RestaurantBooking.NumberOfPaxChild - RestaurantBooking.NumberOfDiscountedPaxChild) * RestaurantBooking.CostPerPersonChild
