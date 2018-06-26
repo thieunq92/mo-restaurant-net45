@@ -30,6 +30,17 @@ namespace Portal.Modules.OrientalSails.Domain
         public virtual double Receivable { get; set; }
         public virtual bool MarkIsPaid { get; set; }
         public virtual bool VAT { get; set; }
+        public virtual bool IsPaid
+        {
+            get
+            {
+                if (TotalPrice > 0 && Receivable <= 0 || MarkIsPaid)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
         public virtual IList<PaymentHistory> ListPaymentHistory { get; set; }
         public virtual String Code
         {

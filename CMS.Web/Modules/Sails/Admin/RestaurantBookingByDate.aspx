@@ -63,7 +63,7 @@
                 </tr>
                 <asp:Repeater ID="rptBooking" runat="server" OnItemDataBound="rptBooking_ItemDataBound">
                     <ItemTemplate>
-                        <tr class="<%# ((int)Eval("Payment")) == 1 ? "custom-warning":"success" %>">
+                        <tr class="<%# ((bool)Eval("IsPaid")) ? "success" : ((int)Eval("Payment")) == 1 ? "custom-warning":"" %>">
                             <td><%# Container.ItemIndex %></td>
                             <td><a href="AgencyView.aspx?NodeId=1&SectionId=15&AgencyId=<%# Eval("Agency.Id")%>"><%# Eval("Agency.TradingName")%></td>
                             <td><%# Eval("Time")%></td>

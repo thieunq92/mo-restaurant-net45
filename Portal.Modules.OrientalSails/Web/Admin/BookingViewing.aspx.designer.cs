@@ -13,6 +13,15 @@ namespace Portal.Modules.OrientalSails.Web {
     public partial class BookingViewing {
         
         /// <summary>
+        /// btnSave control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSave;
+        
+        /// <summary>
         /// ddlMenu control.
         /// </summary>
         /// <remarks>
@@ -148,13 +157,13 @@ namespace Portal.Modules.OrientalSails.Web {
         protected global::System.Web.UI.WebControls.TextBox txtNumberOfDiscountedPaxBaby;
         
         /// <summary>
-        /// txtSpecialRequest control.
+        /// txtTotalPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSpecialRequest;
+        protected global::System.Web.UI.WebControls.TextBox txtTotalPrice;
         
         /// <summary>
         /// rbPayNow control.
@@ -175,12 +184,21 @@ namespace Portal.Modules.OrientalSails.Web {
         protected global::System.Web.UI.WebControls.RadioButton rbDebt;
         
         /// <summary>
-        /// btnSave control.
+        /// chkVAT control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSave;
+        protected global::System.Web.UI.WebControls.CheckBox chkVAT;
+        
+        /// <summary>
+        /// txtSpecialRequest control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSpecialRequest;
     }
 }
