@@ -8,9 +8,10 @@
     <div class="page-header">
         <h3>Code : <%= RestaurantBooking.Code %></h3>
     </div>
-    <div class="row" ng-controller="saveController">
+    <div class="row" ng-controller="saveController" ng-init="$root.restaurantBookingId = <%= RestaurantBooking.Id %>">
         <div class="col-xs-12">
             <asp:Button CssClass="btn btn-primary" ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" ng-click="save()" />
+            <button type="button" class="btn btn-primary" ng-click="save()">Save</button>
         </div>
     </div>
     <br />
@@ -192,7 +193,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-12" ng-controller="commissionController">
+        <div class="col-xs-12" ng-controller="commissionController" ng-init="loadCommission()">
             <h3>Trích ngoài</h3>
             <div class="row">
                 <div class="col-xs-12">
@@ -202,6 +203,7 @@
             <br />
             <div class="form-group" ng-repeat="item in $root.listCommission">
                 <div class="row">
+                    <input type="hidden" ng-model="item.id">
                     <div class="col-xs-1">
                         Trả cho
                     </div>
@@ -213,7 +215,7 @@
                     </div>
                     <div class="col-xs-2">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Số tiền" ng-model="item.amount" data-control="inputmask" value="0" />
+                            <input type="text" class="form-control" placeholder="Số tiền" ng-model="item.amount" data-control="inputmask" />
                             <span class="input-group-addon">₫</span>
                         </div>
                     </div>
@@ -225,6 +227,58 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12" ng-controller="serviceOutsideController" ng-init="loadServiceOutside()">
+            <h3>Dịch vụ ngoài</h3>
+            <div class="row">
+                <div class="col-xs-12">
+                    <button type="button" class="btn btn-primary" ng-click="addServiceOutSide()">Add</button>
+                </div>
+            </div>
+            <br />
+            <div class="form-group" ng-repeat="item in $root.listServiceOutside">
+                <div class="row">
+                    <input type="hidden" ng-model="item.id">
+                    <div class="col-xs-1">
+                        Dịch vụ
+                    </div>
+                    <div class="col-xs-2">
+                        <input type="text" class="form-control" placeholder="Dịch vụ" ng-model="item.service" />
+                    </div>
+                    <div class="col-xs-1">
+                        Đơn giá
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Đơn giá" ng-model="item.unitPrice" data-control="inputmask" />
+                            <span class="input-group-addon">₫</span>
+                        </div>
+                    </div>
+                    <div class="col-xs-1">
+                        Số lượng
+                    </div>
+                    <div class="col-xs-2">
+                        <input type="text" class="form-control" placeholder="Số lượng" ng-model="item.quantity"/>
+                    </div>
+                    <div class="col-xs-1">
+                        Thành tiền
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Thành tiền" ng-model="item.totalPrice" data-control="inputmask" />
+                            <span class="input-group-addon">₫</span>
+                        </div>
+                    </div>
+                    <div class="col-xs-1">
+                        <button type="button" class="btn btn-primary" ng-click="removeServiceOutside($index)">
+                            Remove
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </asp:Content>
 <asp:Content ID="Scripts" ContentPlaceHolderID="Scripts" runat="server">
     <script type="text/javascript" src="/modules/sails/admin/bookingviewingcontroller.js"></script>

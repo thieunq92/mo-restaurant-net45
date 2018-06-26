@@ -85,6 +85,7 @@
     <Compile Include="BusinessLogic\ReceivablesBLL.cs" />
     <Compile Include="BusinessLogic\RestaurantBookingByDateBLL.cs" />
     <Compile Include="BusinessLogic\RestaurantBookingPaymentBLL.cs" />
+    <Compile Include="DataTransferObject\ComissionDTO.cs" />
     <Compile Include="DataTransferObject\MenuDTO.cs" />
     <Compile Include="Domain\Commission.cs" />
     <Compile Include="Domain\PaymentHistory.cs" />
@@ -229,6 +230,7 @@
     <Compile Include="Repository\BookingHistoryRepository.cs" />
     <Compile Include="Repository\BookingRepository.cs" />
     <Compile Include="Repository\BookingRoomRepository.cs" />
+    <Compile Include="Repository\CommissionRepository.cs" />
     <Compile Include="Repository\ContractPriceRepository.cs" />
     <Compile Include="Repository\ContractRepository.cs" />
     <Compile Include="Repository\ContractValidRepository.cs" />

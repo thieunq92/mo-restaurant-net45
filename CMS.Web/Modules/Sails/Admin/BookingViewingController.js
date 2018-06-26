@@ -48,10 +48,23 @@ moduleBookingViewing.controller("bookerController", ["$rootScope", "$scope", "$h
         })
     }
 }])
-moduleBookingViewing.controller("commissionController", ["$rootScope", "$scope", "$http","$timeout", function ($rootScope, $scope, $http, $timeout) {
-    $scope.listCommission = []
+moduleBookingViewing.controller("commissionController", ["$rootScope", "$scope", "$http", "$timeout", function ($rootScope, $scope, $http, $timeout) {
+    $rootScope.listCommission = []
+    $scope.loadCommission = function () {
+        $http({
+            method: "POST",
+            url: "WebMethod/BookingViewingWebMethod.asmx/CommissionGetAllByBookingId",
+            data: {
+                "restaurantBookingId": $rootScope.restaurantBookingId,
+            },
+        }).then(function (response) {
+            $rootScope.listCommission = JSON.parse(response.data.d);
+        }, function (response) {
+        })
+    }
+
     $scope.addCommission = function () {
-        $scope.listCommission.push({ payFor: "", amount: "" })
+        $rootScope.listCommission.push({ id: -1, payFor: "", amount: 0, restaurantBookingId: $rootScope.restaurantBookingId })
         $timeout(function () {
             $("[data-control='inputmask']").inputmask({
                 'alias': 'numeric',
@@ -65,11 +78,53 @@ moduleBookingViewing.controller("commissionController", ["$rootScope", "$scope",
         }, 0);
     }
     $scope.removeCommission = function (index) {
-        $scope.listCommission.splice(index, 1);
+        $rootScope.listCommission.splice(index, 1);
+    }
+}])
+moduleBookingViewing.controller("serviceOutsideController", ["$rootScope", "$scope", "$http", "$timeout", function ($rootScope, $scope, $http, $timeout) {
+    $rootScope.listServiceOutside = []
+    $scope.loadCommission = function () {
+        $http({
+            method: "POST",
+            url: "WebMethod/BookingViewingWebMethod.asmx/ServiceOutsideGetAllByBookingId",
+            data: {
+                "restaurantBookingId": $rootScope.restaurantBookingId,
+            },
+        }).then(function (response) {
+            $rootScope.listServiceOutside = JSON.parse(response.data.d);
+        }, function (response) {
+        })
+    }
+
+    $scope.addServiceOutside = function () {
+        $rootScope.listCommission.push({ id: -1, payFor: "", amount: 0, restaurantBookingId: $rootScope.restaurantBookingId })
+        $timeout(function () {
+            $("[data-control='inputmask']").inputmask({
+                'alias': 'numeric',
+                'groupSeparator': ',',
+                'autoGroup': true,
+                'digits': 2,
+                'digitsOptional': true,
+                'placeholder': '0',
+                'rightAlign': false
+            })
+        }, 0);
+    }
+    $scope.removeServiceOutside = function (index) {
+        $rootScope.listServiceOutside.splice(index, 1);
     }
 }])
 moduleBookingViewing.controller("saveController", ["$rootScope", "$scope", "$http", function ($rootScope, $scope, $http) {
     $scope.save = function () {
-        alert("aaaaaa");
+        $http({
+            method: "POST",
+            url: "WebMethod/BookingViewingWebMethod.asmx/CommissionSave",
+            data: {
+                "listCommissionDTO": $rootScope.listCommission,
+                "restaurantBookingId": $rootScope.restaurantBookingId,
+            },
+        }).then(function (response) {
+        }, function (response) {
+        })
     };
 }])

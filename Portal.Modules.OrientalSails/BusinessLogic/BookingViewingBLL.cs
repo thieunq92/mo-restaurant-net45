@@ -12,11 +12,13 @@ namespace Portal.Modules.OrientalSails.BusinessLogic
         public MenuRepository MenuRepository { set; get; }
         public RestaurantBookingRepository RestaurantBookingRepository { get; set; }
         public AgencyRepository AgencyRepository { get; set; }
+        public CommissionRepository CommissionRepository { get; set; }
         public BookingViewingBLL()
         {
             MenuRepository = new MenuRepository();
             RestaurantBookingRepository = new RestaurantBookingRepository();
             AgencyRepository = new AgencyRepository();
+            CommissionRepository = new CommissionRepository();
         }
         public void Dispose()
         {
@@ -33,6 +35,12 @@ namespace Portal.Modules.OrientalSails.BusinessLogic
             if (AgencyRepository != null)
             {
                 AgencyRepository.Dispose();
+                AgencyRepository = null;
+            }
+            if (CommissionRepository != null)
+            {
+                CommissionRepository.Dispose();
+                CommissionRepository = null;
             }
         }
 
@@ -59,6 +67,26 @@ namespace Portal.Modules.OrientalSails.BusinessLogic
         public Menu MenuGetById(int menuId)
         {
             return MenuRepository.GetById(menuId);
+        }
+
+        public Commission CommissionGetById(int commissionId)
+        {
+            return CommissionRepository.GetById(commissionId);
+        }
+
+        public void CommissionSaveOrUpdate(Commission commission)
+        {
+            CommissionRepository.SaveOrUpdate(commission);
+        }
+
+        public IList<Commission> CommissionGetAllByBookingId(int restaurantBookingId)
+        {
+            return CommissionRepository.CommissionGetAllByBookingId(restaurantBookingId);
+        }
+
+        public void CommissionDelete(Commission commission)
+        {
+            CommissionRepository.Delete(commission);
         }
     }
 }
