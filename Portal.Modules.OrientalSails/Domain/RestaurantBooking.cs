@@ -41,12 +41,32 @@ namespace Portal.Modules.OrientalSails.Domain
                 return false;
             }
         }
+        public virtual int PartOfDay { get; set; }
         public virtual IList<PaymentHistory> ListPaymentHistory { get; set; }
+        public virtual IList<Guide> ListGuide { get; set; }
         public virtual String Code
         {
             get
             {
                 return String.Format("HL{0:D5}", Id);
+            }
+        }
+        public virtual String NameAndPhoneOfGuides {
+            get
+            {
+                var nameOfGuides = "";
+                foreach (var guide in ListGuide)
+                {
+                    if (!String.IsNullOrEmpty(guide.Phone))
+                    {
+                        nameOfGuides += guide.Name + "-" + guide.Phone + "<br/>";
+                    }
+                    else
+                    {
+                        nameOfGuides += guide.Name + "<br/>";
+                    }
+                }
+                return nameOfGuides;
             }
         }
     }

@@ -49,6 +49,15 @@ namespace Portal.Modules.OrientalSails.Web {
         protected global::System.Web.UI.WebControls.TextBox txtDate;
         
         /// <summary>
+        /// ddlPartOfDay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlPartOfDay;
+        
+        /// <summary>
         /// txtTime control.
         /// </summary>
         /// <remarks>

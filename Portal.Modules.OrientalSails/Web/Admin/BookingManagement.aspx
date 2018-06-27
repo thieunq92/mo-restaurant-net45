@@ -61,7 +61,7 @@
                     </th>
                     <th rowspan="2">Date
                     </th>
-                    <th rowspan="2">Time
+                    <th rowspan="2" colspan="2">Time
                     </th>
                     <th colspan="3">Number of pax
                     </th>
@@ -86,21 +86,21 @@
                     <ItemTemplate>
                         <tr>
                             <td><a href="BookingViewing.aspx?NodeId=1&SectionId=15&bi=<%# Eval("Id")%>"><%# Eval("Code")%></td>
-                            <td><a href="AgencyView.aspx?NodeId=1&SectionId=15&AgencyId=<%# Eval("Agency.Id")%>"><%# Eval("Agency.TradingName")%></a></td>
+                            <td><a href="AgencyView.aspx?NodeId=1&SectionId=15&AgencyId=<%# Eval("Agency")!= null ? Eval("Agency.Id"):""%>"><%# Eval("Agency")!= null ? Eval("Agency.TradingName"):""%></a></td>
                             <td><%# Eval("Date","{0:dd/MM/yyyy}")%></td>
+                            <td><%# ((int)Eval("PartOfDay")) == 1 ? "Sáng" : ((int)Eval("PartOfDay")) == 2 ? "Trưa" : ((int)Eval("PartOfDay")) == 3 ? "Tối" : "" %></td>
                             <td><%# Eval("Time")%></td>
                             <td><%# Eval("NumberOfPaxAdult")%></td>
                             <td><%# Eval("NumberOfPaxChild")%></td>
                             <td><%# Eval("NumberOfPaxBaby")%></td>
-                            <td><a href="MenuEditing.aspx?NodeId=1&SectionId=15&mi=<%# Eval("Menu.Id")%> "><%# Eval("Menu.Name")%></td>
+                            <td><a href="MenuEditing.aspx?NodeId=1&SectionId=15&mi=<%# Eval("Menu") != null ? Eval("Menu.Id") : ""%>"><%# Eval("Menu") != null ? Eval("Menu.Name") : ""%></td>
                             <td><%# Eval("SpecialRequest")%></td>
-                            <td style="text-align:right!important"><%# Eval("TotalPrice","{0:#,##0.##}") + "₫"%></td>
+                            <td style="text-align: right!important"><%# Eval("TotalPrice","{0:#,##0.##}") + "₫"%></td>
                             <td><%# ((int)Eval("Payment")) == 0 ? "" : ((int)Eval("Payment")) == 1 ? "Thanh toán ngay" : "Công nợ" %></td>
                         </tr>
                     </ItemTemplate>
                 </asp:Repeater>
             </table>
-
         </div>
     </div>
 </asp:Content>

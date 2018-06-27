@@ -146,7 +146,7 @@ moduleBookingViewing.controller("guideController", ["$rootScope", "$scope", "$ht
                 "restaurantBookingId": $rootScope.restaurantBookingId,
             },
         }).then(function (response) {
-            $rootScope.listServiceOutside = JSON.parse(response.data.d);
+            $rootScope.listGuide = JSON.parse(response.data.d);
         }, function (response) {
         })
     }
@@ -175,6 +175,16 @@ moduleBookingViewing.controller("saveController", ["$rootScope", "$scope", "$htt
             url: "WebMethod/BookingViewingWebMethod.asmx/ServiceOutsideSave",
             data: {
                 "listServiceOutsideDTO": $rootScope.listServiceOutside,
+                "restaurantBookingId": $rootScope.restaurantBookingId,
+            },
+        }).then(function (response) {
+        }, function (response) {
+        })
+        $http({
+            method: "POST",
+            url: "WebMethod/BookingViewingWebMethod.asmx/GuideSave",
+            data: {
+                "listGuideDTO": $rootScope.listGuide,
                 "restaurantBookingId": $rootScope.restaurantBookingId,
             },
         }).then(function (response) {

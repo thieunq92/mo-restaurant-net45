@@ -39,11 +39,13 @@
                     </th>
                     <th rowspan="2">Agency
                     </th>
-                    <th rowspan="2">Time
+                    <th rowspan="2" colspan="2">Time
                     </th>
                     <th colspan="3">Number of pax
                     </th>
                     <th rowspan="2">Menu
+                    </th>
+                    <th rowspan="2">Hướng dẫn viên
                     </th>
                     <th rowspan="2">Special request
                     </th>
@@ -65,12 +67,14 @@
                     <ItemTemplate>
                         <tr class="<%# ((bool)Eval("IsPaid")) ? "success" : ((int)Eval("Payment")) == 1 ? "custom-warning":"" %>">
                             <td><%# Container.ItemIndex %></td>
-                            <td><a href="AgencyView.aspx?NodeId=1&SectionId=15&AgencyId=<%# Eval("Agency.Id")%>"><%# Eval("Agency.TradingName")%></td>
+                            <td><a href="AgencyView.aspx?NodeId=1&SectionId=15&AgencyId=<%# Eval("Agency") != null ? Eval("Agency.Id") : ""%>"><%# Eval("Agency") != null ? Eval("Agency.TradingName"):""%></td>
+                            <td><%# ((int)Eval("PartOfDay")) == 1 ? "Sáng" : ((int)Eval("PartOfDay")) == 2 ? "Trưa" : ((int)Eval("PartOfDay")) == 3 ? "Tối" : "" %></td>
                             <td><%# Eval("Time")%></td>
                             <td><%# Eval("NumberOfPaxAdult")%></td>
                             <td><%# Eval("NumberOfPaxChild")%></td>
                             <td><%# Eval("NumberOfPaxBaby")%></td>
-                            <td><a href="MenuEditing.aspx?NodeId=1&SectionId=15&mi=<%# Eval("Menu.Id")%>"><%# Eval("Menu.Name")%></td>
+                            <td><a href="MenuEditing.aspx?NodeId=1&SectionId=15&mi=<%# Eval("Menu") != null ? Eval("Menu.Id"):""%>"><%# Eval("Menu") != null ? Eval("Menu.Name"):""%></td>
+                            <td style="text-align:left!important"><%# Eval("NameAndPhoneOfGuides")%></td>
                             <td><%# Eval("SpecialRequest")%></td>
                             <td><a href="BookingViewing.aspx?NodeId=1&SectionId=15&bi=<%# Eval("Id")%>"><%# Eval("Code")%></td>
                             <td style="text-align: right!important"><%# ((Double)Eval("TotalPrice")).ToString("#,##0.##") + "₫"%></td>
@@ -87,7 +91,7 @@
                             </td>
                         </tr>
                         <tr style="display: <%= rptBooking.Items.Count > 0 ? "" : "none"%>; font-weight: bold">
-                            <td colspan="3"><strong>Total</strong></td>
+                            <td colspan="4"><strong>Total</strong></td>
                             <td>
                                 <asp:Label runat="server" ID="lblTotalAdult"></asp:Label></td>
                             <td>

@@ -17,5 +17,11 @@ namespace Portal.Modules.OrientalSails.Repository
         {
             return _session.QueryOver<Menu>().Future().ToList();
         }
+
+        public Menu MenuGetById(int menuId)
+        {
+            return _session.QueryOver<Menu>()
+                .Where(x => x.Id == menuId).FutureValue().Value;
+        }
     }
 }

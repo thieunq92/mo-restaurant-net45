@@ -14,6 +14,7 @@ namespace Portal.Modules.OrientalSails.BusinessLogic
         public AgencyRepository AgencyRepository { get; set; }
         public CommissionRepository CommissionRepository { get; set; }
         public ServiceOutsideRepository ServiceOutsideRepository { get; set; }
+        public GuideRepository GuideRepository { get; set; }
         public BookingViewingBLL()
         {
             MenuRepository = new MenuRepository();
@@ -21,6 +22,7 @@ namespace Portal.Modules.OrientalSails.BusinessLogic
             AgencyRepository = new AgencyRepository();
             CommissionRepository = new CommissionRepository();
             ServiceOutsideRepository = new ServiceOutsideRepository();
+            GuideRepository = new GuideRepository();
         }
         public void Dispose()
         {
@@ -44,9 +46,14 @@ namespace Portal.Modules.OrientalSails.BusinessLogic
                 CommissionRepository.Dispose();
                 CommissionRepository = null;
             }
-            if (ServiceOutsideRepository != null) {
+            if (ServiceOutsideRepository != null)
+            {
                 ServiceOutsideRepository.Dispose();
                 ServiceOutsideRepository = null;
+            }
+            if (GuideRepository != null) {
+                GuideRepository.Dispose();
+                GuideRepository = null;
             }
         }
 
@@ -72,7 +79,7 @@ namespace Portal.Modules.OrientalSails.BusinessLogic
 
         public Menu MenuGetById(int menuId)
         {
-            return MenuRepository.GetById(menuId);
+            return MenuRepository.MenuGetById(menuId);
         }
 
         public Commission CommissionGetById(int commissionId)
@@ -113,6 +120,26 @@ namespace Portal.Modules.OrientalSails.BusinessLogic
         public void ServiceOutsideDelete(ServiceOutside serviceOutside)
         {
             ServiceOutsideRepository.Delete(serviceOutside);
+        }
+
+        public Guide GuideGetById(int guideId)
+        {
+            return GuideRepository.GetById(guideId);
+        }
+
+        public void GuideSaveOrUpdate(Guide guide)
+        {
+            GuideRepository.SaveOrUpdate(guide);
+        }
+
+        public IList<Guide> GuideGetAllByBookingId(int restaurantBookingId)
+        {
+            return GuideRepository.GuideGetAllByBookingId(restaurantBookingId);
+        }
+
+        public void GuideDelete(Guide guide)
+        {
+            GuideRepository.Delete(guide);
         }
     }
 }

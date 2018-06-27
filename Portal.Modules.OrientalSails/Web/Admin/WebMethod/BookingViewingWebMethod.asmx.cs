@@ -188,62 +188,61 @@ namespace Portal.Modules.OrientalSails.Web.Admin.WebMethod
             return JsonConvert.SerializeObject(listServiceOutsideDTO);
         }
         [WebMethod]
-        public void GuideSave(IList<GuideDTO> listServiceOutsideDTO, int restaurantBookingId)
+        public void GuideSave(IList<GuideDTO> listGuideDTO, int restaurantBookingId)
         {
-            var listNewServiceOutsideId = new List<int>();
-            foreach (var serviceOutsideDTO in listServiceOutsideDTO)
+            var listNewGuideId = new List<int>();
+            foreach (var guideDTO in listGuideDTO)
             {
-                ServiceOutside serviceOutside = null;
-                var unitPrice = 0.0;
+                Guide guide = null;     
+                var guideDTORestaurantBookingId = 0;
                 try
                 {
-                    unitPrice = Double.Parse(serviceOutsideDTO.unitPrice);
+                    guideDTORestaurantBookingId = Convert.ToInt32(guideDTO.restaurantBookingId);
                 }
                 catch { }
-                var quantity = 0;
-                try
+                if (guideDTO.id == -1)
                 {
-                    quantity = Convert.ToInt32(serviceOutsideDTO.quantity);
+                    guide = new Guide();
                 }
-                catch { }
-                var totalPrice = 0.0;
-                try
+                else if (guideDTO.id > 0)
                 {
-                    totalPrice = Double.Parse(serviceOutsideDTO.totalPrice);
+                    guide = BookingViewingBLL.GuideGetById(guideDTO.id);
                 }
-                catch { }
-                var serviceOutsideDTORestaurantBookingId = 0;
-                try
-                {
-                    serviceOutsideDTORestaurantBookingId = Convert.ToInt32(serviceOutsideDTO.restaurantBookingId);
-                }
-                catch { }
-                if (serviceOutsideDTO.id == -1)
-                {
-                    serviceOutside = new ServiceOutside();
-                }
-                else if (serviceOutsideDTO.id > 0)
-                {
-                    serviceOutside = BookingViewingBLL.ServiceOutsideGetById(serviceOutsideDTO.id);
-                }
-                serviceOutside.Service = serviceOutsideDTO.service;
-                serviceOutside.UnitPrice = unitPrice;
-                serviceOutside.Quantity = quantity;
-                serviceOutside.TotalPrice = totalPrice;
-                serviceOutside.RestaurantBooking = BookingViewingBLL.RestaurantBookingGetById(serviceOutsideDTORestaurantBookingId);
-                BookingViewingBLL.ServiceOutsideSaveOrUpdate(serviceOutside);
-                listNewServiceOutsideId.Add(serviceOutside.Id);
+                guide.Name = guideDTO.name;
+                guide.Phone = guideDTO.phone;
+                guide.RestaurantBooking = BookingViewingBLL.RestaurantBookingGetById(guideDTORestaurantBookingId);
+                BookingViewingBLL.GuideSaveOrUpdate(guide);
+                listNewGuideId.Add(guide.Id);
             }
-            var listServiceOutside = BookingViewingBLL.ServiceOutsideGetAllByBookingId(restaurantBookingId);
-            var listIdOfServiceOutside = listServiceOutside.Select(x => x.Id).ToList();
-            var listIdOfServiceOutsideDTO = listServiceOutsideDTO.Where(x => x.id > 0).Select(x => x.id).ToList();
-            var listServiceOutsideIdNeedRemove = listIdOfServiceOutside.Except(listIdOfServiceOutsideDTO).Except(listNewServiceOutsideId);
-            foreach (var serviceOutsideIdNeedRemove in listServiceOutsideIdNeedRemove)
+            var listGuide = BookingViewingBLL.GuideGetAllByBookingId(restaurantBookingId);
+            var listIdOfGuide = listGuide.Select(x => x.Id).ToList();
+            var listIdOfGuideDTO = listGuideDTO.Where(x => x.id > 0).Select(x => x.id).ToList();
+            var listGuideIdNeedRemove = listIdOfGuide.Except(listIdOfGuideDTO).Except(listNewGuideId);
+            foreach (var guideIdNeedRemove in listGuideIdNeedRemove)
             {
-                var serviceOutsideNeedRemove = BookingViewingBLL.ServiceOutsideGetById(serviceOutsideIdNeedRemove);
-                BookingViewingBLL.ServiceOutsideDelete(serviceOutsideNeedRemove);
+                var guideNeedRemove = BookingViewingBLL.GuideGetById(guideIdNeedRemove);
+                BookingViewingBLL.GuideDelete(guideNeedRemove);
             }
             Dispose();
+        }
+        [WebMethod]
+        public string GuideGetAllByBookingId(int restaurantBookingId)
+        {
+            var listGuide = BookingViewingBLL.GuideGetAllByBookingId(restaurantBookingId);
+            var listGuideDTO = new List<GuideDTO>();
+            foreach (var guide in listGuide)
+            {
+                var guideDTO = new GuideDTO()
+                {
+                    id = guide.Id,
+                    name = guide.Name,
+                    phone = guide.Phone,
+                    restaurantBookingId = guide.RestaurantBooking.Id,
+                };
+                listGuideDTO.Add(guideDTO);
+            }
+            Dispose();
+            return JsonConvert.SerializeObject(listGuideDTO);
         }
         public new void Dispose()
         {

@@ -11,7 +11,6 @@
     <div class="row" ng-controller="saveController" ng-init="$root.restaurantBookingId = <%= RestaurantBooking.Id %>">
         <div class="col-xs-12">
             <asp:Button CssClass="btn btn-primary" ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" ng-click="save()" />
-            <button type="button" class="btn btn-primary" ng-click="save()">Save</button>
         </div>
     </div>
     <br />
@@ -30,7 +29,6 @@
                     </div>
                     <div class="col-xs-4">
                         <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                            <asp:ListItem Value="-1">-- Status --</asp:ListItem>
                             <asp:ListItem Value="1">Approved</asp:ListItem>
                             <asp:ListItem Value="2">Cancel</asp:ListItem>
                             <asp:ListItem Value="3">Pending</asp:ListItem>
@@ -49,7 +47,14 @@
                     <div class="col-xs-2">
                         Time
                     </div>
-                    <div class="col-xs-4">
+                    <div class="col-xs-2">
+                         <asp:DropDownList ID="ddlPartOfDay" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                            <asp:ListItem Value="1">Sáng</asp:ListItem>
+                            <asp:ListItem Value="2">Trưa</asp:ListItem>
+                            <asp:ListItem Value="3">Tối</asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
+                    <div class="col-xs-2">
                         <asp:TextBox runat="server" ID="txtTime" CssClass="form-control" placeholder="Time (hh:mm)" data-control="timepicker" />
                     </div>
                 </div>
@@ -127,7 +132,7 @@
             <div class="form-group" ng-controller="numberOfDiscountedPaxController" ng-init="$root.numberOfDiscountedPax.Adult=<%=RestaurantBooking.NumberOfDiscountedPaxAdult %>;$root.numberOfDiscountedPax.Child=<%=RestaurantBooking.NumberOfDiscountedPaxChild %>;$root.numberOfDiscountedPax.Baby=<%=RestaurantBooking.NumberOfDiscountedPaxBaby %>">
                 <div class="row">
                     <div class="col-xs-2">
-                        Number of discounted pax
+                        FOC
                     </div>
                     <div class="col-xs-3">
                         <div class="input-group">
@@ -237,8 +242,8 @@
                 </div>
             </div>
             <br />
-            <div class="row" ng-repeat="item in $root.listServiceOutside">
-                <div class="form-group">
+            <div class="form-group" ng-repeat="item in $root.listServiceOutside">
+                <div class="row">
                     <input type="hidden" ng-model="item.id">
                     <div class="col-xs-2">
                         <input type="text" class="form-control" placeholder="Dịch vụ" ng-model="item.service" />
@@ -285,8 +290,8 @@
                 </div>
             </div>
             <br />
-            <div class="row" ng-repeat="item in $root.listServiceOutside">
-                <div class="form-group">
+            <div class="form-group" ng-repeat="item in $root.listGuide">
+                <div class="row">
                     <input type="hidden" ng-model="item.id">
                     <div class="col-xs-1">
                         Tên

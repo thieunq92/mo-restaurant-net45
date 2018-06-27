@@ -33,7 +33,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                 }
                 catch { }
                 txtDate.Text = date.ToString("dd/MM/yyyy");
-                rptBooking.DataSource = RestaurantBookingByDateBLL.RestaurantBookingGetAllByDate(date);
+                rptBooking.DataSource = RestaurantBookingByDateBLL.RestaurantBookingGetAllByDate(date).OrderBy(x=>x.PartOfDay).ThenBy(x=>x.Time);
                 rptBooking.DataBind();
             }
         }
