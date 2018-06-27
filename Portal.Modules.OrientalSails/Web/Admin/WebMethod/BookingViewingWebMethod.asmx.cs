@@ -57,6 +57,12 @@ namespace Portal.Modules.OrientalSails.Web.Admin.WebMethod
                     amount = Double.Parse(commissionDTO.amount);
                 }
                 catch { }
+                var commissionDTORestaurantBookingId = 0;
+                try
+                {
+                    commissionDTORestaurantBookingId = Convert.ToInt32(commissionDTO.restaurantBookingId);
+                }
+                catch { }
                 if (commissionDTO.id == -1)
                 {
                     commission = new Commission();
@@ -102,7 +108,144 @@ namespace Portal.Modules.OrientalSails.Web.Admin.WebMethod
             Dispose();
             return JsonConvert.SerializeObject(listCommissionDTO);
         }
-        public void Dispose()
+        [WebMethod]
+        public void ServiceOutsideSave(IList<ServiceOutsideDTO> listServiceOutsideDTO, int restaurantBookingId)
+        {
+            var listNewServiceOutsideId = new List<int>();
+            foreach (var serviceOutsideDTO in listServiceOutsideDTO)
+            {
+                ServiceOutside serviceOutside = null;
+                var unitPrice = 0.0;
+                try
+                {
+                    unitPrice = Double.Parse(serviceOutsideDTO.unitPrice);
+                }
+                catch { }
+                var quantity = 0;
+                try
+                {
+                    quantity = Convert.ToInt32(serviceOutsideDTO.quantity);
+                }
+                catch { }
+                var totalPrice = 0.0;
+                try
+                {
+                    totalPrice = Double.Parse(serviceOutsideDTO.totalPrice);
+                }
+                catch { }
+                var serviceOutsideDTORestaurantBookingId = 0;
+                try
+                {
+                    serviceOutsideDTORestaurantBookingId = Convert.ToInt32(serviceOutsideDTO.restaurantBookingId);
+                }
+                catch { }
+                if (serviceOutsideDTO.id == -1)
+                {
+                    serviceOutside = new ServiceOutside();
+                }
+                else if (serviceOutsideDTO.id > 0)
+                {
+                    serviceOutside = BookingViewingBLL.ServiceOutsideGetById(serviceOutsideDTO.id);
+                }
+                serviceOutside.Service = serviceOutsideDTO.service;
+                serviceOutside.UnitPrice = unitPrice;
+                serviceOutside.Quantity = quantity;
+                serviceOutside.TotalPrice = totalPrice;
+                serviceOutside.RestaurantBooking = BookingViewingBLL.RestaurantBookingGetById(serviceOutsideDTORestaurantBookingId);
+                BookingViewingBLL.ServiceOutsideSaveOrUpdate(serviceOutside);
+                listNewServiceOutsideId.Add(serviceOutside.Id);
+            }
+            var listServiceOutside = BookingViewingBLL.ServiceOutsideGetAllByBookingId(restaurantBookingId);
+            var listIdOfServiceOutside = listServiceOutside.Select(x => x.Id).ToList();
+            var listIdOfServiceOutsideDTO = listServiceOutsideDTO.Where(x => x.id > 0).Select(x => x.id).ToList();
+            var listServiceOutsideIdNeedRemove = listIdOfServiceOutside.Except(listIdOfServiceOutsideDTO).Except(listNewServiceOutsideId);
+            foreach (var serviceOutsideIdNeedRemove in listServiceOutsideIdNeedRemove)
+            {
+                var serviceOutsideNeedRemove = BookingViewingBLL.ServiceOutsideGetById(serviceOutsideIdNeedRemove);
+                BookingViewingBLL.ServiceOutsideDelete(serviceOutsideNeedRemove);
+            }
+            Dispose();
+        }
+        [WebMethod]
+        public string ServiceOutsideGetAllByBookingId(int restaurantBookingId)
+        {
+            var listServiceOutside = BookingViewingBLL.ServiceOutsideGetAllByBookingId(restaurantBookingId);
+            var listServiceOutsideDTO = new List<ServiceOutsideDTO>();
+            foreach (var serviceOutside in listServiceOutside)
+            {
+                var serviceOutsideDTO = new ServiceOutsideDTO()
+                {
+                    id = serviceOutside.Id,
+                    service = serviceOutside.Service,
+                    unitPrice = serviceOutside.UnitPrice.ToString("#,##0.##"),
+                    quantity = serviceOutside.Quantity,
+                    totalPrice = serviceOutside.TotalPrice.ToString("#,##0.##"),
+                    restaurantBookingId = serviceOutside.RestaurantBooking.Id,
+                };
+                listServiceOutsideDTO.Add(serviceOutsideDTO);
+            }
+            Dispose();
+            return JsonConvert.SerializeObject(listServiceOutsideDTO);
+        }
+        [WebMethod]
+        public void GuideSave(IList<GuideDTO> listServiceOutsideDTO, int restaurantBookingId)
+        {
+            var listNewServiceOutsideId = new List<int>();
+            foreach (var serviceOutsideDTO in listServiceOutsideDTO)
+            {
+                ServiceOutside serviceOutside = null;
+                var unitPrice = 0.0;
+                try
+                {
+                    unitPrice = Double.Parse(serviceOutsideDTO.unitPrice);
+                }
+                catch { }
+                var quantity = 0;
+                try
+                {
+                    quantity = Convert.ToInt32(serviceOutsideDTO.quantity);
+                }
+                catch { }
+                var totalPrice = 0.0;
+                try
+                {
+                    totalPrice = Double.Parse(serviceOutsideDTO.totalPrice);
+                }
+                catch { }
+                var serviceOutsideDTORestaurantBookingId = 0;
+                try
+                {
+                    serviceOutsideDTORestaurantBookingId = Convert.ToInt32(serviceOutsideDTO.restaurantBookingId);
+                }
+                catch { }
+                if (serviceOutsideDTO.id == -1)
+                {
+                    serviceOutside = new ServiceOutside();
+                }
+                else if (serviceOutsideDTO.id > 0)
+                {
+                    serviceOutside = BookingViewingBLL.ServiceOutsideGetById(serviceOutsideDTO.id);
+                }
+                serviceOutside.Service = serviceOutsideDTO.service;
+                serviceOutside.UnitPrice = unitPrice;
+                serviceOutside.Quantity = quantity;
+                serviceOutside.TotalPrice = totalPrice;
+                serviceOutside.RestaurantBooking = BookingViewingBLL.RestaurantBookingGetById(serviceOutsideDTORestaurantBookingId);
+                BookingViewingBLL.ServiceOutsideSaveOrUpdate(serviceOutside);
+                listNewServiceOutsideId.Add(serviceOutside.Id);
+            }
+            var listServiceOutside = BookingViewingBLL.ServiceOutsideGetAllByBookingId(restaurantBookingId);
+            var listIdOfServiceOutside = listServiceOutside.Select(x => x.Id).ToList();
+            var listIdOfServiceOutsideDTO = listServiceOutsideDTO.Where(x => x.id > 0).Select(x => x.id).ToList();
+            var listServiceOutsideIdNeedRemove = listIdOfServiceOutside.Except(listIdOfServiceOutsideDTO).Except(listNewServiceOutsideId);
+            foreach (var serviceOutsideIdNeedRemove in listServiceOutsideIdNeedRemove)
+            {
+                var serviceOutsideNeedRemove = BookingViewingBLL.ServiceOutsideGetById(serviceOutsideIdNeedRemove);
+                BookingViewingBLL.ServiceOutsideDelete(serviceOutsideNeedRemove);
+            }
+            Dispose();
+        }
+        public new void Dispose()
         {
             if (bookingViewingBLL != null)
             {

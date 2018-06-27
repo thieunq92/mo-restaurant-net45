@@ -233,16 +233,13 @@
             <h3>Dịch vụ ngoài</h3>
             <div class="row">
                 <div class="col-xs-12">
-                    <button type="button" class="btn btn-primary" ng-click="addServiceOutSide()">Add</button>
+                    <button type="button" class="btn btn-primary" ng-click="addServiceOutside()">Add</button>
                 </div>
             </div>
             <br />
-            <div class="form-group" ng-repeat="item in $root.listServiceOutside">
-                <div class="row">
+            <div class="row" ng-repeat="item in $root.listServiceOutside">
+                <div class="form-group">
                     <input type="hidden" ng-model="item.id">
-                    <div class="col-xs-1">
-                        Dịch vụ
-                    </div>
                     <div class="col-xs-2">
                         <input type="text" class="form-control" placeholder="Dịch vụ" ng-model="item.service" />
                     </div>
@@ -251,7 +248,7 @@
                     </div>
                     <div class="col-xs-2">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Đơn giá" ng-model="item.unitPrice" data-control="inputmask" />
+                            <input type="text" class="form-control" placeholder="Đơn giá" ng-model="item.unitPrice" data-control="inputmask" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" />
                             <span class="input-group-addon">₫</span>
                         </div>
                     </div>
@@ -259,19 +256,52 @@
                         Số lượng
                     </div>
                     <div class="col-xs-2">
-                        <input type="text" class="form-control" placeholder="Số lượng" ng-model="item.quantity"/>
+                        <input type="text" class="form-control" placeholder="Số lượng" ng-model="item.quantity" />
                     </div>
                     <div class="col-xs-1">
                         Thành tiền
                     </div>
                     <div class="col-xs-2">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Thành tiền" ng-model="item.totalPrice" data-control="inputmask" />
+                            <input type="text" class="form-control" placeholder="Thành tiền" ng-model="item.totalPrice" data-control="inputmask" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" />
                             <span class="input-group-addon">₫</span>
                         </div>
                     </div>
                     <div class="col-xs-1">
                         <button type="button" class="btn btn-primary" ng-click="removeServiceOutside($index)">
+                            Remove
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12" ng-controller="guideController" ng-init="loadGuide()">
+            <h3>Hướng dẫn viên</h3>
+            <div class="row">
+                <div class="col-xs-12">
+                    <button type="button" class="btn btn-primary" ng-click="addGuide()">Add</button>
+                </div>
+            </div>
+            <br />
+            <div class="row" ng-repeat="item in $root.listServiceOutside">
+                <div class="form-group">
+                    <input type="hidden" ng-model="item.id">
+                    <div class="col-xs-1">
+                        Tên
+                    </div>
+                    <div class="col-xs-2">
+                        <input type="text" class="form-control" placeholder="Tên" ng-model="item.name" />
+                    </div>
+                    <div class="col-xs-1">
+                        Số điện thoại
+                    </div>
+                    <div class="col-xs-2">
+                        <input type="text" class="form-control" placeholder="Số điện thoại" ng-model="item.phone" />
+                    </div>
+                    <div class="col-xs-1">
+                        <button type="button" class="btn btn-primary" ng-click="removeGuide($index)">
                             Remove
                         </button>
                     </div>

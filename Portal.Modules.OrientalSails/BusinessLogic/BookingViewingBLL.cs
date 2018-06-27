@@ -13,12 +13,14 @@ namespace Portal.Modules.OrientalSails.BusinessLogic
         public RestaurantBookingRepository RestaurantBookingRepository { get; set; }
         public AgencyRepository AgencyRepository { get; set; }
         public CommissionRepository CommissionRepository { get; set; }
+        public ServiceOutsideRepository ServiceOutsideRepository { get; set; }
         public BookingViewingBLL()
         {
             MenuRepository = new MenuRepository();
             RestaurantBookingRepository = new RestaurantBookingRepository();
             AgencyRepository = new AgencyRepository();
             CommissionRepository = new CommissionRepository();
+            ServiceOutsideRepository = new ServiceOutsideRepository();
         }
         public void Dispose()
         {
@@ -41,6 +43,10 @@ namespace Portal.Modules.OrientalSails.BusinessLogic
             {
                 CommissionRepository.Dispose();
                 CommissionRepository = null;
+            }
+            if (ServiceOutsideRepository != null) {
+                ServiceOutsideRepository.Dispose();
+                ServiceOutsideRepository = null;
             }
         }
 
@@ -87,6 +93,26 @@ namespace Portal.Modules.OrientalSails.BusinessLogic
         public void CommissionDelete(Commission commission)
         {
             CommissionRepository.Delete(commission);
+        }
+
+        public ServiceOutside ServiceOutsideGetById(int serviceOutsideId)
+        {
+            return ServiceOutsideRepository.GetById(serviceOutsideId);
+        }
+
+        public void ServiceOutsideSaveOrUpdate(ServiceOutside serviceOutside)
+        {
+            ServiceOutsideRepository.SaveOrUpdate(serviceOutside);
+        }
+
+        public IList<ServiceOutside> ServiceOutsideGetAllByBookingId(int restaurantBookingId)
+        {
+            return ServiceOutsideRepository.ServiceOutsideGetAllByBookingId(restaurantBookingId);
+        }
+
+        public void ServiceOutsideDelete(ServiceOutside serviceOutside)
+        {
+            ServiceOutsideRepository.Delete(serviceOutside);
         }
     }
 }
