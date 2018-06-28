@@ -18,6 +18,7 @@ using System.Linq;
 using Portal.Modules.OrientalSails.Enums.Shared;
 using C = Portal.Modules.OrientalSails.Enums.Contract;
 using Q = Portal.Modules.OrientalSails.Enums.Quotation;
+using System.Web;
 
 namespace Portal.Modules.OrientalSails.Web.Admin
 {
@@ -132,10 +133,10 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                                                     Node.Id, Section.Id, agency.Id);
 
                     hplBookingList.NavigateUrl = string.Format(
-                        "BookingList.aspx?NodeId={0}&SectionId={1}&ai={2}", Node.Id, Section.Id, agency.Id);
+                        "BookingManagement.aspx?NodeId={0}&SectionId={1}&ai={2}", Node.Id, Section.Id, agency.Id);
                     hplReceivable.NavigateUrl =
-                        string.Format("PaymentReport.aspx?NodeId={0}&SectionId={1}&ai={2}&from={3}&to={4}",
-                                      Node.Id, Section.Id, agency.Id, DateTime.Today.AddMonths(-3).ToOADate(), DateTime.Today.ToOADate());
+                        string.Format("Receivables.aspx?NodeId={0}&SectionId={1}&ai={2}&f={3}&t={4}",
+                                      Node.Id, Section.Id, agency.Id, HttpUtility.UrlEncode(DateTime.Today.AddMonths(-3).ToString("dd/MM/yyyy")), HttpUtility.UrlEncode(DateTime.Today.ToString("dd/MM/yyyy")));
 
                     rptActivities.DataSource = Module.GetObject<Activity>(Expression.And(Expression.Eq("ObjectType", "MEETING"), Expression.Eq("Params", Convert.ToString(agency.Id))), 0, 0,
                                                                           Order.Desc("DateMeeting"));

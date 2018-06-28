@@ -37,5 +37,9 @@
       <key column="RestaurantBookingId"/>
       <one-to-many class="Guide"/>
     </bag>
+    <bag name="ListCommission" inverse="true" batch-size ="10">
+      <key column="RestaurantBookingId"/>
+      <one-to-many class="Commission"/>
+    </bag>
   </class>
 </hibernate-mapping>

@@ -25,9 +25,9 @@ namespace Portal.Modules.OrientalSails.BusinessLogic
             return RestaurantBookingRepository.RestaurantBookingGetAll();
         }
 
-        public IList<RestaurantBooking> RestaurantBookingGetAllByCriterion(int code, DateTime? date, string agency, int payment)
+        public IList<RestaurantBooking> RestaurantBookingGetAllByCriterion(int code, DateTime? date, string agency, int payment, int agencyId)
         {
-            return RestaurantBookingRepository.RestaurantBookingGetAllByCriterion(code, date, agency, payment);
+            return RestaurantBookingRepository.RestaurantBookingGetAllByCriterion(code, date, agency, payment, agencyId);
         }
     }
 }

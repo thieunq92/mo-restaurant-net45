@@ -117,15 +117,69 @@ namespace Portal.Modules.OrientalSails.Web
             RestaurantBooking.Date = DateTime.ParseExact(txtDate.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             RestaurantBooking.Status = Int32.Parse(ddlStatus.SelectedValue);
             RestaurantBooking.Time = txtTime.Text;
-            RestaurantBooking.NumberOfPaxAdult = Int32.Parse(txtNumberOfPaxAdult.Text);
-            RestaurantBooking.NumberOfPaxChild = Int32.Parse(txtNumberOfPaxChild.Text);
-            RestaurantBooking.NumberOfPaxBaby = Int32.Parse(txtNumberOfPaxBaby.Text);
-            RestaurantBooking.CostPerPersonAdult = Double.Parse(txtCostPerPersonAdult.Text);
-            RestaurantBooking.CostPerPersonChild = Double.Parse(txtCostPerPersonChild.Text);
-            RestaurantBooking.CostPerPersonBaby = Double.Parse(txtCostPerPersonBaby.Text);
-            RestaurantBooking.NumberOfDiscountedPaxAdult = Int32.Parse(txtNumberOfDiscountedPaxAdult.Text);
-            RestaurantBooking.NumberOfDiscountedPaxChild = Int32.Parse(txtNumberOfDiscountedPaxChild.Text);
-            RestaurantBooking.NumberOfDiscountedPaxBaby = Int32.Parse(txtNumberOfDiscountedPaxBaby.Text);
+            var numberOfPaxAdult = 0;
+            try
+            {
+                numberOfPaxAdult = Int32.Parse(txtNumberOfPaxAdult.Text);
+            }
+            catch { }
+            RestaurantBooking.NumberOfPaxAdult = numberOfPaxAdult;
+            var numberOfPaxChild = 0;
+            try
+            {
+                numberOfPaxChild = Int32.Parse(txtNumberOfPaxChild.Text);
+            }
+            catch { }
+            RestaurantBooking.NumberOfPaxChild = numberOfPaxChild;
+            var numberOfPaxBaby = 0;
+            try
+            {
+                numberOfPaxAdult = Int32.Parse(txtNumberOfPaxBaby.Text);
+            }
+            catch { }
+            RestaurantBooking.NumberOfPaxBaby = numberOfPaxBaby;
+            var costPerPersonAdult = 0.0;
+            try
+            {
+                costPerPersonAdult = Double.Parse(txtCostPerPersonAdult.Text);
+            }
+            catch { }
+            RestaurantBooking.CostPerPersonAdult = costPerPersonAdult;
+            var costPerPersonChild = 0.0;
+            try
+            {
+                costPerPersonChild = Double.Parse(txtCostPerPersonChild.Text);
+            }
+            catch { }
+            RestaurantBooking.CostPerPersonChild = costPerPersonChild;
+            var costPerPersonBaby = 0.0;
+            try
+            {
+                costPerPersonBaby = Double.Parse(txtCostPerPersonBaby.Text);
+            }
+            catch { }
+            RestaurantBooking.CostPerPersonBaby = costPerPersonBaby;
+            var numberOfDiscountedPaxAdult = 0;
+            try
+            {
+                numberOfDiscountedPaxAdult = Int32.Parse(txtNumberOfDiscountedPaxAdult.Text);
+            }
+            catch { }
+            RestaurantBooking.NumberOfDiscountedPaxAdult = numberOfDiscountedPaxAdult;
+            var numberOfDiscountedPaxChild = 0;
+            try
+            {
+                numberOfDiscountedPaxChild = Int32.Parse(txtNumberOfDiscountedPaxChild.Text);
+            }
+            catch { }
+            RestaurantBooking.NumberOfDiscountedPaxChild = numberOfDiscountedPaxChild;
+            var numberOfDiscountedPaxBaby = 0;
+            try
+            {
+                numberOfDiscountedPaxBaby = Int32.Parse(txtNumberOfDiscountedPaxBaby.Text);
+            }
+            catch { }
+            RestaurantBooking.NumberOfDiscountedPaxBaby = numberOfDiscountedPaxBaby;
             RestaurantBooking.SpecialRequest = txtSpecialRequest.Text;
             RestaurantBooking.Time = txtTime.Text;
             RestaurantBooking.Receivable = RestaurantBooking.TotalPrice - RestaurantBooking.TotalPaid;

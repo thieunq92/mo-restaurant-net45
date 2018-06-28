@@ -52,8 +52,14 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                 {
                     payment = -1;
                 }
+                var agencyId = -1;
+                try
+                {
+                    agencyId = Int32.Parse(Request.QueryString["ai"]);
+                }
+                catch { }
                 ddlPayment.SelectedValue = payment.ToString();
-                rptBooking.DataSource = BookingManagementBLL.RestaurantBookingGetAllByCriterion(codeIntType, date, agency, payment);
+                rptBooking.DataSource = BookingManagementBLL.RestaurantBookingGetAllByCriterion(codeIntType, date, agency, payment, agencyId);
                 rptBooking.DataBind();
             }
         }

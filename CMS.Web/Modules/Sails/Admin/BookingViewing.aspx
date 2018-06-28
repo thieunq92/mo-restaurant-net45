@@ -15,7 +15,7 @@
     </div>
     <br />
     <div class="row">
-        <div class="col-xs-8">
+        <div class="col-xs-7">
             <div class="form-group">
                 <div class="row">
                     <div class="col-xs-2">Menu</div>
@@ -47,14 +47,14 @@
                     <div class="col-xs-2">
                         Time
                     </div>
-                    <div class="col-xs-2">
-                         <asp:DropDownList ID="ddlPartOfDay" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                    <div class="col-xs-2 nopadding-right">
+                        <asp:DropDownList ID="ddlPartOfDay" runat="server" CssClass="form-control" AppendDataBoundItems="true">
                             <asp:ListItem Value="1">Sáng</asp:ListItem>
                             <asp:ListItem Value="2">Trưa</asp:ListItem>
                             <asp:ListItem Value="3">Tối</asp:ListItem>
                         </asp:DropDownList>
                     </div>
-                    <div class="col-xs-2">
+                    <div class="col-xs-2 nopadding-left">
                         <asp:TextBox runat="server" ID="txtTime" CssClass="form-control" placeholder="Time (hh:mm)" data-control="timepicker" />
                     </div>
                 </div>
@@ -84,19 +84,19 @@
                     <div class="col-xs-2">
                         Number of pax
                     </div>
-                    <div class="col-xs-3">
+                    <div class="col-xs-3" style="width: 28%">
                         <div class="input-group">
                             <asp:TextBox ID="txtNumberOfPaxAdult" runat="server" CssClass="form-control" placeholder="Number of pax adult " Text="0" ng-model="$root.numberOfPax.Adult" ng-change="$root.calculateTotalPrice()" />
                             <span class="input-group-addon">Adult</span>
                         </div>
                     </div>
-                    <div class="col-xs-3">
+                    <div class="col-xs-3" style="width: 28%">
                         <div class="input-group">
                             <asp:TextBox ID="txtNumberOfPaxChild" runat="server" CssClass="form-control" placeholder="Number of pax child " Text="0" ng-model="$root.numberOfPax.Child" ng-change="$root.calculateTotalPrice()" />
                             <span class="input-group-addon">Child</span>
                         </div>
                     </div>
-                    <div class="col-xs-3">
+                    <div class="col-xs-3" style="width: 27%">
                         <div class="input-group">
                             <asp:TextBox ID="txtNumberOfPaxBaby" runat="server" CssClass="form-control" placeholder="Number of pax baby " Text="0" ng-model="$root.numberOfPax.Baby" ng-change="$root.calculateTotalPrice()" />
                             <span class="input-group-addon">Baby</span>
@@ -107,23 +107,23 @@
             <div class="form-group" ng-controller="priceController" ng-init="$root.costPerPerson.Adult='<%= RestaurantBooking.CostPerPersonAdult %>';$root.costPerPerson.Child='<%= RestaurantBooking.CostPerPersonChild %>';$root.costPerPerson.Baby='<%= RestaurantBooking.CostPerPersonBaby %>'">
                 <div class="row">
                     <div class="col-xs-2">
-                        Cost per person
+                        Đơn giá
                     </div>
-                    <div class="col-xs-3">
+                    <div class="col-xs-3" style="width: 28%">
                         <div class="input-group">
-                            <asp:TextBox ID="txtCostPerPersonAdult" runat="server" CssClass="form-control" placeholder="Cost per person adult " Text="0" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" ng-model="$root.costPerPerson.Adult" data-id="txtCostPerPersonAdult" ng-change="$root.calculateTotalPrice()" />
+                            <asp:TextBox ID="txtCostPerPersonAdult" runat="server" CssClass="form-control" placeholder="Cost per person adult " Text="0" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false" ng-model="$root.costPerPerson.Adult" data-id="txtCostPerPersonAdult" ng-change="$root.calculateTotalPrice()" />
                             <span class="input-group-addon">Adult</span>
                         </div>
                     </div>
-                    <div class="col-xs-3">
+                    <div class="col-xs-3" style="width: 28%">
                         <div class="input-group">
-                            <asp:TextBox ID="txtCostPerPersonChild" runat="server" CssClass="form-control" placeholder="Cost per person child " Text="0" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" ng-model="$root.costPerPerson.Child" data-id="txtCostPerPersonChild" ng-change="$root.calculateTotalPrice()" />
+                            <asp:TextBox ID="txtCostPerPersonChild" runat="server" CssClass="form-control" placeholder="Cost per person child " Text="0" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false" ng-model="$root.costPerPerson.Child" data-id="txtCostPerPersonChild" ng-change="$root.calculateTotalPrice()" />
                             <span class="input-group-addon">Child</span>
                         </div>
                     </div>
-                    <div class="col-xs-3">
+                    <div class="col-xs-3" style="width: 27%">
                         <div class="input-group">
-                            <asp:TextBox ID="txtCostPerPersonBaby" runat="server" CssClass="form-control" placeholder="Cost per person baby " Text="0" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" ng-model="$root.costPerPerson.Baby" data-id="txtCostPerPersonBaby" ng-change="$root.calculateTotalPrice()" />
+                            <asp:TextBox ID="txtCostPerPersonBaby" runat="server" CssClass="form-control" placeholder="Cost per person baby " Text="0" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false" ng-model="$root.costPerPerson.Baby" data-id="txtCostPerPersonBaby" ng-change="$root.calculateTotalPrice()" />
                             <span class="input-group-addon">Baby</span>
                         </div>
                     </div>
@@ -134,19 +134,19 @@
                     <div class="col-xs-2">
                         FOC
                     </div>
-                    <div class="col-xs-3">
+                    <div class="col-xs-3" style="width: 28%">
                         <div class="input-group">
                             <asp:TextBox ID="txtNumberOfDiscountedPaxAdult" runat="server" CssClass="form-control" placeholder="Number of discounted pax adult " Text="0" ng-model="$root.numberOfDiscountedPax.Adult" ng-change="$root.calculateTotalPrice()" />
                             <span class="input-group-addon">Adult</span>
                         </div>
                     </div>
-                    <div class="col-xs-3">
+                    <div class="col-xs-3" style="width: 28%">
                         <div class="input-group">
                             <asp:TextBox ID="txtNumberOfDiscountedPaxChild" runat="server" CssClass="form-control" placeholder="Number of discounted pax child " Text="0" ng-model="$root.numberOfDiscountedPax.Child" ng-change="$root.calculateTotalPrice()" />
                             <span class="input-group-addon">Child</span>
                         </div>
                     </div>
-                    <div class="col-xs-3">
+                    <div class="col-xs-3" style="width: 27%">
                         <div class="input-group">
                             <asp:TextBox ID="txtNumberOfDiscountedPaxBaby" runat="server" CssClass="form-control" placeholder="Number of discounted pax baby " Text="0" ng-model="$root.numberOfDiscountedPax.Baby" ng-change="$root.calculateTotalPrice()" />
                             <span class="input-group-addon">Baby</span>
@@ -157,15 +157,15 @@
             <div class="form-group" ng-controller="totalPriceController" ng-init="$root.calculateTotalPrice()">
                 <div class="row">
                     <div class="col-xs-2">
-                        Total Price
+                        Tổng giá
                     </div>
                     <div class="col-xs-3">
                         <div class="input-group">
-                            <asp:TextBox runat="server" ID="txtTotalPrice" CssClass="form-control" ng-model="totalPrice" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" />
+                            <asp:TextBox runat="server" ID="txtTotalPrice" CssClass="form-control" ng-model="totalPrice" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false" />
                             <span class="input-group-addon">₫</span>
                         </div>
                     </div>
-                    <div class="col-xs-3">
+                    <div class="col-xs-4">
                         <div class="radio-inline">
                             <asp:RadioButton runat="server" ID="rbPayNow" GroupName="payment" Text="Thanh toán ngay" Checked="true"></asp:RadioButton>
                         </div>
@@ -174,7 +174,7 @@
 
                         </div>
                     </div>
-                    <div class="col-xs-3">
+                    <div class="col-xs-3 nopadding-left">
                         <div class="checkbox" style="margin-top: 0px; margin-bottom: 0px">
                             <label>
                                 <asp:CheckBox ID="chkVAT" runat="server" Text="VAT" />
@@ -183,8 +183,18 @@
                     </div>
                 </div>
             </div>
+            <div class="form-group" ng-controller="actuallyCollectedController" ng-init="$root.calculateActuallyCollected()">
+                <div class="row" >
+                    <div class="col-xs-2">
+                        Thực thu
+                    </div>
+                    <div class="col-xs-2">
+                        {{ $root.actuallyCollected + "₫"}}
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-xs-4">
+        <div class="col-xs-5">
             <div class="form-group">
                 <div class="row">
                     <div class="col-xs-3">
@@ -197,30 +207,30 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12" ng-controller="commissionController" ng-init="loadCommission()">
-            <h3>Trích ngoài</h3>
-            <div class="row">
-                <div class="col-xs-12">
-                    <button type="button" class="btn btn-primary" ng-click="addCommission()">Add</button>
-                </div>
-            </div>
+    <div class="row" ng-controller="commissionController" ng-init="loadCommission()">
+        <div class="col-xs-12">
+            <h3>Trích ngoài
+                <button type="button" class="btn btn-primary" ng-click="addCommission()">Add</button></h3>
             <br />
-            <div class="form-group" ng-repeat="item in $root.listCommission">
+            <div class="form-group" ng-show="$root.listCommission.length > 0">
                 <div class="row">
-                    <input type="hidden" ng-model="item.id">
-                    <div class="col-xs-1">
+                    <div class="col-xs-2">
                         Trả cho
                     </div>
                     <div class="col-xs-2">
-                        <input type="text" class="form-control" placeholder="Trả cho" ng-model="item.payFor" />
-                    </div>
-                    <div class="col-xs-1">
                         Số tiền
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" ng-repeat="item in $root.listCommission">
+                <div class="row">
+                    <input type="hidden" ng-model="item.id">
+                    <div class="col-xs-2">
+                        <input type="text" class="form-control" placeholder="Trả cho" ng-model="item.payFor" />
                     </div>
                     <div class="col-xs-2">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Số tiền" ng-model="item.amount" data-control="inputmask" />
+                            <input type="text" class="form-control" placeholder="Số tiền" ng-model="item.amount" data-control="inputmask" ng-change="calculateTotalCommission() " />
                             <span class="input-group-addon">₫</span>
                         </div>
                     </div>
@@ -231,44 +241,55 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12" ng-controller="serviceOutsideController" ng-init="loadServiceOutside()">
-            <h3>Dịch vụ ngoài</h3>
-            <div class="row">
-                <div class="col-xs-12">
-                    <button type="button" class="btn btn-primary" ng-click="addServiceOutside()">Add</button>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-offset-2 col-xs-2" ng-show="$root.listCommission.length > 0">
+                        Tổng : {{ calculateTotalCommission() }}
+                    </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="row" ng-controller="serviceOutsideController" ng-init="loadServiceOutside()">
+        <div class="col-xs-12">
+            <h3>Dịch vụ ngoài 
+                <button type="button" class="btn btn-primary" ng-click="addServiceOutside()">Add</button></h3>
             <br />
+            <div class="form-group" ng-show="$root.listServiceOutside.length > 0">
+                <div class="row">
+                    <div class="col-xs-2">
+                        Dịch vụ
+                    </div>
+                    <div class="col-xs-2">
+                        Đơn giá
+                    </div>
+                    <div class="col-xs-2">
+                        Số lượng
+                    </div>
+                    <div class="col-xs-2">
+                        Thành tiền
+                    </div>
+                </div>
+            </div>
             <div class="form-group" ng-repeat="item in $root.listServiceOutside">
                 <div class="row">
                     <input type="hidden" ng-model="item.id">
                     <div class="col-xs-2">
                         <input type="text" class="form-control" placeholder="Dịch vụ" ng-model="item.service" />
                     </div>
-                    <div class="col-xs-1">
-                        Đơn giá
-                    </div>
                     <div class="col-xs-2">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Đơn giá" ng-model="item.unitPrice" data-control="inputmask" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" />
+                            <input type="text" class="form-control" placeholder="Đơn giá" ng-model="item.unitPrice" data-control="inputmask" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false"
+                                ng-change="calculateServiceOutside($index, item.unitPrice, item.quantity)" />
                             <span class="input-group-addon">₫</span>
                         </div>
                     </div>
-                    <div class="col-xs-1">
-                        Số lượng
-                    </div>
                     <div class="col-xs-2">
-                        <input type="text" class="form-control" placeholder="Số lượng" ng-model="item.quantity" />
-                    </div>
-                    <div class="col-xs-1">
-                        Thành tiền
+                        <input type="text" class="form-control" placeholder="Số lượng" ng-model="item.quantity" ng-change="calculateServiceOutside($index, item.unitPrice, item.quantity)" />
                     </div>
                     <div class="col-xs-2">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Thành tiền" ng-model="item.totalPrice" data-control="inputmask" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" />
+                            <input type="text" class="form-control" placeholder="Thành tiền" ng-model="item.totalPrice" data-control="inputmask" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false" ng-change="calculateTotalServiceOutside()" />
                             <span class="input-group-addon">₫</span>
                         </div>
                     </div>
@@ -279,28 +300,36 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12" ng-controller="guideController" ng-init="loadGuide()">
-            <h3>Hướng dẫn viên</h3>
-            <div class="row">
-                <div class="col-xs-12">
-                    <button type="button" class="btn btn-primary" ng-click="addGuide()">Add</button>
+            <div class="form-group" ng-show="$root.listServiceOutside.length > 0">
+                <div class="row">
+                    <div class="col-xs-offset-6 col-xs-2">
+                        Tổng : {{ calculateTotalServiceOutside() }}
+                    </div>
                 </div>
             </div>
+
+        </div>
+    </div>
+    <div class="row" ng-controller="guideController" ng-init="loadGuide()">
+        <div class="col-xs-12">
+            <h3>Hướng dẫn viên
+                <button type="button" class="btn btn-primary" ng-click="addGuide()">Add</button></h3>
             <br />
-            <div class="form-group" ng-repeat="item in $root.listGuide">
+            <div class="form-group" ng-show="$root.listGuide.length > 0">
                 <div class="row">
-                    <input type="hidden" ng-model="item.id">
-                    <div class="col-xs-1">
+                    <div class="col-xs-2">
                         Tên
                     </div>
                     <div class="col-xs-2">
-                        <input type="text" class="form-control" placeholder="Tên" ng-model="item.name" />
-                    </div>
-                    <div class="col-xs-1">
                         Số điện thoại
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" ng-repeat="item in $root.listGuide">
+                <div class="row">
+                    <input type="hidden" ng-model="item.id">
+                    <div class="col-xs-2">
+                        <input type="text" class="form-control" placeholder="Tên" ng-model="item.name" />
                     </div>
                     <div class="col-xs-2">
                         <input type="text" class="form-control" placeholder="Số điện thoại" ng-model="item.phone" />

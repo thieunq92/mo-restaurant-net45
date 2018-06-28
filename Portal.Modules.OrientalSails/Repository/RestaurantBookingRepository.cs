@@ -26,15 +26,19 @@ namespace Portal.Modules.OrientalSails.Repository
                 .ToList();
         }
 
-        public IList<RestaurantBooking> RestaurantBookingGetAllByDateRange(DateTime from, DateTime to)
+        public IList<RestaurantBooking> RestaurantBookingGetAllByDateRange(DateTime from, DateTime to, int agencyId)
         {
-            return _session.QueryOver<RestaurantBooking>()
-                .Where(x => x.Date >= from && x.Date <= to)
-                .Future()
-                .ToList();
+            var query = _session.QueryOver<RestaurantBooking>().Where(x => x.Date >= from && x.Date <= to);
+            Agency agencyAlias = null;
+            query = query.JoinAlias(x => x.Agency, () => agencyAlias);
+            if (agencyId != -1)
+            {
+                query = query.Where(x => agencyAlias.Id == agencyId);
+            }
+            return query.Future().ToList();                
         }
 
-        public IList<RestaurantBooking> RestaurantBookingGetAllByCriterion(int code, DateTime? date, string agency, int payment)
+        public IList<RestaurantBooking> RestaurantBookingGetAllByCriterion(int code, DateTime? date, string agency, int payment, int agencyId)
         {
             var query = _session.QueryOver<RestaurantBooking>();
             if (code != -1)
@@ -54,6 +58,10 @@ namespace Portal.Modules.OrientalSails.Repository
             if (payment != -1)
             {
                 query = query.Where(x => x.Payment == payment);
+            }
+            if (agencyId != -1)
+            {
+                query = query.Where(x => agencyAlias.Id == agencyId);
             }
             return query.Future().ToList();
         }

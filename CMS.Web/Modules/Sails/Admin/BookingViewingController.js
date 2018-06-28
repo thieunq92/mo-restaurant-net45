@@ -21,10 +21,45 @@
 }])
 moduleBookingViewing.controller("priceController", ["$rootScope", "$scope", "$http", function ($rootScope, $scope, $http) {
     $rootScope.calculateTotalPrice = function () {
+        var numberOfPaxAdult = 0;
+        try {
+            numberOfPaxAdult = parseInt($rootScope.numberOfPax.Adult);
+        } catch (Exception) { }
+        var numberOfDiscountedPaxAdult = 0;
+        try {
+            numberOfDiscountedPaxAdult = parseInt($rootScope.numberOfDiscountedPax.Adult);
+        } catch (Exception) { }
+        var costPerPersonAdult = 0.0;
+        try {
+            costPerPersonAdult = parseFloat($rootScope.costPerPerson.Adult.replace(/,/g, ''));
+        } catch (Exception) { }
+        try {
+            numberOfPaxChild = parseInt($rootScope.numberOfPax.Child);
+        } catch (Exception) { }
+        var numberOfDiscountedPaxChild = 0;
+        try {
+            numberOfDiscountedPaxChild = parseInt($rootScope.numberOfDiscountedPax.Child);
+        } catch (Exception) { }
+        var costPerPersonChild = 0.0;
+        try {
+            costPerPersonChild = parseFloat($rootScope.costPerPerson.Child.replace(/,/g, ''));
+        } catch (Exception) { }
+        try {
+            numberOfPaxBaby = parseInt($rootScope.numberOfPax.Baby);
+        } catch (Exception) { }
+        var numberOfDiscountedPaxBaby = 0;
+        try {
+            numberOfDiscountedPaxBaby = parseInt($rootScope.numberOfDiscountedPax.Baby);
+        } catch (Exception) { }
+        var costPerPersonBaby = 0.0;
+        try {
+            costPerPersonBaby = parseFloat($rootScope.costPerPerson.Baby.replace(/,/g, ''));
+        } catch (Exception) { }
         $rootScope.totalPrice =
-            (parseInt($rootScope.numberOfPax.Adult) - parseInt($rootScope.numberOfDiscountedPax.Adult)) * parseFloat($rootScope.costPerPerson.Adult.replace(/,/g, ''))
-            + (parseInt($rootScope.numberOfPax.Child) - parseInt($rootScope.numberOfDiscountedPax.Child)) * parseFloat($rootScope.costPerPerson.Child.replace(/,/g, ''))
-            + (parseInt($rootScope.numberOfPax.Baby) - parseInt($rootScope.numberOfDiscountedPax.Baby)) * parseFloat($rootScope.costPerPerson.Baby.replace(/,/g, ''))
+            (numberOfPaxAdult - numberOfDiscountedPaxAdult) * costPerPersonAdult
+            + (numberOfPaxChild - numberOfDiscountedPaxChild) * costPerPersonChild
+            + (numberOfPaxBaby - numberOfDiscountedPaxBaby) * costPerPersonChild
+            + $rootScope.totalServiceOutside;
         $rootScope.totalPrice = $rootScope.totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 }])
@@ -91,6 +126,16 @@ moduleBookingViewing.controller("commissionController", ["$rootScope", "$scope",
     $scope.removeCommission = function (index) {
         $rootScope.listCommission.splice(index, 1);
     }
+    $rootScope.totalCommission = 0;
+    $scope.calculateTotalCommission = function () {
+        var total = 0;
+        for (var i = 0; i < $rootScope.listCommission.length; i++) {
+            var commission = $rootScope.listCommission[i];
+            total += parseFloat(commission.amount.toString().replace(/,/g, ''));
+        }
+        $rootScope.totalCommission = total;
+        return total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
 }])
 moduleBookingViewing.controller("serviceOutsideController", ["$rootScope", "$scope", "$http", "$timeout", function ($rootScope, $scope, $http, $timeout) {
     $rootScope.listServiceOutside = []
@@ -117,7 +162,6 @@ moduleBookingViewing.controller("serviceOutsideController", ["$rootScope", "$sco
             })
         }, 0);
     }
-
     $scope.addServiceOutside = function () {
         $rootScope.listServiceOutside.push({ id: -1, service: "", unitPrice: 0, quantity: 0, totalPrice: 0, restaurantBookingId: $rootScope.restaurantBookingId })
         $timeout(function () {
@@ -134,6 +178,23 @@ moduleBookingViewing.controller("serviceOutsideController", ["$rootScope", "$sco
     }
     $scope.removeServiceOutside = function (index) {
         $rootScope.listServiceOutside.splice(index, 1);
+    }
+    $scope.calculateServiceOutside = function (index, unitPrice, quantity) {
+        $rootScope.listServiceOutside[index].totalPrice = parseFloat(unitPrice.replace(/,/g, '')) * parseInt(quantity);
+        $rootScope.listServiceOutside[index].totalPrice = $rootScope.listServiceOutside[index].totalPrice.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+    $rootScope.totalServiceOutside = 0;
+    $rootScope.$watch('$root.totalServiceOutside', function () {
+        $rootScope.calculateTotalPrice();
+    })
+    $rootScope.calculateTotalServiceOutside = function () {
+        var total = 0;
+        for (var i = 0; i < $rootScope.listServiceOutside.length; i++) {
+            var serviceOutside = $rootScope.listServiceOutside[i];
+            total += parseFloat(serviceOutside.totalPrice.toString().replace(/,/g, ''));
+        }
+        $rootScope.totalServiceOutside = total;
+        return total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 }])
 moduleBookingViewing.controller("guideController", ["$rootScope", "$scope", "$http", "$timeout", function ($rootScope, $scope, $http, $timeout) {
@@ -152,11 +213,24 @@ moduleBookingViewing.controller("guideController", ["$rootScope", "$scope", "$ht
     }
 
     $scope.addGuide = function () {
-        $rootScope.listGuide.push({ id: -1, name:"", phone:"", restaurantBookingId: $rootScope.restaurantBookingId })
+        $rootScope.listGuide.push({ id: -1, name: "", phone: "", restaurantBookingId: $rootScope.restaurantBookingId })
     }
     $scope.removeGuide = function (index) {
         $rootScope.listGuide.splice(index, 1);
     }
+}])
+moduleBookingViewing.controller("actuallyCollectedController", ["$rootScope", "$scope", "$http", function ($rootScope, $scope, $http) {
+    $rootScope.actuallyCollected = 0;
+    $rootScope.calculateActuallyCollected = function () {
+        $rootScope.actuallyCollected = parseFloat($rootScope.totalPrice.toString().replace(/,/g, '')) - parseFloat($rootScope.totalCommission.toString().replace(/,/g, ''));
+        $rootScope.actuallyCollected = $rootScope.actuallyCollected.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    }
+    $rootScope.$watch('$root.totalPrice', function () {
+        $rootScope.calculateActuallyCollected();
+    })
+    $rootScope.$watch('$root.totalCommission', function () {
+        $rootScope.calculateActuallyCollected();
+    })
 }])
 moduleBookingViewing.controller("saveController", ["$rootScope", "$scope", "$http", function ($rootScope, $scope, $http) {
     $scope.save = function () {

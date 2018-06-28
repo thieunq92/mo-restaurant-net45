@@ -44,6 +44,7 @@ namespace Portal.Modules.OrientalSails.Domain
         public virtual int PartOfDay { get; set; }
         public virtual IList<PaymentHistory> ListPaymentHistory { get; set; }
         public virtual IList<Guide> ListGuide { get; set; }
+        public virtual IList<Commission> ListCommission { get; set; }
         public virtual String Code
         {
             get
@@ -69,5 +70,14 @@ namespace Portal.Modules.OrientalSails.Domain
                 return nameOfGuides;
             }
         }
+        public virtual double ActuallyCollected {
+            get {
+                var totalCommission = 0.0;
+                foreach (var commission in ListCommission) {
+                    totalCommission += commission.Amount;
+                }
+                return TotalPrice - totalCommission;
+            }
+        } 
     }
 }
