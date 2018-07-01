@@ -76,15 +76,6 @@ namespace Portal.Modules.OrientalSails.Web {
         protected global::System.Web.UI.HtmlControls.HtmlInputText agencySelector;
         
         /// <summary>
-        /// ddlBooker control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlBooker;
-        
-        /// <summary>
         /// txtNumberOfPaxAdult control.
         /// </summary>
         /// <remarks>

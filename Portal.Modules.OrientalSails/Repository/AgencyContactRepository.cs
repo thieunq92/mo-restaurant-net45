@@ -38,5 +38,10 @@ namespace Portal.Modules.OrientalSails.Repository
         {
             return _session.QueryOver<AgencyContact>().Where(x => x.Id == bookerId).FutureValue().Value;
         }
+
+        public AgencyContact BookerGetById(int bookerId)
+        {
+            return _session.QueryOver<AgencyContact>().Where(x => x.Id == bookerId).FutureValue().Value;
+        }
     }
 }

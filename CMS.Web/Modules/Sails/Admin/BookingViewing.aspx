@@ -10,7 +10,8 @@
     </div>
     <div class="row" ng-controller="saveController" ng-init="$root.restaurantBookingId = <%= RestaurantBooking.Id %>">
         <div class="col-xs-12">
-            <asp:Button CssClass="btn btn-primary" ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" ng-click="save()" />
+            <asp:Button CssClass="btn btn-primary" ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" ng-click="save()" style="display:none" />
+            <button id="btnSave" type="button" ng-click="save()" class="btn btn-primary" data-uniqueId = "<%= btnSave.UniqueID %>">Save</button>
         </div>
     </div>
     <br />
@@ -59,7 +60,7 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group" ng-controller="bookerController" ng-init="agencyId=<%= RestaurantBooking.Agency.Id %>;bookerGetByAgencyId()">
+            <div class="form-group" ng-controller="bookerController" ng-init="agencyId=<%= RestaurantBooking.Agency.Id %>;bookerGetAllByAgencyId()">
                 <div class="row">
                     <div class="col-xs-2">
                         Agency
@@ -67,15 +68,16 @@
                     <div class="col-xs-4">
                         <input type="text" name="txtAgency" id="ctl00_AdminContent_agencySelectornameid" class="form-control"
                             readonly placeholder="Click to select agency" value="<%= RestaurantBooking.Agency.Name %>" />
-                        <input id="agencySelector" type="text" runat="server" ng-model="agencyId" ng-change="bookerGetByAgencyId()" data-id="hidAgencyId" style="display: none" />
+                        <input id="agencySelector" type="text" runat="server" ng-model="agencyId" ng-change="bookerGetAllByAgencyId()" data-id="hidAgencyId" style="display: none" />
                     </div>
                     <div class="col-xs-2">
                         Booker
                     </div>
                     <div class="col-xs-4">
-                        <asp:DropDownList runat="server" ID="ddlBooker" CssClass="form-control" AppendDataBoundItems="true">
-                            <asp:ListItem Value="-1">-- Booker --</asp:ListItem>
-                        </asp:DropDownList>
+                        <select ng-model="$root.bookerId" class="form-control" convert-to-number ng-init="$root.bookerId = <%= RestaurantBooking.Booker != null ? RestaurantBooking.Booker.Id : -1 %>">
+                            <option value="-1">-- Booker --</option>
+                            <option ng-repeat="item in listBooker" value="{{item.id}}">{{item.name}}</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -184,7 +186,7 @@
                 </div>
             </div>
             <div class="form-group" ng-controller="actuallyCollectedController" ng-init="$root.calculateActuallyCollected()">
-                <div class="row" >
+                <div class="row">
                     <div class="col-xs-2">
                         Thực thu
                     </div>

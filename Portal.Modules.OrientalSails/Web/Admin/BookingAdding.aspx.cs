@@ -55,7 +55,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                 Date = date,
                 Agency = agency,
                 Status = 1,
-                PartOfDay = 1,
+                PartOfDay = 2,
             };
             BookingAddingBLL.RestaurantBookingSaveOrUpdate(restaurantBooking);
             Response.Redirect("BookingViewing.aspx?NodeId=1&SectionId=15&bi="+restaurantBooking.Id);

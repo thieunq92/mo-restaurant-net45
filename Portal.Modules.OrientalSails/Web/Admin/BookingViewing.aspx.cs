@@ -193,10 +193,7 @@ namespace Portal.Modules.OrientalSails.Web
             }
             RestaurantBooking.VAT = chkVAT.Checked;
             RestaurantBooking.PartOfDay = Int32.Parse(ddlPartOfDay.SelectedValue);
-            RestaurantBooking.TotalPrice =
-                (RestaurantBooking.NumberOfPaxAdult - RestaurantBooking.NumberOfDiscountedPaxAdult) * RestaurantBooking.CostPerPersonAdult
-                + (RestaurantBooking.NumberOfPaxChild - RestaurantBooking.NumberOfDiscountedPaxChild) * RestaurantBooking.CostPerPersonChild
-                + (RestaurantBooking.NumberOfPaxBaby - RestaurantBooking.NumberOfDiscountedPaxBaby) * RestaurantBooking.CostPerPersonBaby;
+            RestaurantBooking.TotalPrice = Double.Parse(txtTotalPrice.Text);
             BookingViewingBLL.RestaurantBookingSaveOrUpdate(RestaurantBooking);
             ShowSuccess("Cập nhật booking thành công");
         }

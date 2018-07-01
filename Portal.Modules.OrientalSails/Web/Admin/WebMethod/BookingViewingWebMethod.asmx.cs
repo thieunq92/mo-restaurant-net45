@@ -45,6 +45,23 @@ namespace Portal.Modules.OrientalSails.Web.Admin.WebMethod
             return JsonConvert.SerializeObject(menuDTO);
         }
         [WebMethod]
+        public string BookerGetAllByAgencyId(int agencyId)
+        {
+            var listBooker = BookingViewingBLL.BookerGetAllByAgencyId(agencyId);
+            var listBookerDTO = new List<BookerDTO>();
+            foreach (var booker in listBooker)
+            {
+                var bookerDTO = new BookerDTO
+                {
+                    id = booker.Id,
+                    name = booker.Name,
+                };
+                listBookerDTO.Add(bookerDTO);
+            }
+            return JsonConvert.SerializeObject(listBookerDTO);
+
+        }
+        [WebMethod]
         public void CommissionSave(IList<CommissionDTO> listCommissionDTO, int restaurantBookingId)
         {
             var listNewCommissionId = new List<int>();
@@ -193,7 +210,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin.WebMethod
             var listNewGuideId = new List<int>();
             foreach (var guideDTO in listGuideDTO)
             {
-                Guide guide = null;     
+                Guide guide = null;
                 var guideDTORestaurantBookingId = 0;
                 try
                 {
@@ -243,6 +260,14 @@ namespace Portal.Modules.OrientalSails.Web.Admin.WebMethod
             }
             Dispose();
             return JsonConvert.SerializeObject(listGuideDTO);
+        }
+        [WebMethod]
+        public void BookerSave(int bookerId, int restaurantBookingId)
+        {
+            var restaurantBooking = BookingViewingBLL.RestaurantBookingGetById(restaurantBookingId);
+            restaurantBooking.Booker = BookingViewingBLL.BookerGetById(bookerId);
+            BookingViewingBLL.RestaurantBookingSaveOrUpdate(restaurantBooking);
+            Dispose();
         }
         public new void Dispose()
         {

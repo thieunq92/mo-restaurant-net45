@@ -15,6 +15,7 @@ namespace Portal.Modules.OrientalSails.BusinessLogic
         public CommissionRepository CommissionRepository { get; set; }
         public ServiceOutsideRepository ServiceOutsideRepository { get; set; }
         public GuideRepository GuideRepository { get; set; }
+        public AgencyContactRepository AgencyContactRepository { get; set; }
         public BookingViewingBLL()
         {
             MenuRepository = new MenuRepository();
@@ -23,6 +24,7 @@ namespace Portal.Modules.OrientalSails.BusinessLogic
             CommissionRepository = new CommissionRepository();
             ServiceOutsideRepository = new ServiceOutsideRepository();
             GuideRepository = new GuideRepository();
+            AgencyContactRepository = new AgencyContactRepository();
         }
         public void Dispose()
         {
@@ -54,6 +56,10 @@ namespace Portal.Modules.OrientalSails.BusinessLogic
             if (GuideRepository != null) {
                 GuideRepository.Dispose();
                 GuideRepository = null;
+            }
+            if(AgencyContactRepository != null){
+                AgencyContactRepository.Dispose();
+                AgencyContactRepository = null;
             }
         }
 
@@ -140,6 +146,16 @@ namespace Portal.Modules.OrientalSails.BusinessLogic
         public void GuideDelete(Guide guide)
         {
             GuideRepository.Delete(guide);
+        }
+
+        public IList<AgencyContact> BookerGetAllByAgencyId(int agencyId)
+        {
+            return AgencyContactRepository.AgencyContactGetAllByAgency(agencyId);
+        }
+
+        public AgencyContact BookerGetById(int bookerId)
+        {
+            return AgencyContactRepository.BookerGetById(bookerId);
         }
     }
 }

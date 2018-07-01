@@ -1351,6 +1351,7 @@
     <None Include="Modules\Sails\Admin\ExportTemplates\Comments.xls" />
     <None Include="Modules\Sails\Admin\ExportTemplates\CongNo.xls" />
     <None Include="Modules\Sails\Admin\ExportTemplates\Danh_sach_dai_ly.xls" />
+    <Content Include="Modules\Sails\Admin\ExportTemplates\DoanhThuNgay.xlsx" />
     <None Include="Modules\Sails\Admin\ExportTemplates\Feedback.xls" />
     <None Include="Modules\Sails\Admin\ExportTemplates\FormTamTru2.xls" />
     <Content Include="Modules\Sails\Admin\ExportTemplates\Contract.doc" />
@@ -1425,6 +1426,10 @@
     <Reference Include="Castle.Windsor, Version=2.5.1.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\net45\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.8.1.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.8.1\lib\net40\DocumentFormat.OpenXml.dll</HintPath>
     </Reference>
     <Reference Include="FredCK.FCKeditorV2">
       <HintPath>..\lib\net45\FredCK.FCKeditorV2.dll</HintPath>
@@ -1527,6 +1532,7 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -1536,6 +1542,7 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.XML" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CMS.Core\CMS.Core.csproj">

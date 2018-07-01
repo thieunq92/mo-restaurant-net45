@@ -85,6 +85,7 @@
     <Compile Include="BusinessLogic\ReceivablesBLL.cs" />
     <Compile Include="BusinessLogic\RestaurantBookingByDateBLL.cs" />
     <Compile Include="BusinessLogic\RestaurantBookingPaymentBLL.cs" />
+    <Compile Include="DataTransferObject\BookerDTO.cs" />
     <Compile Include="DataTransferObject\ComissionDTO.cs" />
     <Compile Include="DataTransferObject\GuideDTO.cs" />
     <Compile Include="DataTransferObject\MenuDTO.cs" />
@@ -1509,6 +1510,10 @@
       <HintPath>..\lib\net45\Common.Logging.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.8.1.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.8.1\lib\net40\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
     <Reference Include="FredCK.FCKeditorV2, Version=2.5.2912.21007, Culture=neutral, PublicKeyToken=4f86767c9b519a06, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\net45\FredCK.FCKeditorV2.dll</HintPath>
@@ -1595,6 +1600,7 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.DynamicData" />
@@ -1603,6 +1609,7 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.XML" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CMS.Core\CMS.Core.csproj">

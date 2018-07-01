@@ -51,7 +51,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                     agencyId = Int32.Parse(Request.QueryString["ai"]);
                 }
                 catch { }
-                rptReceivablesTable.DataSource = ReceivablesBLL.RestaurantBookingGetAllByDateRange(from, lastDayOfMonth, agencyId);
+                rptReceivablesTable.DataSource = ReceivablesBLL.RestaurantBookingGetAllByDateRange(from, to, agencyId);
                 rptReceivablesTable.DataBind();
             }
         }

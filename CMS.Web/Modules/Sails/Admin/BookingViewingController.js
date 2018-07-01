@@ -70,15 +70,15 @@ moduleBookingViewing.controller("numberOfDiscountedPaxController", ["$rootScope"
 moduleBookingViewing.controller("totalPriceController", ["$rootScope", "$scope", "$http", function ($rootScope, $scope, $http) {
 }])
 moduleBookingViewing.controller("bookerController", ["$rootScope", "$scope", "$http", function ($rootScope, $scope, $http) {
-    $scope.bookerGetByAgencyId = function (ev) {
+    $scope.bookerGetAllByAgencyId = function () {
         $http({
             method: "POST",
-            url: "WebMethod/BookingViewingWebMethod.asmx/BookerGetByAgencyId",
+            url: "WebMethod/BookingViewingWebMethod.asmx/BookerGetAllByAgencyId",
             data: {
                 "agencyId": $scope.agencyId,
             },
         }).then(function (response) {
-            var menu = JSON.parse(response.data.d);
+            $scope.listBooker = JSON.parse(response.data.d);
         }, function (response) {
         })
     }
@@ -221,6 +221,7 @@ moduleBookingViewing.controller("guideController", ["$rootScope", "$scope", "$ht
 }])
 moduleBookingViewing.controller("actuallyCollectedController", ["$rootScope", "$scope", "$http", function ($rootScope, $scope, $http) {
     $rootScope.actuallyCollected = 0;
+    $rootScope.totalCommission = 0;
     $rootScope.calculateActuallyCollected = function () {
         $rootScope.actuallyCollected = parseFloat($rootScope.totalPrice.toString().replace(/,/g, '')) - parseFloat($rootScope.totalCommission.toString().replace(/,/g, ''));
         $rootScope.actuallyCollected = $rootScope.actuallyCollected.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
@@ -233,6 +234,10 @@ moduleBookingViewing.controller("actuallyCollectedController", ["$rootScope", "$
     })
 }])
 moduleBookingViewing.controller("saveController", ["$rootScope", "$scope", "$http", function ($rootScope, $scope, $http) {
+    $scope.commissionSaveState = "undone";
+    $scope.serviceOutsideSaveState = "undone";
+    $scope.guideSaveState = "undone";
+    $scope.bookerSaveState = "undone";
     $scope.save = function () {
         $http({
             method: "POST",
@@ -242,6 +247,7 @@ moduleBookingViewing.controller("saveController", ["$rootScope", "$scope", "$htt
                 "restaurantBookingId": $rootScope.restaurantBookingId,
             },
         }).then(function (response) {
+            $scope.commissionSaveState = "done";
         }, function (response) {
         })
         $http({
@@ -252,6 +258,7 @@ moduleBookingViewing.controller("saveController", ["$rootScope", "$scope", "$htt
                 "restaurantBookingId": $rootScope.restaurantBookingId,
             },
         }).then(function (response) {
+            $scope.serviceOutsideSaveState = "done";
         }, function (response) {
         })
         $http({
@@ -262,7 +269,28 @@ moduleBookingViewing.controller("saveController", ["$rootScope", "$scope", "$htt
                 "restaurantBookingId": $rootScope.restaurantBookingId,
             },
         }).then(function (response) {
+            $scope.guideSaveState = "done"
         }, function (response) {
+        })
+        $http({
+            method: "POST",
+            url: "WebMethod/BookingViewingWebMethod.asmx/BookerSave",
+            data: {
+                "bookerId": $rootScope.bookerId,
+                "restaurantBookingId": $rootScope.restaurantBookingId,
+            },
+        }).then(function (response) {
+            $scope.bookerSaveState = "done"
+        }, function (response) {
+            alert(response);
+        })
+        $scope.$watchGroup(["commissionSaveState", "serviceOutsideSaveState", "guideSaveState", "bookerSaveState"], function (newValues, oldValues, scope) {
+            if($scope.commissionSaveState == "done" 
+                && $scope.serviceOutsideSaveState == "done" 
+                && $scope.guideSaveState == "done"
+                && $scope.bookerSaveState == "done") {
+                setTimeout(function () { __doPostBack($("#btnSave").attr("data-uniqueId"), "OnClick"); }, 1);
+            }
         })
     };
 }])

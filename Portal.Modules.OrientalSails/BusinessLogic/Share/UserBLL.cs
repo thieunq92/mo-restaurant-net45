@@ -27,7 +27,14 @@ namespace Portal.Modules.OrientalSails.BusinessLogic.Share
 
         public User UserGetCurrent()
         {
-            return UserRepository.UserGetById(Convert.ToInt32(HttpContext.Current.User.Identity.Name));
+            try
+            {
+                return UserRepository.UserGetById(Convert.ToInt32(HttpContext.Current.User.Identity.Name));
+            }
+            catch { 
+                HttpContext.Current.Response.Redirect("/Login.aspx?ReturnURL="+HttpContext.Current.Request.Url.AbsoluteUri);
+                return null;
+            }  
         }
 
 

@@ -755,3 +755,5 @@ E:\Workspace\Visual Studio 2013 Projects\restaurant-net45\Portal.Modules.Orienta
 E:\Workspace\Visual Studio 2013 Projects\restaurant-net45\Portal.Modules.OrientalSails\obj\Debug\vi\Portal.Modules.OrientalSails.resources.dll
 E:\Workspace\Visual Studio 2013 Projects\restaurant-net45\Portal.Modules.OrientalSails\obj\Debug\Portal.Modules.OrientalSails.dll
 E:\Workspace\Visual Studio 2013 Projects\restaurant-net45\Portal.Modules.OrientalSails\obj\Debug\Portal.Modules.OrientalSails.pdb
+E:\Workspace\Visual Studio 2013 Projects\restaurant-net45\Portal.Modules.OrientalSails\bin\DocumentFormat.OpenXml.dll
+E:\Workspace\Visual Studio 2013 Projects\restaurant-net45\Portal.Modules.OrientalSails\bin\DocumentFormat.OpenXml.xml

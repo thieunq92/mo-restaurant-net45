@@ -1,8 +1,11 @@
-﻿using Portal.Modules.OrientalSails.BusinessLogic;
+﻿using GemBox.Spreadsheet;
+using Portal.Modules.OrientalSails.BusinessLogic;
+using Portal.Modules.OrientalSails.Domain;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -22,9 +25,9 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                 return restaurantBookingByDateBLL;
             }
         }
-        protected void Page_Load(object sender, EventArgs e)
+        public DateTime Date
         {
-            if (!Page.IsPostBack)
+            get
             {
                 var date = DateTime.Now.Date;
                 try
@@ -32,8 +35,15 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                     date = DateTime.ParseExact(Request.QueryString["d"], "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 }
                 catch { }
-                txtDate.Text = date.ToString("dd/MM/yyyy");
-                rptBooking.DataSource = RestaurantBookingByDateBLL.RestaurantBookingGetAllByDate(date).OrderBy(x=>x.PartOfDay).ThenBy(x=>x.Time);
+                return date;
+            }
+        }
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!Page.IsPostBack)
+            {
+                txtDate.Text = Date.ToString("dd/MM/yyyy");
+                rptBooking.DataSource = RestaurantBookingByDateBLL.RestaurantBookingGetAllByDate(Date).OrderBy(x => x.PartOfDay).ThenBy(x => x.Time);
                 rptBooking.DataBind();
             }
         }
@@ -71,6 +81,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
         int totalChild = 0;
         int totalBaby = 0;
         double totalOfTotalPrice = 0.0;
+        double totalActuallyCollected = 0.0;
         protected void rptBooking_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
@@ -103,16 +114,49 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                 }
                 catch { }
                 totalOfTotalPrice += totalPrice;
-            }else if(e.Item.ItemType == ListItemType.Footer){
+                var actuallyCollected = 0.0;
+                try
+                {
+                    actuallyCollected = Convert.ToDouble(DataBinder.Eval(e.Item.DataItem, "ActuallyCollected"));
+                }
+                catch { }
+                totalActuallyCollected += actuallyCollected;
+                var rptServiceOutside = e.Item.FindControl("rptServiceOutside") as Repeater;
+                rptServiceOutside.DataSource = ((IList<ServiceOutside>)DataBinder.Eval(e.Item.DataItem, "ListServiceOutside"));
+                rptServiceOutside.DataBind();
+            }
+            else if (e.Item.ItemType == ListItemType.Footer)
+            {
                 var lblTotalAdult = e.Item.FindControl("lblTotalAdult") as Label;
                 var lblTotalChild = e.Item.FindControl("lblTotalChild") as Label;
                 var lblTotalBaby = e.Item.FindControl("lblTotalBaby") as Label;
                 var lblTotalOfTotalPrice = e.Item.FindControl("lblTotalOfTotalPrice") as Label;
+                var lblTotalActuallyCollected = e.Item.FindControl("lblTotalActuallyCollected") as Label;
                 lblTotalAdult.Text = totalAdult.ToString();
                 lblTotalChild.Text = totalChild.ToString();
                 lblTotalBaby.Text = totalBaby.ToString();
                 lblTotalOfTotalPrice.Text = totalOfTotalPrice.ToString("#,##0.##") + "₫";
+                lblTotalActuallyCollected.Text = totalActuallyCollected.ToString("#,##0.##") + "₫";
             }
+        }
+
+        protected void btnSalesReportExport_Click(object sender, EventArgs e)
+        {
+            var excelFile = new ExcelFile();
+            excelFile.LoadXls(Server.MapPath("/Modules/Sails/Admin/ExportTemplates/DoanhThuNgay.xlsx"));
+            var workSheet = excelFile.Worksheets[0];
+            workSheet.Cells["F4"].Value = Date.ToString("dd/MM/yyyy");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.ContentType = "application/vnd.ms-excel";
+            Response.AppendHeader("content-disposition", "attachment; filename= test.xls");
+            var memoryStream = new MemoryStream();
+            excelFile.SaveXls(memoryStream);
+            Response.OutputStream.Write(memoryStream.GetBuffer(), 0, memoryStream.GetBuffer().Length);
+            Response.OutputStream.Flush();
+            Response.OutputStream.Close();
+            memoryStream.Close();
+            Response.End();
         }
     }
 }
