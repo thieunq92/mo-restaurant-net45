@@ -14,6 +14,7 @@
             $rootScope.costPerPerson.Adult = menu.Cost.toString();
             $rootScope.costPerPerson.Child = menu.Cost.toString();
             $rootScope.costPerPerson.Baby = menu.Cost.toString();
+            $("[data-id='txtMenuDetail']").val(menu.Detail)
             $rootScope.calculateTotalPrice();
         }, function (response) {
         })

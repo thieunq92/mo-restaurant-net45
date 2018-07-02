@@ -74,6 +74,7 @@ namespace Portal.Modules.OrientalSails.Web
                 txtNumberOfDiscountedPaxChild.Text = RestaurantBooking.NumberOfDiscountedPaxChild.ToString();
                 txtNumberOfDiscountedPaxBaby.Text = RestaurantBooking.NumberOfDiscountedPaxBaby.ToString();
                 txtSpecialRequest.Text = RestaurantBooking.SpecialRequest;
+                txtMenuDetail.Text = RestaurantBooking.MenuDetail;
                 if (RestaurantBooking.Payment == 1)
                 {
                     rbPayNow.Checked = true;
