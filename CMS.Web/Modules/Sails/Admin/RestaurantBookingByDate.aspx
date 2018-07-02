@@ -128,8 +128,8 @@
                                     <a href="MenuEditing.aspx?NodeId=1&SectionId=15&mi=<%# Eval("Menu") != null ? Eval("Menu.Id"):""%>"><%# Eval("Menu") != null ? Eval("Menu.Name"):""%>
                                 </td>
                                 <td rowspan="<%# ((IList<ServiceOutside>)Eval("ListServiceOutside")).Count + 1%>" style="text-align: left!important">
-                                    <%# ((string)Eval("SpecialRequest")).Replace("\n","<br/>")%>
-
+                                    <%# !String.IsNullOrEmpty((string)Eval("SpecialRequest")) ? ((string)Eval("SpecialRequest")).Replace("\n","<br/>") + "<br/>": ""%>
+                                    <%# !String.IsNullOrEmpty((string)Eval("MenuDetail")) ? ((string)Eval("MenuDetail")).Replace("\n","<br/>") : ""%>
                                 </td>
                                 <td rowspan="<%# ((IList<ServiceOutside>)Eval("ListServiceOutside")).Count + 1%>">
                                     <%# ((bool)Eval("VAT")) == true ? "Yes" : ""%>

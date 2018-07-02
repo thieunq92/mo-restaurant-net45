@@ -39,7 +39,8 @@ namespace Portal.Modules.OrientalSails.Web.Admin.WebMethod
             {
                 Id = menu.Id,
                 Name = menu.Name,
-                Cost = menu.Cost
+                Cost = menu.Cost,
+                Details = menu.Details
             };
             Dispose();
             return JsonConvert.SerializeObject(menuDTO);

@@ -212,7 +212,7 @@
                     <div class="col-xs-3">
                     </div>
                     <div class="col-xs-9">
-                        <asp:TextBox runat="server" ID="txtMenuDetail" CssClass="form-control" TextMode="MultiLine" placeholder="Menu" Rows="15"/>
+                        <asp:TextBox runat="server" ID="txtMenuDetail" data-id="txtMenuDetail" CssClass="form-control" TextMode="MultiLine" placeholder="Menu" Rows="15"/>
                     </div>
                 </div>
             </div>

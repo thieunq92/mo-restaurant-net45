@@ -7,16 +7,23 @@
                 "menuId": $scope.menuId,
             },
         }).then(function (response) {
-            var menu = JSON.parse(response.data.d)
+            var menu = JSON.parse(response.data.d);
             $("[data-id='txtCostPerPersonAdult']").val(menu.Cost);
             $("[data-id='txtCostPerPersonChild']").val(menu.Cost);
             $("[data-id='txtCostPerPersonBaby']").val(menu.Cost);
             $rootScope.costPerPerson.Adult = menu.Cost.toString();
             $rootScope.costPerPerson.Child = menu.Cost.toString();
             $rootScope.costPerPerson.Baby = menu.Cost.toString();
-            $("[data-id='txtMenuDetail']").val(menu.Detail)
+            $("[data-id='txtMenuDetail']").val(menu.Details);
             $rootScope.calculateTotalPrice();
         }, function (response) {
+            $("[data-id='txtCostPerPersonAdult']").val(0);
+            $("[data-id='txtCostPerPersonChild']").val(0);
+            $("[data-id='txtCostPerPersonBaby']").val(0);
+            $rootScope.costPerPerson.Adult = "0";
+            $rootScope.costPerPerson.Child = "0";
+            $rootScope.costPerPerson.Baby = "0";
+            $("[data-id='txtMenuDetail']").val("");
         })
     }
 }])

@@ -1,4 +1,6 @@
-﻿using GemBox.Spreadsheet;
+﻿using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Spreadsheet;
+using GemBox.Spreadsheet;
 using Portal.Modules.OrientalSails.BusinessLogic;
 using Portal.Modules.OrientalSails.Domain;
 using System;
@@ -142,21 +144,28 @@ namespace Portal.Modules.OrientalSails.Web.Admin
 
         protected void btnSalesReportExport_Click(object sender, EventArgs e)
         {
-            var excelFile = new ExcelFile();
-            excelFile.LoadXls(Server.MapPath("/Modules/Sails/Admin/ExportTemplates/DoanhThuNgay.xlsx"));
-            var workSheet = excelFile.Worksheets[0];
-            workSheet.Cells["F4"].Value = Date.ToString("dd/MM/yyyy");
-            Response.Clear();
-            Response.Buffer = true;
-            Response.ContentType = "application/vnd.ms-excel";
-            Response.AppendHeader("content-disposition", "attachment; filename= test.xls");
-            var memoryStream = new MemoryStream();
-            excelFile.SaveXls(memoryStream);
-            Response.OutputStream.Write(memoryStream.GetBuffer(), 0, memoryStream.GetBuffer().Length);
-            Response.OutputStream.Flush();
-            Response.OutputStream.Close();
-            memoryStream.Close();
-            Response.End();
+            //var excelFile = new ExcelFile();
+            //excelFile.LoadXls(Server.MapPath("/Modules/Sails/Admin/ExportTemplates/DoanhThuNgay.xlsx"));
+            //var workSheet = excelFile.Worksheets[0];
+            //workSheet.Cells["F4"].Value = Date.ToString("dd/MM/yyyy");
+            //Response.Clear();
+            //Response.Buffer = true;
+            //Response.ContentType = "application/vnd.ms-excel";
+            //Response.AppendHeader("content-disposition", "attachment; filename= test.xls");
+            //var memoryStream = new MemoryStream();
+            //excelFile.SaveXls(memoryStream);
+            //Response.OutputStream.Write(memoryStream.GetBuffer(), 0, memoryStream.GetBuffer().Length);
+            //Response.OutputStream.Flush();
+            //Response.OutputStream.Close();
+            //memoryStream.Close();
+            //Response.End();
+            using (SpreadsheetDocument doc = SpreadsheetDocument.Open(Server.MapPath("/Modules/Sails/Admin/ExportTemplates/DoanhThuNgay.xlsx"), false))
+            {
+                WorkbookPart workbookPart = doc.WorkbookPart;
+                Workbook workbook = doc.WorkbookPart.Workbook;
+                string sheetName = workbookPart.Workbook.Descendants<Sheet>().ElementAt(1).Name;
+                IEnumerable<Sheet> sheets = doc.WorkbookPart.Workbook.Descendants<Sheet>().Where(s => s.Name == "Census Template for Import");
+            };
         }
 
         public string GetServiceOutsideDetail(ServiceOutside serviceOutside)
