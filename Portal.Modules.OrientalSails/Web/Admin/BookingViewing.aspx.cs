@@ -181,8 +181,7 @@ namespace Portal.Modules.OrientalSails.Web
             catch { }
             RestaurantBooking.NumberOfDiscountedPaxBaby = numberOfDiscountedPaxBaby;
             RestaurantBooking.SpecialRequest = txtSpecialRequest.Text;
-            RestaurantBooking.Time = txtTime.Text;
-            RestaurantBooking.Receivable = RestaurantBooking.TotalPrice - RestaurantBooking.TotalPaid;
+            RestaurantBooking.Time = txtTime.Text;      
             if (rbPayNow.Checked)
             {
                 RestaurantBooking.Payment = 1;
@@ -194,6 +193,8 @@ namespace Portal.Modules.OrientalSails.Web
             RestaurantBooking.VAT = chkVAT.Checked;
             RestaurantBooking.PartOfDay = Int32.Parse(ddlPartOfDay.SelectedValue);
             RestaurantBooking.TotalPrice = Double.Parse(txtTotalPrice.Text);
+            RestaurantBooking.Receivable = RestaurantBooking.TotalPrice - RestaurantBooking.TotalPaid;
+            RestaurantBooking.MenuDetail = txtMenuDetail.Text;
             BookingViewingBLL.RestaurantBookingSaveOrUpdate(RestaurantBooking);
             ShowSuccess("Cập nhật booking thành công");
         }

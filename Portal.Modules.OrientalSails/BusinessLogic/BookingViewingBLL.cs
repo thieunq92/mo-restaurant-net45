@@ -16,6 +16,7 @@ namespace Portal.Modules.OrientalSails.BusinessLogic
         public ServiceOutsideRepository ServiceOutsideRepository { get; set; }
         public GuideRepository GuideRepository { get; set; }
         public AgencyContactRepository AgencyContactRepository { get; set; }
+        public ServiceOutsideDetailRepository ServiceOutsideDetailRepository { get; set; }
         public BookingViewingBLL()
         {
             MenuRepository = new MenuRepository();
@@ -25,6 +26,7 @@ namespace Portal.Modules.OrientalSails.BusinessLogic
             ServiceOutsideRepository = new ServiceOutsideRepository();
             GuideRepository = new GuideRepository();
             AgencyContactRepository = new AgencyContactRepository();
+            ServiceOutsideDetailRepository = new ServiceOutsideDetailRepository();
         }
         public void Dispose()
         {
@@ -53,13 +55,20 @@ namespace Portal.Modules.OrientalSails.BusinessLogic
                 ServiceOutsideRepository.Dispose();
                 ServiceOutsideRepository = null;
             }
-            if (GuideRepository != null) {
+            if (GuideRepository != null)
+            {
                 GuideRepository.Dispose();
                 GuideRepository = null;
             }
-            if(AgencyContactRepository != null){
+            if (AgencyContactRepository != null)
+            {
                 AgencyContactRepository.Dispose();
                 AgencyContactRepository = null;
+            }
+            if (ServiceOutsideDetailRepository != null)
+            {
+                ServiceOutsideDetailRepository.Dispose();
+                ServiceOutsideDetailRepository = null;
             }
         }
 
@@ -156,6 +165,26 @@ namespace Portal.Modules.OrientalSails.BusinessLogic
         public AgencyContact BookerGetById(int bookerId)
         {
             return AgencyContactRepository.BookerGetById(bookerId);
+        }
+
+        public ServiceOutsideDetail ServiceOutsideDetailGetById(int serviceOutsideDetailId)
+        {
+            return ServiceOutsideDetailRepository.GetById(serviceOutsideDetailId);
+        }
+
+        public void ServiceOutsideDetailSaveOrUpdate(ServiceOutsideDetail serviceOutsideDetail)
+        {
+            ServiceOutsideDetailRepository.SaveOrUpdate(serviceOutsideDetail);
+        }
+
+        public IList<ServiceOutsideDetail> ServiceOutsideDetailGetAllByServiceOutsideId(int serviceOutsideId)
+        {
+            return ServiceOutsideDetailRepository.ServiceOutsideDetailGetAllByServiceOutsideId(serviceOutsideId);
+        }
+
+        public void ServiceOutsideDetailDelete(ServiceOutsideDetail serviceOutsideDetail)
+        {
+            ServiceOutsideDetailRepository.Delete(serviceOutsideDetail);
         }
     }
 }

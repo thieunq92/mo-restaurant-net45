@@ -20,6 +20,13 @@
     }
 }])
 moduleBookingViewing.controller("priceController", ["$rootScope", "$scope", "$http", function ($rootScope, $scope, $http) {
+
+}])
+moduleBookingViewing.controller("numberOfPaxController", ["$rootScope", "$scope", "$http", function ($rootScope, $scope, $http) {
+}])
+moduleBookingViewing.controller("numberOfDiscountedPaxController", ["$rootScope", "$scope", "$http", function ($rootScope, $scope, $http) {
+}])
+moduleBookingViewing.controller("totalPriceController", ["$rootScope", "$scope", "$http", function ($rootScope, $scope, $http) {
     $rootScope.calculateTotalPrice = function () {
         var numberOfPaxAdult = 0;
         try {
@@ -62,12 +69,6 @@ moduleBookingViewing.controller("priceController", ["$rootScope", "$scope", "$ht
             + $rootScope.totalServiceOutside;
         $rootScope.totalPrice = $rootScope.totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
-}])
-moduleBookingViewing.controller("numberOfPaxController", ["$rootScope", "$scope", "$http", function ($rootScope, $scope, $http) {
-}])
-moduleBookingViewing.controller("numberOfDiscountedPaxController", ["$rootScope", "$scope", "$http", function ($rootScope, $scope, $http) {
-}])
-moduleBookingViewing.controller("totalPriceController", ["$rootScope", "$scope", "$http", function ($rootScope, $scope, $http) {
 }])
 moduleBookingViewing.controller("bookerController", ["$rootScope", "$scope", "$http", function ($rootScope, $scope, $http) {
     $scope.bookerGetAllByAgencyId = function () {
@@ -162,8 +163,10 @@ moduleBookingViewing.controller("serviceOutsideController", ["$rootScope", "$sco
             })
         }, 0);
     }
+    var id = -1;
     $scope.addServiceOutside = function () {
-        $rootScope.listServiceOutside.push({ id: -1, service: "", unitPrice: 0, quantity: 0, totalPrice: 0, restaurantBookingId: $rootScope.restaurantBookingId })
+        $rootScope.listServiceOutside.push({ id: id, service: "", unitPrice: 0, quantity: 0, totalPrice: 0, restaurantBookingId: $rootScope.restaurantBookingId, vat: $rootScope.bookingVAT, listServiceOutsideDetailDTO: [] })
+        id += -1;
         $timeout(function () {
             $("[data-control='inputmask']").inputmask({
                 'alias': 'numeric',
@@ -233,6 +236,68 @@ moduleBookingViewing.controller("actuallyCollectedController", ["$rootScope", "$
         $rootScope.calculateActuallyCollected();
     })
 }])
+moduleBookingViewing.controller("vatController", ["$rootScope", "$scope", "$http", function ($rootScope, $scope, $http) {
+    $scope.serviceOutsideChangeValueVAT = function () {
+        for (var i = 0; i < $rootScope.listServiceOutside.length; i++) {
+            $rootScope.listServiceOutside[i].vat = $rootScope.bookingVAT;
+        }
+    }
+}])
+moduleBookingViewing.controller("serviceOutsideDetailController", ["$rootScope", "$scope", "$http", "$timeout", function ($rootScope, $scope, $http, $timeout) {
+    $scope.loadServiceOutsideDetail = function (serviceOutsideId) {
+        $http({
+            method: "POST",
+            url: "WebMethod/BookingViewingWebMethod.asmx/ServiceOutsideDetailGetAllByServiceOutsideId",
+            data: {
+                "serviceOutsideId": serviceOutsideId,
+            },
+        }).then(function (response) {
+            for (var i = 0; i < $rootScope.listServiceOutside.length; i++) {
+                if ($rootScope.listServiceOutside[i].id == serviceOutsideId) {
+                    $rootScope.listServiceOutside[i].listServiceOutsideDetailDTO = JSON.parse(response.data.d);
+                }
+            }
+        }, function (response) {
+        })
+        $timeout(function () {
+            $("[data-control='inputmask']").inputmask({
+                'alias': 'numeric',
+                'groupSeparator': ',',
+                'autoGroup': true,
+                'digits': 2,
+                'digitsOptional': true,
+                'placeholder': '0',
+                'rightAlign': false
+            })
+        }, 0);
+    }
+    $scope.addServiceOutsideDetail = function (serviceOutsideId) {
+        for (var i = 0; i < $rootScope.listServiceOutside.length; i++) {
+            if ($rootScope.listServiceOutside[i].id == serviceOutsideId) {
+                $rootScope.listServiceOutside[i].listServiceOutsideDetailDTO.push({ id: -1, name: "", unitPrice: 0, quantity: 0, totalPrice: 0 })
+                $timeout(function () {
+                    $("[data-control='inputmask']").inputmask({
+                        'alias': 'numeric',
+                        'groupSeparator': ',',
+                        'autoGroup': true,
+                        'digits': 2,
+                        'digitsOptional': true,
+                        'placeholder': '0',
+                        'rightAlign': false
+                    })
+                }, 0);
+            }
+        }
+    }
+    $scope.removeServiceOutsideDetail = function (index, serviceOutsideId) {
+        for (var i = 0; i < $rootScope.listServiceOutside.length; i++) {
+            if ($rootScope.listServiceOutside[i].id == serviceOutsideId) {
+                $rootScope.listServiceOutside[i].listServiceOutsideDetailDTO.splice(index, 1);
+            }
+        }
+
+    }
+}])
 moduleBookingViewing.controller("saveController", ["$rootScope", "$scope", "$http", function ($rootScope, $scope, $http) {
     $scope.commissionSaveState = "undone";
     $scope.serviceOutsideSaveState = "undone";
@@ -285,8 +350,8 @@ moduleBookingViewing.controller("saveController", ["$rootScope", "$scope", "$htt
             alert(response);
         })
         $scope.$watchGroup(["commissionSaveState", "serviceOutsideSaveState", "guideSaveState", "bookerSaveState"], function (newValues, oldValues, scope) {
-            if($scope.commissionSaveState == "done" 
-                && $scope.serviceOutsideSaveState == "done" 
+            if ($scope.commissionSaveState == "done"
+                && $scope.serviceOutsideSaveState == "done"
                 && $scope.guideSaveState == "done"
                 && $scope.bookerSaveState == "done") {
                 setTimeout(function () { __doPostBack($("#btnSave").attr("data-uniqueId"), "OnClick"); }, 1);
@@ -294,3 +359,4 @@ moduleBookingViewing.controller("saveController", ["$rootScope", "$scope", "$htt
         })
     };
 }])
+

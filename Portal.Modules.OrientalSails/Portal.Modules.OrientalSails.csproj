@@ -89,6 +89,7 @@
     <Compile Include="DataTransferObject\ComissionDTO.cs" />
     <Compile Include="DataTransferObject\GuideDTO.cs" />
     <Compile Include="DataTransferObject\MenuDTO.cs" />
+    <Compile Include="DataTransferObject\ServiceOutsideDetailDTO.cs" />
     <Compile Include="DataTransferObject\ServiceOutsideDTO.cs" />
     <Compile Include="Domain\Commission.cs" />
     <Compile Include="Domain\Guide.cs" />
@@ -153,6 +154,7 @@
     <Compile Include="Domain\QuotationPrice.cs" />
     <Compile Include="Domain\Series.cs" />
     <Compile Include="Domain\ServiceOutside.cs" />
+    <Compile Include="Domain\ServiceOutsideDetail.cs" />
     <Compile Include="Domain\VoucherBatch.cs" />
     <Compile Include="Domain\DocumentCategory.cs" />
     <Compile Include="Domain\CruiseRole.cs" />
@@ -258,6 +260,7 @@
     <Compile Include="Repository\RoomClassRepository.cs" />
     <Compile Include="Repository\RoomTypeRepository.cs" />
     <Compile Include="Repository\SeriesRepository.cs" />
+    <Compile Include="Repository\ServiceOutsideDetailRepository.cs" />
     <Compile Include="Repository\ServiceOutsideRepository.cs" />
     <Compile Include="Repository\SpecialPermissionRepository.cs" />
     <Compile Include="Repository\TransactionRepository.cs" />
@@ -1181,6 +1184,7 @@
     <EmbeddedResource Include="Domain\Commission.hbm.xml" />
     <EmbeddedResource Include="Domain\ServiceOutside.hbm.xml" />
     <EmbeddedResource Include="Domain\Guide.hbm.xml" />
+    <EmbeddedResource Include="Domain\ServiceOutsideDetail.hbm.xml" />
     <Content Include="packages.config" />
     <Content Include="Web\Admin\AddBooking.aspx" />
     <Content Include="Web\Admin\AddSeriesBookings.aspx" />

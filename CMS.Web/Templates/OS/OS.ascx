@@ -124,7 +124,7 @@
                         <li >
                             <a href="download.html"><span>Download</span></a></li>
                         <li >
-                            <a href="Login.aspx?ReturnUrl=/Modules/Sails/Admin/BookingList.aspx?NodeId=1%26SectionId=15"><span>Agent Login</span></a></li>  
+                            <a href="Login.aspx?ReturnUrl=/Modules/Sails/Admin/RestaurantBookingByDate.aspx?NodeId=1%26SectionId=15"><span>Agent Login</span></a></li>  
                         </ul>
                         <script type="text/javascript">
                         <!--

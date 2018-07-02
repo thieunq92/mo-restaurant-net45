@@ -10,8 +10,8 @@
     </div>
     <div class="row" ng-controller="saveController" ng-init="$root.restaurantBookingId = <%= RestaurantBooking.Id %>">
         <div class="col-xs-12">
-            <asp:Button CssClass="btn btn-primary" ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" ng-click="save()" style="display:none" />
-            <button id="btnSave" type="button" ng-click="save()" class="btn btn-primary" data-uniqueId = "<%= btnSave.UniqueID %>">Save</button>
+            <asp:Button CssClass="btn btn-primary" ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" ng-click="save()" Style="display: none" />
+            <button id="btnSave" type="button" ng-click="save()" class="btn btn-primary" data-uniqueid="<%= btnSave.UniqueID %>">Save</button>
         </div>
     </div>
     <br />
@@ -176,7 +176,7 @@
 
                         </div>
                     </div>
-                    <div class="col-xs-3 nopadding-left">
+                    <div class="col-xs-3 nopadding-left" ng-controller="vatController" ng-init="bookingVAT = false">
                         <div class="checkbox" style="margin-top: 0px; margin-bottom: 0px">
                             <label>
                                 <asp:CheckBox ID="chkVAT" runat="server" Text="VAT" />
@@ -203,7 +203,16 @@
                         Special Request    
                     </div>
                     <div class="col-xs-9">
-                        <asp:TextBox runat="server" ID="txtSpecialRequest" CssClass="form-control" TextMode="MultiLine" placeholder="Special Request" Rows="15" />
+                        <asp:TextBox runat="server" ID="txtSpecialRequest" CssClass="form-control" TextMode="MultiLine" placeholder="Special Request" Rows="5" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-3">
+                    </div>
+                    <div class="col-xs-9">
+                        <asp:TextBox runat="server" ID="txtMenuDetail" CssClass="form-control" TextMode="MultiLine" placeholder="Menu" Rows="15"/>
                     </div>
                 </div>
             </div>
@@ -296,6 +305,14 @@
                         </div>
                     </div>
                     <div class="col-xs-1">
+                        <div class="checkbox" style="margin-top: 0px; margin-bottom: 0px">
+                            <label>
+                                <input type="checkbox" ng-model="item.vat">VAT
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".modal-serviceOutsideDetail{{item.id}}">Chi tiết</button>
                         <button type="button" class="btn btn-primary" ng-click="removeServiceOutside($index)">
                             Remove
                         </button>
@@ -345,6 +362,69 @@
             </div>
         </div>
     </div>
+    <div ng-controller="serviceOutsideDetailController">
+        <div class="modal fade modal-serviceOutsideDetail{{serviceOutside.id}}" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" data-backdrop="static" data-keyboard="false" ng-init="loadServiceOutsideDetail(serviceOutside.id)" ng-repeat="serviceOutside in $root.listServiceOutside">
+            <div class="modal-dialog" role="document" style="width: 1100px">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h3 class="modal-title">Chi tiết của dịch vụ {{serviceOutside.service}}
+                            <button type="button" class="btn btn-primary" ng-click="addServiceOutsideDetail(serviceOutside.id)">Add</button></h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group" ng-show="serviceOutside.listServiceOutsideDetailDTO.length > 0">
+                            <div class="row">
+                                <div class="col-xs-2" style="width: 20%">
+                                    Tên
+                                </div>
+                                <div class="col-xs-2" style="width: 20%">
+                                    Đơn giá
+                                </div>
+                                <div class="col-xs-2" style="width: 20%">
+                                    Số lượng
+                                </div>
+                                <div class="col-xs-2" style="width: 20%">
+                                    Thành tiền
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-repeat="serviceOutsideDetail in serviceOutside.listServiceOutsideDetailDTO">
+                            <div class="row">
+                                <input type="hidden" ng-model="item.id">
+                                <div class="col-xs-2" style="width: 20%">
+                                    <input type="text" class="form-control" placeholder="Tên" ng-model="serviceOutsideDetail.name" />
+                                </div>
+                                <div class="col-xs-2" style="width: 20%">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Đơn giá" ng-model="serviceOutsideDetail.unitPrice" data-control="inputmask" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false"
+                                            ng-change="calculateServiceOutside($index, item.unitPrice, item.quantity)" />
+                                        <span class="input-group-addon">₫</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-2" style="width: 20%">
+                                    <input type="text" class="form-control" placeholder="Số lượng" ng-model="serviceOutsideDetail.quantity" ng-change="calculateServiceOutside($index, item.unitPrice, item.quantity)" />
+                                </div>
+                                <div class="col-xs-2" style="width: 20%">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Thành tiền" ng-model="serviceOutsideDetail.totalPrice" data-control="inputmask" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false" ng-change="calculateTotalServiceOutside()" />
+                                        <span class="input-group-addon">₫</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-2" style="width: 20%">
+                                    <button type="button" class="btn btn-primary" ng-click="removeServiceOutsideDetail($index,serviceOutside.id)">
+                                        Remove
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </asp:Content>
 <asp:Content ID="Scripts" ContentPlaceHolderID="Scripts" runat="server">
     <script type="text/javascript" src="/modules/sails/admin/bookingviewingcontroller.js"></script>
@@ -363,5 +443,6 @@
             }, 500);
             return false;
         });
+        $("#<%= chkVAT.ClientID%>").attr({ "ng-model": "$root.bookingVAT", "ng-change": "serviceOutsideChangeValueVAT()" })
     </script>
 </asp:Content>

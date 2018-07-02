@@ -243,11 +243,11 @@
                                 <asp:HyperLink runat="server" ID="hplCreateMeeting"><i class="fa fa-users fa-lg text-success" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Add meeting"></i></asp:HyperLink>
                             </td>
                             <td>
-                                <asp:HyperLink runat="server" ID="hplName"><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Edit"></i></asp:HyperLink>
+                                <asp:HyperLink runat="server" ID="hplName"><i class="fa fa-edit fa-lg" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Edit"></i></asp:HyperLink>
                             </td>
                             <td>
                                 <asp:LinkButton runat="server" ID="lbtDelete" OnClick="lbtDelete_Click" CommandArgument='<%#Eval("Id")%>'
-                                    OnClientClick="return confirm('Are you sure?')"><i class="fa fa-close fa-lg text-danger" aria-hidden="true" title="" data-toggle="tooltip" data-placement="top" data-original-title="Delete"></i></asp:LinkButton>
+                                    OnClientClick="return confirm('Are you sure?')"><i class="fa fa-trash-alt fa-lg text-danger" aria-hidden="true" title="" data-toggle="tooltip" data-placement="top" data-original-title="Delete"></i></asp:LinkButton>
                             </td>
                         </tr>
                     </ItemTemplate>

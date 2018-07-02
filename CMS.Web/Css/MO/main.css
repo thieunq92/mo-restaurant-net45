@@ -77,7 +77,11 @@
 }
 
 .custom-warning {
-    background-color: #ffff0080;
+    background-color: #ff0;
+}
+
+.custom-success {
+    background-color: #3f0;
 }
 
 .good {
@@ -318,5 +322,7 @@ article {
 .table.table-expense > thead > tr > th, .table.table-expense > tbody > tr > th,
 .table.table-expense > tfoot > tr > th, .table.table-expense > thead > tr > td,
 .table.table-expense > tbody > tr > td, .table.table-expense > tfoot > tr > td {
-    padding:1px
+    padding: 1px;
 }
+
+table > tbody:hover tr { background-color: #eee;  }

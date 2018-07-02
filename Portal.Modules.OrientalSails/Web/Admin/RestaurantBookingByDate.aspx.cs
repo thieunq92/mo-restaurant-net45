@@ -158,5 +158,15 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             memoryStream.Close();
             Response.End();
         }
+
+        public string GetServiceOutsideDetail(ServiceOutside serviceOutside)
+        {
+            var serviceOutsideDetailString = " ";
+            foreach (var serviceOutsideDetail in serviceOutside.ListServiceOutsideDetail)
+            {
+                serviceOutsideDetailString += String.Format("{0} : {1} x {2} = {3}", serviceOutsideDetail.Name, serviceOutsideDetail.UnitPrice.ToString("#,##0.##"), serviceOutsideDetail.Quantity, serviceOutsideDetail.TotalPrice.ToString("#,##0.##"));
+            }
+            return serviceOutsideDetailString;
+        }
     }
 }

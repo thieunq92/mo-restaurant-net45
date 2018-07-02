@@ -21,7 +21,7 @@ namespace Portal.Modules.OrientalSails.Repository
         public IList<RestaurantBooking> RestaurantBookingGetAllByDate(DateTime date)
         {
             return _session.QueryOver<RestaurantBooking>()
-                .Where(x => x.Date == date)
+                .Where(x => x.Date == date && x.Status != 2)
                 .Future()
                 .ToList();
         }

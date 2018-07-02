@@ -308,9 +308,12 @@
 
             hideIfBlank: function () {
                 $('[data-toggle="tooltip"]').each(function (i, e) {
+                    if ($(e).attr("data-original-title") == " ") {
+                        $(e).removeAttr("data-original-title");
+                    }else
                     if ($(e).attr("data-original-title").trim() == "") {
                         $(e).hide();
-                    }
+                    }                   
                 })
             }
         }

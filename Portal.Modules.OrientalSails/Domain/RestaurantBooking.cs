@@ -31,6 +31,7 @@ namespace Portal.Modules.OrientalSails.Domain
         public virtual bool MarkIsPaid { get; set; }
         public virtual bool VAT { get; set; }
         public virtual int PartOfDay { get; set; }
+        public virtual string MenuDetail { get; set; }
         public virtual AgencyContact Booker { get; set; }
         public virtual IList<PaymentHistory> ListPaymentHistory { get; set; }
         public virtual IList<Guide> ListGuide { get; set; }

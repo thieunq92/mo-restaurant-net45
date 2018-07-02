@@ -28,7 +28,7 @@
                 Date
             </div>
             <div class="col-xs-10">
-                <%= RestaurantBooking.Date %>
+                <%= ((DateTime)RestaurantBooking.Date).ToString("dd/MM/yyyy") %>
             </div>
         </div>
     </div>
